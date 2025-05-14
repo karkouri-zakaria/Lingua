@@ -1,0 +1,8 @@
+[server]
+enableStaticServing = false
+enableCORS = false
+enableXsrfProtection = false
+runOnSave = true
+
+[runner]
+fastReruns = true
