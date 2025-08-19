@@ -11,7 +11,9 @@ def display_flashcard(index, flashcard):
         Eng.write(f"> {flashcard['Source']}")
         Deu.markdown(f"> {colorize_noun(flashcard)}", unsafe_allow_html=True)
         try:
-            audio_file = generate_audio(flashcard['Target'])  
+            # Respect selected language for TTS
+            from streamlit import session_state
+            audio_file = generate_audio(flashcard['Target'], lang=session_state.get('language_code', 'de'))  
             with open(audio_file, "rb") as audio_data:
                 Aud.audio(audio_data, format="audio/mp3", autoplay=False)
         except Exception as e:

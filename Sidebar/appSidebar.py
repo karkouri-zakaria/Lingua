@@ -1,12 +1,10 @@
 from io import BytesIO
 from json import dumps
-from pathlib import Path
 from webbrowser import open as openURL
 
 from pandas import DataFrame
-from Audio_gen.generate_audio import generate_audio
 import time
-from streamlit import button, code, columns, download_button, fragment, metric, rerun, session_state, sidebar, write, audio, expander,link_button, text_area
+from streamlit import button, code, columns, download_button, fragment, metric, rerun, session_state, sidebar, write, expander, link_button
 def start_timer():
     if not session_state.running:
         session_state.running = True
@@ -25,27 +23,6 @@ class AppSidebar:
         self.user_input = None
         self.front_text = None
         self.back_text = None
-    def get_user_input(self):
-        """Get user input for either text area or Verbformen search based on the toggle."""
-        with expander("🗣️ Text to Speech", expanded=session_state.flashcards_df is None):
-            for char, col in zip(['ä', 'ö', 'ü', 'ß'], columns(4, gap="small", vertical_alignment='center')):
-                with col:
-                    code(char, line_numbers=False)
-            self.user_input = text_area(
-                label="---",
-                placeholder="Text ...",
-                key="user_input",
-                height=68
-            )
-            if self.user_input.strip():
-                try:
-                    audio_path = Path(f"Audios/{self.user_input.strip()}.mp3")
-                    if not audio_path.exists():
-                        audio_path = generate_audio(self.user_input.strip())
-                    with open(audio_path, "rb") as audio_file:
-                        audio(audio_file, format="audio/mp3", autoplay=True)
-                except Exception as e:
-                    write(f"Error generating audio: {str(e)}")
     @fragment(run_every=0.4)
     def timer(self):
         if 'running' not in session_state:

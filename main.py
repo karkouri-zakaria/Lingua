@@ -96,7 +96,6 @@ def main():
                 session_state.Show_all_anwsers = left_button.toggle("🔠", key="show", value=session_state.Show_all_anwsers, help="Learning mode")
                 session_state.show_wrongs = left_button.toggle("🔂", key="wrongs", value=session_state.show_wrongs, help="Review mistakes")
                 session_state.shuffle = right_button.toggle("🔀", key="shuffling", value=session_state.shuffle, help="Shuffle flashcards")
-            sidebar_manager.get_user_input()
             sidebar_manager.download_answers()
             if session_state.show_wrongs: session_state.flashcards_df = session_state.original_flashcards_df[session_state.original_flashcards_df["Source"].isin({answer[1] for answer in session_state.Answers if answer[3] == False})]
             if session_state.shuffle: session_state.flashcards_df = session_state.flashcards_df.sample(frac=1)
@@ -104,7 +103,7 @@ def main():
             balloons()
             write("""<br><div style="text-align:center; font-size:50px;"><strong>All the cards are done!🥳🎆</strong><br></div>""", unsafe_allow_html=True)
         else :
-            quiz_tab, all_cards = tabs([f"🎮 **Quiz {round(100*len(session_state.Answers)/len(session_state.flashcards_df),2)}%**", f"📓 **All cards of {session_state.uploaded_file_data.name if not session_state.flashcards_df is None else "All cards"}**"])
+            quiz_tab, all_cards = tabs([f"🎮 **{session_state.language_name} - Quiz {round(100*len(session_state.Answers)/len(session_state.flashcards_df),2)}%**", f"📓 **All cards of {session_state.uploaded_file_data.name if not session_state.flashcards_df is None else "All cards"}**"])
             with quiz_tab:
                 from Quiz_tab.Quiz import Quiz
                 Quiz(session_state.flashcards_df)
@@ -123,6 +122,6 @@ def main():
                 if button("🔻 Show all ") and len([r for r in session_state.Answers if r[3] == False]) > 0: data_editor([{'Source : Target': f"{r[0]} - {r[1]} : {r[2]}"} for r in session_state.Answers if r[3] == False][::-1], hide_index=True, use_container_width=True)
                 else: data_editor([{'Source : Target': f"{r[0]} - {r[1]} : {r[2]}"} for r in reversed(session_state.Answers) if not r[3]][:3], hide_index=True, use_container_width=True)
     else:
-        sidebar_manager.get_user_input()
+        pass
 if __name__ == "__main__":
     main()

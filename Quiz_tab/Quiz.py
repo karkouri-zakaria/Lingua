@@ -34,7 +34,7 @@ def Quiz(flashcards_df):
                             sleep(before)
                         if not audio_path.exists():
                             from Audio_gen.generate_audio import generate_audio
-                            audio_path = generate_audio(flashcard["Target"])
+                            audio_path = generate_audio(flashcard["Target"], lang=session_state.get("language_code", "de"))
                         with open(audio_path, "rb") as audio_file:
                             audio_col.audio(audio_file, format="audio/mp3", autoplay=session_state.Show_all_anwsers)
                     except Exception as e:

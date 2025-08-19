@@ -1,7 +1,20 @@
-from streamlit import button, columns, dialog, error, file_uploader, info, rerun, session_state, toast, write
+from streamlit import button, columns, dialog, error, file_uploader, info, rerun, session_state, toast, write, selectbox
 @dialog("Upload a File 📂")
 def file_upload_dialog():
     from json import load
+    # Language selection
+    lang_display_to_code = {"Spanish": "es", "German": "de"}
+    current_lang_name = session_state.get("language_name", "Spanish")
+    write("Choose your study language:")
+    selected_lang = selectbox(
+        "Language",
+        options=list(lang_display_to_code.keys()),
+        index=list(lang_display_to_code.keys()).index(current_lang_name) if current_lang_name in lang_display_to_code else 0,
+        key="language_select_upload_modal",
+    )
+    # Persist selection
+    session_state.language_name = selected_lang
+    session_state.language_code = lang_display_to_code[selected_lang]
     write("You can upload a `.xlsx` or `.csv` file here:")
     uploaded_file = file_uploader(
         "Upload your main file",

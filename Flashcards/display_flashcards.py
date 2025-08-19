@@ -1,6 +1,6 @@
 from streamlit import columns, markdown, session_state, slider, status, write
 from Flashcards.display_flashcard import display_flashcard
-def display_flashcards(flashcards_df, num_columns=1, cards_per_page=100):
+def display_flashcards(flashcards_df, num_columns=1, cards_per_page=200):
     """Display the flashcards in the app."""
     if "current_page" not in session_state:
         session_state.current_page = 0

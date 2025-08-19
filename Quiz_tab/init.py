@@ -13,6 +13,9 @@ def init_session_state():
         "shuffle": False,
         "audio_generated": False,
         "Answers": [],
+        # Language settings
+        "language_name": "Spanish",
+        "language_code": "de",
     }
     for key, value in defaults.items():
         if key not in session_state:

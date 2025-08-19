@@ -23,6 +23,13 @@ def load_answers():
 @cache_data
 def normalize_german(text):
     return text.translate(str.maketrans({'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss', 'Ä': 'Ae', 'Ö': 'Oe', 'Ü': 'Ue'}))
+
+@cache_data
+def normalize_spanish(text):
+    # Remove diacritics for fair comparison when users omit accents (á, é, í, ó, ú, ü, ñ)
+    import unicodedata
+    decomposed = unicodedata.normalize('NFD', text)
+    return ''.join(ch for ch in decomposed if unicodedata.category(ch) != 'Mn')
 @fragment
 def check_answer(flashcard, current_index, total_flashcards):    
     from time import sleep
@@ -30,13 +37,25 @@ def check_answer(flashcard, current_index, total_flashcards):
     from Answers.colorize import colorize_noun
     from mutagen.mp3 import MP3
     from pathlib import Path
-    answer = text_input(
-        "Type your answer here (ä : ae || ö : oe || ü : ue || ß : ss) :",
-        key=f"answer_input_{current_index}",
-    )
+    # Language-aware input hint
+    lang = session_state.get("language_code", "de")
+    if lang == "de":
+        prompt = "Type your answer here (ä : ae || ö : oe || ü : ue || ß : ss) :"
+    elif lang == "es":
+        prompt = "Type your answer here (omit accents: á→a, é→e, í→i, ó→o, ú→u, ü→u, ñ→n) :"
+    else:
+        prompt = "Type your answer here :"
+    answer = text_input(prompt, key=f"answer_input_{current_index}")
     if answer:
-        correct_answer = normalize_german(flashcard['Target'])
-        user_answer = normalize_german(answer.lower())
+        if lang == "de":
+            correct_answer = normalize_german(flashcard['Target'])
+            user_answer = normalize_german(answer.lower())
+        elif lang == "es":
+            correct_answer = normalize_spanish(flashcard['Target'])
+            user_answer = normalize_spanish(answer.lower())
+        else:
+            correct_answer = flashcard['Target']
+            user_answer = answer.lower()
         for sep in ["·", "\u00B7"]:
             correct_answer = correct_answer.replace(sep, "")
             user_answer = user_answer.replace(sep, "")
@@ -73,7 +92,7 @@ def check_answer(flashcard, current_index, total_flashcards):
                     try:
                         audio_path = Path(f"Audios/{flashcard['Target']}.mp3")
                         if not audio_path.exists():
-                            audio_path = generate_audio(flashcard["Target"])
+                            audio_path = generate_audio(flashcard["Target"], lang=session_state.get("language_code", "de"))
                         with open(audio_path, "rb") as audio_file:
                             left.audio(audio_file, format="audio/mp3", autoplay=True)
                         if session_state.auto_continue:
