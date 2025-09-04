@@ -116,7 +116,7 @@ def main():
                 viewer_table(session_state.flashcards_df)
         if not session_state.Show_all_anwsers and not session_state.show_wrongs:
             with expander(
-                f"👍🏼 {((wval := sum(r[3] == True for r in session_state.Answers)) / (l := len(session_state.Answers) or 1) * 100):.1f}% - {wval} ||"
+                f"👍🏼 {((wval := sum(r[3] == True for r in session_state.Answers)) / (l := len(session_state.flashcards_df) or 1) * 100):.1f}% - {wval} ||"
                 f"👎🏼 {((wval := sum(r[3] == False for r in session_state.Answers)) / l * 100):.1f}% - {wval} ||"
                 f"🤲🏼 {round(100 - 100*len(session_state.Answers) / len(session_state.flashcards_df), 2)}% - {len(session_state.flashcards_df) - len(session_state.Answers)}", expanded=True):
                 if button("🔻 Show all ") and len([r for r in session_state.Answers if r[3] == False]) > 0: data_editor([{'Source : Target': f"{r[0]} - {r[1]} : {r[2]}"} for r in session_state.Answers if r[3] == False][::-1], hide_index=True, use_container_width=True)
