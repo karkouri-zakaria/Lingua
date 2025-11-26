@@ -13,10 +13,10 @@ def Quiz(flashcards_df):
             total_flashcards = len(flashcards_df)
             flashcard = flashcards_df.iloc[current_index]
             if total_flashcards > 1:
-                new_index = slider("**Flashcards :**", min_value=1, max_value=total_flashcards, value=current_index + 1, format="%d") - 1
-                if new_index != session_state.flashcard_index:
-                    session_state.flashcard_index = new_index
-                    rerun()
+                def update_flashcard_index_from_slider():
+                    session_state.flashcard_index = session_state.slider_index - 1
+                session_state.slider_index = current_index + 1
+                slider("**Flashcards :**", min_value=1, max_value=total_flashcards, key="slider_index", on_change=update_flashcard_index_from_slider)
             else:
                 session_state.current_index = 1
             with container(border=True):
