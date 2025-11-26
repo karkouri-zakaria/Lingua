@@ -55,13 +55,12 @@ def main():
             if not session_state.flashcards_df.empty: flashcard = session_state.flashcards_df.iloc[current_index]
             total_flashcards = len(session_state.flashcards_df)
             if len(session_state.Answers) > 1 or not session_state.show_wrongs:
+                def update_flashcard_index():
+                    session_state.flashcard_index = session_state.page_input - 1
                 try:
-                    page_input = number_input(f"Card N° ({len(session_state.flashcards_df)} total): ", min_value=1, max_value=len(session_state.flashcards_df), step=1, value=session_state.flashcard_index+1, key="page_input")
+                    page_input = number_input(f"Card N° ({len(session_state.flashcards_df)} total): ", min_value=1, max_value=len(session_state.flashcards_df), step=1, value=session_state.flashcard_index+1, key="page_input", on_change=update_flashcard_index)
                 except:
                     page_input=0
-                if session_state.flashcard_index != page_input - 1:
-                    session_state.flashcard_index = page_input - 1
-                    rerun()
             with left_button:
                 if button("✖", key="wrong_button", use_container_width=True, type="primary" if any(answer[0] == flashcard['Source'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]

@@ -101,6 +101,7 @@ def check_answer(flashcard, current_index, total_flashcards):
                                 session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
                                 session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], True])
                             session_state.flashcard_index = (current_index + 1) % total_flashcards
+                            save_answers()
                             rerun()
                     except Exception as e:
                         write(f"Error generating audio: {str(e)}")

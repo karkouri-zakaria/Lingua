@@ -20,7 +20,7 @@ def Quiz(flashcards_df):
             else:
                 session_state.current_index = 1
             with container(border=True):
-                col1, col2 = columns([1, 1], gap="small", vertical_alignment="bottom")
+                col1, col2 = columns([2, 1], gap="small", vertical_alignment="bottom")
                 col1.markdown(f"### ⇒ {flashcard['Source']}")
                 with col2.expander("Answer :", expanded=session_state.Show_all_anwsers):
                     from Answers.colorize import colorize_noun
