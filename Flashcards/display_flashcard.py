@@ -6,10 +6,10 @@ cache_data()
 def display_flashcard(index, flashcard):
     """Display a single flashcard with its audio."""
     with container(border=True):
-        ind, Eng, Deu, Aud = columns([1, 6 , 6, 2])
+        ind, Src, Tar, Aud = columns([1, 6 , 6, 2])
         ind.write(f"> {index + 1}")
-        Eng.write(f"> {flashcard['Source']}")
-        Deu.markdown(f"> {colorize_noun(flashcard)}", unsafe_allow_html=True)
+        Src.write(f"> {flashcard['Source']}")
+        Tar.markdown(f"> {colorize_noun(flashcard)}", unsafe_allow_html=True)
         try:
             # Respect selected language for TTS
             from streamlit import session_state
