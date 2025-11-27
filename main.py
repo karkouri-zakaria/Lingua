@@ -67,8 +67,6 @@ def main():
                     session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
                     session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], False])
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
-                    session_state.page_input = session_state.flashcard_index + 1
-                    session_state.slider_index = session_state.flashcard_index + 1
                     save_answers()
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
                     audio_path = Path(f"Audios/{flashcard['Target']}.mp3")
@@ -83,8 +81,6 @@ def main():
                     session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
                     session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], True])
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
-                    session_state.page_input = session_state.flashcard_index + 1
-                    session_state.slider_index = session_state.flashcard_index + 1
                     save_answers()
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
                     audio_path = Path(f"Audios/{flashcard['Target']}.mp3")
