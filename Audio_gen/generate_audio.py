@@ -1,5 +1,6 @@
 from hashlib import md5
 from os import makedirs, path
+import re
 from gtts import gTTS
 from streamlit import cache_data, session_state
 
@@ -15,15 +16,18 @@ def generate_audio(text, lang=None, cache_dir="Audios"):
     Returns:
         str: Path to the mp3 file.
     """
+    # Filter out non-alphanumeric characters, but keep spaces and letters from all languages.
+    cleaned_text = re.sub(r'[^\w\s/]', '', text, flags=re.UNICODE)
+
     # Resolve language selection
     resolved_lang = lang or session_state.get("language_code", "de")
     makedirs(cache_dir, exist_ok=True)
     # Include language in cache key and filename to prevent cross-language collisions
-    cache_key = f"{resolved_lang}:{text}".encode()
+    cache_key = f"{resolved_lang}:{cleaned_text}".encode()
     audio_file = path.join(cache_dir, f"audio_{resolved_lang}_{md5(cache_key).hexdigest()}.mp3")
     if not path.exists(audio_file):
         try:
-            tts = gTTS(text=text, lang=resolved_lang)
+            tts = gTTS(text=cleaned_text, lang=resolved_lang)
             tts.save(audio_file)
         except Exception as e:
             raise RuntimeError(f"Error generating audio: {e}") from e
