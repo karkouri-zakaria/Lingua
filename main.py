@@ -8,6 +8,13 @@ from time import sleep
 from mutagen.mp3 import MP3
 from Quiz_tab.init import init_session_state
 def main():
+    def reader(text, pause=1):
+        audio_path = Path(f"Audios/{text}.mp3")
+        if not audio_path.exists():
+            audio_path = generate_audio(text)
+        with open(audio_path, "rb") as audio_file:
+            audio(audio_file, format="audio/mp3", autoplay=True)
+        sleep(MP3(audio_path).info.length + pause)
     set_page_config(page_title="Lingua", page_icon="🐦", layout="wide", initial_sidebar_state="expanded")
     init_session_state()
     sidebar_manager = AppSidebar()
@@ -69,12 +76,7 @@ def main():
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     save_answers()
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
-                    audio_path = Path(f"Audios/{flashcard['Target']}.mp3")
-                    if not audio_path.exists():
-                        audio_path = generate_audio(flashcard["Target"])
-                    with open(audio_path, "rb") as audio_file:
-                        audio(audio_file, format="audio/mp3", autoplay=True)
-                    sleep(MP3(audio_path).info.length + 1)
+                    reader(flashcard["Target"])
                     rerun()
             with right_button:
                 if button("✔", key="correct_button", use_container_width=True, type="  " if any(answer[0] == flashcard['Source'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
@@ -83,20 +85,17 @@ def main():
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     save_answers()
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
-                    audio_path = Path(f"Audios/{flashcard['Target']}.mp3")
-                    if not audio_path.exists():
-                        audio_path = generate_audio(flashcard["Target"])
-                    with open(audio_path, "rb") as audio_file:
-                        audio(audio_file, format="audio/mp3", autoplay=True)
-                    sleep(MP3(audio_path).info.length + 1)
+                    reader(flashcard["Target"])
                     rerun()
             with left_button:
                 if button("➖", key="previous_button", use_container_width=True, type="primary" if any(answer[0] == flashcard['Source'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.flashcard_index = (current_index - 1) % total_flashcards
+                    reader(flashcard["Target"])
                     rerun()
             with right_button:
                 if button("➕", key="next_button", use_container_width=True, type="  " if any(answer[0] == flashcard['Source'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
+                    reader(flashcard["Target"])
                     rerun()
             with expander("Settings", expanded=False, icon="⚙️"):
                 left_button, right_button = columns(2, gap="small", vertical_alignment='center')

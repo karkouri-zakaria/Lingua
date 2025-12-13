@@ -10,6 +10,7 @@ def keyboard_handler():
     function handleKeyPress(e) {
         // Prevent default behavior for arrow keys
         if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+            if (!e.ctrlKey) return;
             e.preventDefault();
         }
         
@@ -17,7 +18,7 @@ def keyboard_handler():
         const buttons = doc.querySelectorAll('button');
         
         switch(e.key) {
-            case 'ArrowLeft':
+            case 'ArrowDown':
                 // Click wrong button (✖)
                 buttons.forEach(btn => {
                     if (btn.textContent.includes('✖')) {
@@ -25,7 +26,7 @@ def keyboard_handler():
                     }
                 });
                 break;
-            case 'ArrowRight':
+            case 'ArrowUp':
                 // Click correct button (✔)
                 buttons.forEach(btn => {
                     if (btn.textContent.includes('✔')) {
@@ -33,7 +34,7 @@ def keyboard_handler():
                     }
                 });
                 break;
-            case 'ArrowUp':
+            case 'ArrowRight':
                 // Click previous card
                 buttons.forEach(btn => {
                     if (btn.textContent.includes('➕')) {
@@ -41,7 +42,7 @@ def keyboard_handler():
                     }
                 });
                 break;
-            case 'ArrowDown':
+            case 'ArrowLeft':
                 // Click next card
                 buttons.forEach(btn => {
                     if (btn.textContent.includes('➖')) {
