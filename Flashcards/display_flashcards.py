@@ -31,4 +31,4 @@ def display_flashcards(flashcards_df, num_columns=1, cards_per_page=200):
             cols = columns(len(row))
             for col, (index, flashcard) in zip(cols, row.iterrows()):
                 with col:
-                    display_flashcard(index, flashcard)
+                    display_flashcard(flashcard, index)

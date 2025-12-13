@@ -39,12 +39,7 @@ def check_answer(flashcard, current_index, total_flashcards):
     from pathlib import Path
     # Language-aware input hint
     lang = session_state.get("language_code", "de")
-    if lang == "de":
-        prompt = "Type your answer here (ä : ae || ö : oe || ü : ue || ß : ss) :"
-    elif lang == "es":
-        prompt = "Type your answer here (omit accents: á→a, é→e, í→i, ó→o, ú→u, ü→u, ñ→n) :"
-    else:
-        prompt = "Type your answer here :"
+    prompt = "Type your answer here :"
     answer = text_input(prompt, key=f"answer_input_{current_index}")
     if answer:
         if lang == "de":
@@ -93,9 +88,9 @@ def check_answer(flashcard, current_index, total_flashcards):
                         audio_path = Path(f"Audios/{flashcard['Target']}.mp3")
                         if not audio_path.exists():
                             audio_path = generate_audio(flashcard["Target"], lang=session_state.get("language_code", "de"))
-                        with open(audio_path, "rb") as audio_file:
-                            left.audio(audio_file, format="audio/mp3", autoplay=True)
                         if session_state.auto_continue:
+                            with open(audio_path, "rb") as audio_file:
+                                left.audio(audio_file, format="audio/mp3", autoplay=True)
                             sleep(MP3(audio_path).info.length + 2)
                             if not session_state.show_wrongs:
                                 session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]

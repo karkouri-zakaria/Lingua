@@ -23,7 +23,7 @@ def Quiz(flashcards_df):
                 session_state.current_index = 1
             with container(border=True):
                 col1, col2 = columns([2, 1], gap="small", vertical_alignment="bottom")
-                col1.markdown(f"### ⇒ {flashcard['Source']}")
+                col1.markdown(f"### ⇒ {flashcard['Source']} <span style='font-size:0.6em'>({len(flashcard['Target'].split('/'))})</span>", unsafe_allow_html=True)
                 with col2.expander("Answer :", expanded=session_state.Show_all_anwsers):
                     from Answers.colorize import colorize_noun
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
@@ -31,7 +31,7 @@ def Quiz(flashcards_df):
                         audio_path = Path(f"Audios/{flashcard['Target']}.mp3")
                         right, audio_col, left = columns([1, 2, 1], gap="small", vertical_alignment="center")
                         if session_state.auto_continue and session_state.Show_all_anwsers:
-                            before = right.number_input("⏱️ Before (seconds):", min_value=0, max_value=10, step=1, value=1   , key="before")
+                            before = right.number_input("⏱️ Before (seconds):", min_value=0, max_value=10, step=1, value=1, key="before")
                             after = left.number_input("⏱️ after (seconds):", min_value=0, max_value=10, step=1, value=1, key="after")
                             sleep(before)
                         if not audio_path.exists():

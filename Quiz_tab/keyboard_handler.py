@@ -9,7 +9,7 @@ def keyboard_handler():
     
     function handleKeyPress(e) {
         // Prevent default behavior for arrow keys
-        if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+        if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',' '].includes(e.key)) {
             if (!e.ctrlKey) return;
             e.preventDefault();
         }
@@ -51,7 +51,6 @@ def keyboard_handler():
                 });
             case ' ':
                 // Spacebar: Toggle answer expander
-                e.preventDefault();
                 const expanders = doc.querySelectorAll('[data-testid="stExpander"]');
                 expanders.forEach(exp => {
                     const summary = exp.querySelector('summary');

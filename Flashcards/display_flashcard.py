@@ -3,11 +3,11 @@ from Answers.colorize import colorize_noun
 from Audio_gen.generate_audio import generate_audio
 import pandas as pd
 cache_data()
-def display_flashcard(index, flashcard):
+def display_flashcard(flashcard, index=-1):
     """Display a single flashcard with its audio."""
     with container(border=True):
         ind, Src, Tar, Aud = columns([1, 6 , 6, 2])
-        ind.write(f"> {index + 1}")
+        if index != -1: ind.write(f"> {index + 1}")
         Src.write(f"> {flashcard['Source']}")
         Tar.markdown(f"> {colorize_noun(flashcard)}", unsafe_allow_html=True)
         try:
