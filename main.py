@@ -90,6 +90,14 @@ def main():
                         audio(audio_file, format="audio/mp3", autoplay=True)
                     sleep(MP3(audio_path).info.length + 1)
                     rerun()
+            with left_button:
+                if button("➖", key="previous_button", use_container_width=True, type="primary" if any(answer[0] == flashcard['Source'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                    session_state.flashcard_index = (current_index - 1) % total_flashcards
+                    rerun()
+            with right_button:
+                if button("➕", key="next_button", use_container_width=True, type="  " if any(answer[0] == flashcard['Source'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                    session_state.flashcard_index = (current_index + 1) % total_flashcards
+                    rerun()
             with expander("Settings", expanded=False, icon="⚙️"):
                 left_button, right_button = columns(2, gap="small", vertical_alignment='center')
                 session_state.auto_continue = right_button.toggle("⏩", key="auto", value=session_state.auto_continue, help="Auto-continue")

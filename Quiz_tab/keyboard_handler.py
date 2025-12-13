@@ -1,4 +1,4 @@
-from streamlit import components, session_state
+import streamlit.components.v1 as components
 
 def keyboard_handler():
     """Add keyboard event listeners for flashcard navigation and answer controls."""
@@ -34,23 +34,20 @@ def keyboard_handler():
                 });
                 break;
             case 'ArrowUp':
-                // Previous card
-                const numberInput = doc.querySelector('input[type="number"]');
-                if (numberInput && numberInput.value > numberInput.min) {
-                    numberInput.value = parseInt(numberInput.value) - 1;
-                    numberInput.dispatchEvent(new Event('input', { bubbles: true }));
-                    numberInput.dispatchEvent(new Event('change', { bubbles: true }));
-                }
+                // Click previous card
+                buttons.forEach(btn => {
+                    if (btn.textContent.includes('➕')) {
+                        btn.click();
+                    }
+                });
                 break;
             case 'ArrowDown':
-                // Next card
-                const numberInputDown = doc.querySelector('input[type="number"]');
-                if (numberInputDown && numberInputDown.value < numberInputDown.max) {
-                    numberInputDown.value = parseInt(numberInputDown.value) + 1;
-                    numberInputDown.dispatchEvent(new Event('input', { bubbles: true }));
-                    numberInputDown.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-                break;
+                // Click next card
+                buttons.forEach(btn => {
+                    if (btn.textContent.includes('➖')) {
+                        btn.click();
+                    }
+                });
             case ' ':
                 // Spacebar: Toggle answer expander
                 e.preventDefault();

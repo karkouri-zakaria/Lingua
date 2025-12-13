@@ -3,9 +3,11 @@ from mutagen.mp3 import MP3
 from pathlib import Path
 from time import sleep
 from Quiz_tab.init import init_session_state
+from Quiz_tab.keyboard_handler import keyboard_handler
 @fragment
 def Quiz(flashcards_df):
     init_session_state()
+    keyboard_handler()
     if flashcards_df is not None:
         if not flashcards_df.empty:
             flashcards_df = session_state.flashcards_df
