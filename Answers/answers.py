@@ -145,6 +145,8 @@ def check_answer(flashcard, current_index, total_flashcards):
                 s, e = match.span()
                 if correct_answer[s:e].lower() in articles:
                     continue
+                if not any(c.isalpha() for c in correct_answer[s:e]):
+                    continue
                 leftover_counts.append(sum(1 for i in range(s, e) if correct_answer[i].isalpha() and i not in matched_indices))
             leftover_chars = ", ".join(map(str, leftover_counts))
             markdown(f"##### {feedback}&ensp;&ensp;<span style='font-size:0.7em'>[{leftover_chars}]</span>", unsafe_allow_html=True)
@@ -157,6 +159,8 @@ def check_answer(flashcard, current_index, total_flashcards):
             for match in re.finditer(r'\S+', correct_answer):
                 s, e = match.span()
                 if correct_answer[s:e].lower() in articles:
+                    continue
+                if not any(c.isalpha() for c in correct_answer[s:e]):
                     continue
                 leftover_counts.append(sum(1 for i in range(s, e) if correct_answer[i].isalpha() and i not in matched_indices))
             leftover_chars = ", ".join(map(str, leftover_counts))

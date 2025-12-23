@@ -1,4 +1,4 @@
-from streamlit import audio, balloons, button, columns, data_editor, expander, markdown, number_input, rerun, session_state, set_page_config, sidebar, tabs, toast, write, selectbox
+from streamlit import audio, balloons, button, columns, data_editor, expander, markdown, number_input, rerun, session_state, set_page_config, sidebar, toast, write, selectbox, navigation, Page
 from Answers.colorize import colorize_noun
 from Sidebar.appSidebar import AppSidebar
 from Answers.answers import load_answers, save_answers
@@ -125,17 +125,21 @@ def main():
             balloons()
             write("""<br><div style="text-align:center; font-size:50px;"><strong>All the cards are done!🥳🎆</strong><br></div>""", unsafe_allow_html=True)
         else :
-            quiz_tab, all_cards = tabs([f"🎮 **{session_state.language_name} - {round(100*len(session_state.Answers)/len(session_state.flashcards_df),2)}%**", f"📓 **{session_state.uploaded_file_data.name if not session_state.flashcards_df is None else "All cards"}**"])
-            with quiz_tab:
+            def quiz_page():
                 from Quiz_tab.Quiz import Quiz
                 Quiz(session_state.flashcards_df)
                 with sidebar:
                     if session_state.flashcards_df is not None: 
                         with sidebar.expander("Timer", icon="⏱️"):
                             sidebar_manager.timer()
-            with all_cards:
+            def viewer_page():
                 from Flashcards.Viewer import viewer_table
                 viewer_table(session_state.flashcards_df)
+            pg = navigation([
+                Page(quiz_page, title=f"🎮 {session_state.language_name} Quiz - {round(100*len(session_state.Answers)/len(session_state.flashcards_df),2)}%"),
+                Page(viewer_page, title=f"📓All cards {session_state.uploaded_file_data.name if not session_state.flashcards_df is None else 'All cards'}")
+            ])
+            pg.run()
         if not session_state.Show_all_anwsers and not session_state.show_wrongs:    
             col1, col2 = columns([20, 1], gap="small")
             if col2.button("🔻all ") and len([r for r in session_state.Answers if r[3] == False]) > 0: col1.data_editor([{f"👍🏼 {((wval := sum(r[3] == True for r in session_state.Answers)) / (l := len(session_state.flashcards_df) or 1) * 100):.1f}% - {wval}       ||       👎🏼 {((wval := sum(r[3] == False for r in session_state.Answers)) / l * 100):.1f}% - {wval}       ||       ✍🏼 {round(100 - 100*len(session_state.Answers) / len(session_state.flashcards_df), 2)}% - {len(session_state.flashcards_df) - len(session_state.Answers)}" : f"{r[0]} - {r[1]} : {r[2]}"} for r in session_state.Answers if r[3] == False][::-1], hide_index=True, width='stretch')
