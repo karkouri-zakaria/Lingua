@@ -131,7 +131,7 @@ def check_answer(flashcard, current_index, total_flashcards):
                     sleep(MP3(audio_path).info.length + 2)
                     if not session_state.show_wrongs:
                         session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
-                        session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], True])
+                        session_state.Answers.append([int(current_index)+1, flashcard['Source_1'], flashcard['Target'], True])
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     save_answers()
                     rerun()

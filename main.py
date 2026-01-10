@@ -87,29 +87,29 @@ def main():
                 except:
                     pass
             with left_button:
-                if button("✖", key="wrong_button", width='stretch', type="primary" if any(answer[0] == flashcard['Source'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                if button("✖", key="wrong_button", width='stretch', type="primary" if any(answer[0] == flashcard['Source_1'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
-                    session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], False])
+                    session_state.Answers.append([int(current_index)+1, flashcard['Source_1'], flashcard['Target'], False])
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     save_answers()
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
                     reader(flashcard["Target"])
                     rerun()
             with right_button:
-                if button("✔", key="correct_button", width='stretch', type="  " if any(answer[0] == flashcard['Source'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                if button("✔", key="correct_button", width='stretch', type="  " if any(answer[0] == flashcard['Source_1'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
-                    session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], True])
+                    session_state.Answers.append([int(current_index)+1, flashcard['Source_1'], flashcard['Target'], True])
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     save_answers()
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
                     reader(flashcard["Target"])
                     rerun()
             with left_button:
-                if button("➖", key="previous_button", width='stretch', type="primary" if any(answer[0] == flashcard['Source'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                if button("➖", key="previous_button", width='stretch', type="primary" if any(answer[0] == flashcard['Source_1'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.flashcard_index = (current_index - 1) % total_flashcards
                     rerun()
             with right_button:
-                if button("➕", key="next_button", width='stretch', type="  " if any(answer[0] == flashcard['Source'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                if button("➕", key="next_button", width='stretch', type="  " if any(answer[0] == flashcard['Source_1'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     rerun()
             with expander("Settings", expanded=False, icon="⚙️"):
@@ -119,7 +119,7 @@ def main():
                 session_state.show_wrongs = left_button.toggle("🔂", key="wrongs", value=session_state.show_wrongs, help="Review mistakes")
                 session_state.shuffle = right_button.toggle("🔀", key="shuffling", value=session_state.shuffle, help="Shuffle flashcards")
             sidebar_manager.download_answers()
-            if session_state.show_wrongs: session_state.flashcards_df = session_state.original_flashcards_df[session_state.original_flashcards_df["Source"].isin({answer[1] for answer in session_state.Answers if answer[3] == False})]
+            if session_state.show_wrongs: session_state.flashcards_df = session_state.original_flashcards_df[session_state.original_flashcards_df["Source_1"].isin({answer[1] for answer in session_state.Answers if answer[3] == False})]
             if session_state.shuffle: session_state.flashcards_df = session_state.flashcards_df.sample(frac=1)
         if len(session_state.Answers) == total_flashcards and total_flashcards != 0 and not session_state.show_wrongs:
             balloons()
@@ -143,7 +143,7 @@ def main():
         if not session_state.Show_all_anwsers and not session_state.show_wrongs:    
             col1, col2 = columns([20, 1], gap="small")
             if col2.button("🔻all ") and len([r for r in session_state.Answers if r[3] == False]) > 0: col1.data_editor([{f"👍🏼 {((wval := sum(r[3] == True for r in session_state.Answers)) / (l := len(session_state.flashcards_df) or 1) * 100):.1f}% - {wval}       ||       👎🏼 {((wval := sum(r[3] == False for r in session_state.Answers)) / l * 100):.1f}% - {wval}       ||       ✍🏼 {round(100 - 100*len(session_state.Answers) / len(session_state.flashcards_df), 2)}% - {len(session_state.flashcards_df) - len(session_state.Answers)}" : f"{r[0]} - {r[1]} : {r[2]}"} for r in session_state.Answers if r[3] == False][::-1], hide_index=True, width='stretch')
-            else: col1.data_editor([{f"👍🏼 {((wval := sum(r[3] == True for r in session_state.Answers)) / (l := len(session_state.flashcards_df) or 1) * 100):.1f}% - {wval}       ||       👎🏼 {((wval := sum(r[3] == False for r in session_state.Answers)) / l * 100):.1f}% - {wval}       ||       ✍🏼 {round(100 - 100*len(session_state.Answers) / len(session_state.flashcards_df), 2)}% - {len(session_state.flashcards_df) - len(session_state.Answers)}" : f"{r[0]} - {r[1]} : {r[2]}"} for r in reversed(session_state.Answers) if not r[3]][:3], hide_index=True, width='stretch')
+            else: col1.data_editor([{f"👍🏼 {((wval := sum(r[3] == True for r in session_state.Answers)) / (l := len(session_state.flashcards_df) or 1) * 100):.1f}% - {wval}       ||       👎🏼 {((wval := sum(r[3] == False for r in session_state.Answers)) / l * 100):.1f}% - {wval}       ||       ✍🏼 {round(100 - 100*len(session_state.Answers) / len(session_state.flashcards_df), 2)}% - {len(session_state.flashcards_df) - len(session_state.Answers)}" : f"{r[0]} - {r[1]} : {r[2]}"} for r in reversed(session_state.Answers)][:3], hide_index=True, width='stretch')
     else:
         pass
     # Keyboard mapping

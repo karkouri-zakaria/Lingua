@@ -15,8 +15,12 @@ def Handle_file_upload(uploaded_file, success_value):
             if df.shape[1] < 2:
                 error("The file must have at least two columns.", icon="🚫")
                 return None
-            df = df.iloc[:, :2].dropna(subset=["Source", "Target"])
-            df.columns = ["Source", "Target"]
+            if df.shape[1] == 2:
+                df = df.iloc[:, :2].dropna(subset=["Source_1", "Target",])
+                df.columns = ["Source_1", "Target"]
+            elif df.shape[1] >= 3:
+                df = df.iloc[:, :3].dropna(subset=["Source_1", "Target","Source_2"])
+                df.columns = ["Source_1", "Source_2", "Target"]
             if success_value:
                 toast("File uploaded successfully!", icon="✅")
                 session_state.success_value = False

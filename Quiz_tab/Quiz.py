@@ -20,9 +20,10 @@ def Quiz(flashcards_df):
             else:
                 session_state.current_index = 1
             with container(border=True):
-                col1, col2 = columns([3, 1], gap="small", vertical_alignment="bottom")
-                col1.markdown(f"### &ensp;⇒ &ensp;{flashcard['Source']}&ensp;<span style='font-size:0.6em'>[{len(flashcard['Target'].split('/'))}]</span>", unsafe_allow_html=True)
-                with col2.expander("Answer:", expanded=session_state.Show_all_anwsers):
+                col1, col2, col3 = columns([2, 2, 1], gap="small", vertical_alignment="bottom")
+                col1.markdown(f"### &ensp;<span style='font-size:0.6em'>[{len(flashcard['Target'].split('/'))}]</span> &ensp;⇒ &ensp;{flashcard['Source_1']}", unsafe_allow_html=True)
+                col2.markdown(f"### &ensp;⇒ &ensp;{flashcard['Source_2']}", unsafe_allow_html=True)
+                with col3.expander("Answer:", expanded=session_state.Show_all_anwsers):
                     from Answers.colorize import colorize_noun
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
                     try:

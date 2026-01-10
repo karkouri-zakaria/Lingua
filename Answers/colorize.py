@@ -6,7 +6,7 @@ def colorize_noun(flashcard, colors={("der", "(der)"): "DeepSkyBlue", ("die", "(
               it highlights separable prefixes or the whole verb.
     - Spanish: color the noun following el/la/los/las. For verbs, it highlights
                -ar, -er, -ir endings or the whole verb.
-    - Verbs are only colorized when the Source text starts with 'to '.
+    - Verbs are only colorized when the Source_1 text starts with 'to '.
     """
     from streamlit import session_state
 
@@ -35,7 +35,7 @@ def colorize_noun(flashcard, colors={("der", "(der)"): "DeepSkyBlue", ("die", "(
                 words[i+1] = f'<span style="color: {color_map[wl]};">{words[i+1]}</span>'
 
     # --- Verb Highlighting ---
-    if flashcard.get("Source", "")[:3].lower() == "to ":
+    if flashcard.get("Source_1", "")[:3].lower() == "to ":
         # Iterate through words to find verbs to colorize
         for i, w in enumerate(words):
             # Skip words that are already colorized (i.e., nouns) or are articles
