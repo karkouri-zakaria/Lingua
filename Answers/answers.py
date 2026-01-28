@@ -18,7 +18,6 @@ def load_answers():
                 json_upload_dialog(msg="Empty `JSON`. take the Quiz or Upload a `JSON` file.")
             else:
                  session_state.Answers = data
-                 rerun()
     else:
         json_upload_dialog(msg="No `JSON` found.")
 @cache_data
@@ -45,8 +44,9 @@ def check_answer(flashcard, current_index, total_flashcards):
     # Language-aware input hint
     lang = session_state.get("language_code", "de")
     prompt = "Type your answer here :"
-    right, left = columns([1, 19], gap="small", width="stretch")
+    right, mid, left = columns([2, 1, 40], gap="small", vertical_alignment="center")
     hint_clicked = right.button("Hint", key=f"hint_button_{current_index}", width="stretch", type="primary")
+    mid.markdown(f"<span>[{len(flashcard['Target'].split('/'))}]</span>", unsafe_allow_html=True)
     answer = left.text_input(label=prompt, label_visibility="collapsed", placeholder=prompt, key=f"answer_input_{current_index}")
     if lang == "de":
         correct_answer = normalize_german(flashcard['Target'])
@@ -131,7 +131,7 @@ def check_answer(flashcard, current_index, total_flashcards):
                     sleep(MP3(audio_path).info.length + 2)
                     if not session_state.show_wrongs:
                         session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
-                        session_state.Answers.append([int(current_index)+1, flashcard['Source_1'], flashcard['Target'], True])
+                        session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], True])
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     save_answers()
                     rerun()

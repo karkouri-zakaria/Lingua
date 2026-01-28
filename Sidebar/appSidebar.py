@@ -57,6 +57,6 @@ class AppSidebar:
     def download_answers(self):
         with expander("Download", expanded=False, icon="📥"):
             buffer = BytesIO()
-            DataFrame([[r[1], r[2]] for r in session_state.Answers if not r[3]], columns=["Source_1", "Target"]).to_excel(buffer, index=False, engine='xlsxwriter')
+            DataFrame([[r[1], r[2]] for r in session_state.Answers if not r[3]], columns=["Source", "Target"]).to_excel(buffer, index=False, engine='xlsxwriter')
             download_button("💹 Mistakes.xlsx", buffer.getvalue(), f"Mistakes_{session_state.uploaded_file_data.name.split('.')[0]}.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", width='stretch')
             download_button("🗃️ Answers.json", dumps([[d[0], d[1], d[2], d[3]] for d in session_state.Answers], ensure_ascii=False, indent=4), f"Answers_{session_state.uploaded_file_data.name.split('.')[0]}.json", width='stretch')

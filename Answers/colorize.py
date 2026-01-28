@@ -6,7 +6,7 @@ def colorize_noun(flashcard, colors={("der", "(der)"): "DeepSkyBlue", ("die", "(
               it highlights separable prefixes or the whole verb.
     - Spanish: color the noun following el/la/los/las. For verbs, it highlights
                -ar, -er, -ir endings or the whole verb.
-    - Verbs are only colorized when the Source_1 text starts with 'to '.
+    - Verbs are only colorized when the Source text starts with 'to '.
     """
     from streamlit import session_state
 
@@ -35,7 +35,7 @@ def colorize_noun(flashcard, colors={("der", "(der)"): "DeepSkyBlue", ("die", "(
                 words[i+1] = f'<span style="color: {color_map[wl]};">{words[i+1]}</span>'
 
     # --- Verb Highlighting ---
-    if flashcard.get("Source_1", "")[:3].lower() == "to ":
+    if flashcard.get("Source", "")[:3].lower() == "to ":
         # Iterate through words to find verbs to colorize
         for i, w in enumerate(words):
             # Skip words that are already colorized (i.e., nouns) or are articles
@@ -45,21 +45,18 @@ def colorize_noun(flashcard, colors={("der", "(der)"): "DeepSkyBlue", ("die", "(
             # Language-specific verb logic
             if lang == "es":
                 w_clean = w.lower().strip(".,;:!?")
-                if w_clean.endswith("ar"):
+                if w_clean.endswith("ar") or w_clean.endswith("ár"):
                     words[i] = f'{w[:-2]}<span style="color: yellow;">{w[-2:]}</span>'  # -ar verbs
-                elif w_clean.endswith("arse"):
-                    words[i] = f'{w[:-4]}<span style="color: yellow;">{w[-4:-2]}</span>' # -ar reflexive verbs
-                    words[i] += f'<span>{w[-2:]}</span>'
-                elif w_clean.endswith("er") or w_clean.endswith("erse"):
+                elif w_clean.endswith("ar·se") or w_clean.endswith("ár·se"):
+                    words[i] = f'{w[:-5]}<span style="color: yellow;">{w[-5:-3]}</span>·<span>{w[-2:]}</span>' # -ar separable reflexive verbs
+                elif w_clean.endswith("er") or w_clean.endswith("ér"):
                     words[i] = f'{w[:-2]}<span style="color: red;">{w[-2:]}</span>'      # -er verbs
-                elif w_clean.endswith("erse"):
-                    words[i] = f'{w[:-4]}<span style="color: red;">{w[-4:-2]}</span>'   # -er reflexive verbs
-                    words[i] += f'<span>{w[-2:]}</span>'
-                elif w_clean.endswith("ir") or w_clean.endswith("irse"):
+                elif w_clean.endswith("er·se") or w_clean.endswith("ér·se"):
+                    words[i] = f'{w[:-5]}<span style="color: red;">{w[-5:-3]}</span>·<span>{w[-2:]}</span>'  # -er separable reflexive verbs
+                elif w_clean.endswith("ir") or w_clean.endswith("ír"):
                     words[i] = f'{w[:-2]}<span style="color: orange;">{w[-2:]}</span>' # -ir verbs
-                elif w_clean.endswith("irse"):
-                    words[i] = f'{w[:-4]}<span style="color: orange;">{w[-4:-2]}</span>'
-                    words[i] += f'<span>{w[-2:]}</span>'
+                elif w_clean.endswith("ir·se") or w_clean.endswith("ír·se"):
+                    words[i] = f'{w[:-5]}<span style="color: orange;">{w[-5:-3]}</span>·<span>{w[-2:]}</span>' # -ir separable reflexive verbs
                 else:
                     # Fallback for other Spanish verbs (e.g., reflexives, irregulars)
                     words[i] = f'<span>{w}</span>'

@@ -16,13 +16,13 @@ def Quiz(flashcards_df):
                 def update_flashcard_index_from_slider():
                     session_state.flashcard_index = session_state.slider_index - 1
                 session_state.slider_index = current_index + 1
-                slider("**Flashcards :**", min_value=1, max_value=total_flashcards, key="slider_index", on_change=update_flashcard_index_from_slider)
+                slider(f"{session_state.uploaded_file_data.name if not session_state.flashcards_df is None else 'Flashcards'} :", min_value=1, max_value=total_flashcards, key="slider_index", on_change=update_flashcard_index_from_slider)
             else:
                 session_state.current_index = 1
             with container(border=True):
                 col1, col2, col3 = columns([2, 2, 1], gap="small", vertical_alignment="bottom")
-                col1.markdown(f"### &ensp;<span style='font-size:0.6em'>[{len(flashcard['Target'].split('/'))}]</span> &ensp;⇒ &ensp;{flashcard['Source_1']}", unsafe_allow_html=True)
-                col2.markdown(f"### &ensp;⇒ &ensp;{flashcard['Source_2']}", unsafe_allow_html=True)
+                col1.markdown(f"### &ensp; &ensp;⇒ &ensp;{flashcard['Source']}", unsafe_allow_html=True)
+                col2.markdown(f"### &ensp;<span style='font-size:0.6em'>Hint: </span> &ensp;{flashcard['Hint']}", unsafe_allow_html=True)
                 with col3.expander("Answer:", expanded=session_state.Show_all_anwsers):
                     from Answers.colorize import colorize_noun
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)

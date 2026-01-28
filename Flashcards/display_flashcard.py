@@ -8,8 +8,8 @@ def display_flashcard(flashcard, index=-1):
     with container(border=True):
         ind, Src1, Src2, Tar, Aud = columns([1, 6, 6, 6, 2])
         if index != -1: ind.markdown(f"|&ensp;&ensp;{index + 1}")
-        Src1.markdown(f"|&ensp;&ensp;{flashcard['Source_1']}") if 'Source_1' in flashcard and pd.notna(flashcard['Source_1']) else ""
-        Src2.markdown(f"|&ensp;&ensp;{flashcard['Source_2']}") if 'Source_2' in flashcard and pd.notna(flashcard['Source_2']) else ""
+        Src1.markdown(f"|&ensp;&ensp;{flashcard['Source']}") if 'Source' in flashcard and pd.notna(flashcard['Source']) else ""
+        Src2.markdown(f"|&ensp;&ensp;{flashcard['Hint']}") if 'Hint' in flashcard and pd.notna(flashcard['Hint']) else ""
         Tar.markdown(f"|&ensp;&ensp;{colorize_noun(flashcard)}", unsafe_allow_html=True)
         try:
             # Respect selected language for TTS

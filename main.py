@@ -63,6 +63,14 @@ def main():
                         if button(label, key=f"unanswered_{label}"): session_state.flashcard_index = range[0] - 1
             if left_button.button("♾️", width='stretch'):
                 load_answers()
+                write(max((answer[0] for answer in session_state.Answers), default=0))
+                def update_flashcard_index_from_slider():
+                    session_state.flashcard_index = max((answer[0] for answer in session_state.Answers), default=0)
+                try:
+                    update_flashcard_index_from_slider()
+                except:
+                    pass
+                rerun()
     if "flashcards_df" not in session_state or session_state.flashcards_df is None:
         from Files.Handle_file_upload import Handle_file_upload
         session_state.flashcards_df = Handle_file_upload(session_state.uploaded_file_data, session_state.success_value)
@@ -87,29 +95,29 @@ def main():
                 except:
                     pass
             with left_button:
-                if button("✖", key="wrong_button", width='stretch', type="primary" if any(answer[0] == flashcard['Source_1'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                if button("✖", key="wrong_button", width='stretch', type="primary" if any(answer[0] == flashcard['Source'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
-                    session_state.Answers.append([int(current_index)+1, flashcard['Source_1'], flashcard['Target'], False])
+                    session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], False])
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     save_answers()
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
                     reader(flashcard["Target"])
                     rerun()
             with right_button:
-                if button("✔", key="correct_button", width='stretch', type="  " if any(answer[0] == flashcard['Source_1'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                if button("✔", key="correct_button", width='stretch', type="  " if any(answer[0] == flashcard['Source'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.Answers = [answer for answer in session_state.Answers if answer[2] != flashcard['Target']]
-                    session_state.Answers.append([int(current_index)+1, flashcard['Source_1'], flashcard['Target'], True])
+                    session_state.Answers.append([int(current_index)+1, flashcard['Source'], flashcard['Target'], True])
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     save_answers()
                     markdown(f"{colorize_noun(flashcard)}", unsafe_allow_html=True)
                     reader(flashcard["Target"])
                     rerun()
             with left_button:
-                if button("➖", key="previous_button", width='stretch', type="primary" if any(answer[0] == flashcard['Source_1'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                if button("➖", key="previous_button", width='stretch', type="primary" if any(answer[0] == flashcard['Source'] and not answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.flashcard_index = (current_index - 1) % total_flashcards
                     rerun()
             with right_button:
-                if button("➕", key="next_button", width='stretch', type="  " if any(answer[0] == flashcard['Source_1'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
+                if button("➕", key="next_button", width='stretch', type="  " if any(answer[0] == flashcard['Source'] and answer[2] for answer in session_state.Answers) else "secondary") and not session_state.show_wrongs:
                     session_state.flashcard_index = (current_index + 1) % total_flashcards
                     rerun()
             with expander("Settings", expanded=False, icon="⚙️"):
@@ -119,7 +127,7 @@ def main():
                 session_state.show_wrongs = left_button.toggle("🔂", key="wrongs", value=session_state.show_wrongs, help="Review mistakes")
                 session_state.shuffle = right_button.toggle("🔀", key="shuffling", value=session_state.shuffle, help="Shuffle flashcards")
             sidebar_manager.download_answers()
-            if session_state.show_wrongs: session_state.flashcards_df = session_state.original_flashcards_df[session_state.original_flashcards_df["Source_1"].isin({answer[1] for answer in session_state.Answers if answer[3] == False})]
+            if session_state.show_wrongs: session_state.flashcards_df = session_state.original_flashcards_df[session_state.original_flashcards_df["Source"].isin({answer[1] for answer in session_state.Answers if answer[3] == False})]
             if session_state.shuffle: session_state.flashcards_df = session_state.flashcards_df.sample(frac=1)
         if len(session_state.Answers) == total_flashcards and total_flashcards != 0 and not session_state.show_wrongs:
             balloons()
@@ -136,8 +144,8 @@ def main():
                 from Flashcards.Viewer import viewer_table
                 viewer_table(session_state.flashcards_df)
             pg = navigation([
-                Page(quiz_page, title=f"🎮 {session_state.language_name} Quiz - {round(100*len(session_state.Answers)/len(session_state.flashcards_df),2)}%"),
-                Page(viewer_page, title=f"📓All cards {session_state.uploaded_file_data.name if not session_state.flashcards_df is None else 'All cards'}")
+                Page(quiz_page, title=f"🎮 Quiz: {round(100*len(session_state.Answers)/len(session_state.flashcards_df),2)}%"),
+                Page(viewer_page, title=f"📓 All cards: {session_state.language_code}")
             ])
             pg.run()
         if not session_state.Show_all_anwsers and not session_state.show_wrongs:    
