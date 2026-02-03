@@ -14,7 +14,7 @@ def keyboard_handler():
             'q':            { text: '🗑️' }, // Quit
             'u':            { text: 'Upload' }, // Upload
             'l':            { text: 'Last file' }, // Last file
-            'c':            { text: '♾️' }, // Continue
+            's':            { text: '♾️' }, // Continue
             ' ':            { action: 'toggleAnswer' }, // Spacebar
             'AltGraph':     { action: 'playAudio' },    // Play Audio
             'Alt':          { action: 'focusInput' },    // Focus 

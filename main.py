@@ -166,7 +166,7 @@ def main():
             <span style="white-space: nowrap;">
                 <kbd>Ctrl</kbd>:  + [ &ensp;
                 <kbd>⬆️</kbd>: ✔ <span class="sep">&ensp;|&ensp;</span> <kbd>⬇️</kbd>: ✖ <span class="sep">&ensp;|&ensp;</span> <kbd>➡️</kbd>: ➕ <span class="sep">&ensp;|&ensp;</span> <kbd>⬅️</kbd>: ➖ <span class="sep">&ensp;|&ensp;</span> 
-                <kbd>𝐐</kbd>: 🗑️ <span class="sep">&ensp;|&ensp;</span> <kbd>𝐔</kbd>: Upload <span class="sep">&ensp;|&ensp;</span> <kbd>𝐋</kbd>: 📄 <span class="sep">&ensp;|&ensp;</span> <kbd>𝐄</kbd>: 🪣 <span class="sep">&ensp;|&ensp;</span> <kbd>𝐂</kbd>: ♾️ <span class="sep">&ensp;|&ensp;</span> <kbd>𝐌</kbd>: 📋 <span class="sep">&ensp;|&ensp;</span> 
+                <kbd>𝐐</kbd>: 🗑️ <span class="sep">&ensp;|&ensp;</span> <kbd>𝐔</kbd>: Upload <span class="sep">&ensp;|&ensp;</span> <kbd>𝐋</kbd>: 📄 <span class="sep">&ensp;|&ensp;</span> <kbd>𝐄</kbd>: 🪣 <span class="sep">&ensp;|&ensp;</span> <kbd>S</kbd>: ♾️ <span class="sep">&ensp;|&ensp;</span> <kbd>𝐌</kbd>: 📋 <span class="sep">&ensp;|&ensp;</span> 
                 <kbd>⇧</kbd>: Hint <span class="sep">&ensp;|&ensp;</span> <kbd>␣</kbd>: Show ]
             </span> &ensp;&ensp;&ensp;&ensp;    
             <span style="white-space: nowrap;"><kbd>AltGr</kbd>:  🔉</span> &ensp;
