@@ -143,9 +143,14 @@ def main():
             def viewer_page():
                 from Flashcards.Viewer import viewer_table
                 viewer_table(session_state.flashcards_df)
+            def conjugation_page():
+                from conjugation.conjugation import conjugation_view
+                conjugation_view()
+
             pg = navigation([
                 Page(quiz_page, title=f"🎮 Quiz: {round(100*len(session_state.Answers)/len(session_state.flashcards_df),2)}%"),
-                Page(viewer_page, title=f"📓 All cards: {session_state.language_code}")
+                Page(viewer_page, title=f"📓 All cards: {session_state.language_code}"),
+                Page(conjugation_page, title=f"📔 Conjugation")
             ])
             pg.run()
         if not session_state.Show_all_anwsers and not session_state.show_wrongs:    
