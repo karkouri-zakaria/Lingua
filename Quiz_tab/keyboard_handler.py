@@ -52,6 +52,8 @@ def keyboard_handler():
             else if (target.action === 'focusInput') {
                 const textInput = doc.querySelector('input[aria-label="Type your answer here :"]');
                 if (textInput) textInput.focus();
+                const textInput2 = doc.querySelector('input[aria-label="Answer"]');
+                if (textInput2) textInput2.focus();
             }
             else if (target.action === 'clickUnanswered') {
                 const buttons = Array.from(doc.getElementsByTagName('button'));

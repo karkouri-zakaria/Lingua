@@ -1,14 +1,6 @@
-from streamlit import write, markdown
+from streamlit import write, markdown, session_state
+from difflib import SequenceMatcher
 def colorize_noun(flashcard, colors={("der", "(der)"): "DeepSkyBlue", ("die", "(die)"): "DeepPink", ("das", "(das)"): "LawnGreen"}):
-    """Colorize target text based on language-specific articles and verbs.
-
-    - German: color the noun following der/die/das if capitalized. For verbs,
-              it highlights separable prefixes or the whole verb.
-    - Spanish: color the noun following el/la/los/las. For verbs, it highlights
-               -ar, -er, -ir endings or the whole verb.
-    - Verbs are only colorized when the Source text starts with 'to '.
-    """
-    from streamlit import session_state
 
     lang = session_state.get("language_code", "de")
     words = flashcard["Target"].split()
@@ -68,3 +60,53 @@ def colorize_noun(flashcard, colors={("der", "(der)"): "DeepSkyBlue", ("die", "(
                     words[i] = f'<span style="color: orange;">{w}</span>'
 
     return " ".join(words)
+
+def colorize_conjugation(verb, conjugation):
+    # 1. Handle cases where both have slashes (1-to-1 mapping)
+    if "/" in verb and "/" in conjugation:
+        v_parts = [v.strip() for v in verb.split("/")]
+        c_parts = [c.strip() for c in conjugation.split("/")]
+        if len(v_parts) == len(c_parts):
+            return "/".join([colorize_conjugation(v, c) for v, c in zip(v_parts, c_parts)])
+
+    # 2. Handle cases where ONLY the conjugation has a slash (e.g., Verb="Haber", Conj="Ha/Hay")
+    if "/" in conjugation:
+        c_parts = [c.strip() for c in conjugation.split("/")]
+        return "/".join([colorize_conjugation(verb, c) for c in c_parts])
+
+    # 3. Handle cases where ONLY the verb has a slash
+    if "/" in verb:
+        v_parts = [v.strip() for v in verb.split("/")]
+        return "/".join([colorize_conjugation(v, conjugation) for v in v_parts])
+
+    # 4. Standard Processing
+    # Note: Added 'ay' to ensure "Hay" catches the suffix correctly!
+    suffixes = [
+        "amos", "emos", "imos", "ámos", "émos", "ímos",
+        "ais", "eis", "is", "áis", "éis", "ís",
+        "an", "en", "on", "as", "es", "oy", "ay", "ey", "o", "a", "e", 
+        "án", "én", "ás", "és", "á", "é", "í", "ó"
+    ]
+    
+    verb_lower = verb.lower()
+    root = verb_lower[:-2] if verb_lower.endswith(("ar", "er", "ir")) else verb_lower
+    
+    # Sort suffixes by length descending
+    sorted_sfx = sorted(list(set(suffixes)), key=len, reverse=True)
+    suffix_match = next((s for s in sorted_sfx if conjugation.lower().endswith(s)), "")
+    
+    if suffix_match:
+        stem_part = conjugation[:-len(suffix_match)]
+        suffix_part = conjugation[-len(suffix_match):]
+    else:
+        stem_part, suffix_part = conjugation, ""
+
+    colored_stem = ""
+    for i, char in enumerate(stem_part):
+        if i < len(root) and char.lower() == root[i].lower():
+            colored_stem += char
+        else:
+            colored_stem += f'<span style="color: LawnGreen;">{char}</span>'
+            
+    colored_suffix = f'<span style="color: DeepPink;">{suffix_part}</span>' if suffix_part else ""
+    return f"{colored_stem}{colored_suffix}"

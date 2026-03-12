@@ -17,7 +17,6 @@ def main():
         with open(audio_path, "rb") as audio_file:
             audio(audio_file, format="audio/mp3", autoplay=True)
         sleep(MP3(audio_path).info.length + pause)
-    keyboard_handler()
     init_session_state()
     sidebar_manager = AppSidebar()
     if session_state.uploaded_file_data is None:
@@ -143,14 +142,9 @@ def main():
             def viewer_page():
                 from Flashcards.Viewer import viewer_table
                 viewer_table(session_state.flashcards_df)
-            def conjugation_page():
-                from conjugation.conjugation import conjugation_view
-                conjugation_view()
-
             pg = navigation([
                 Page(quiz_page, title=f"🎮 Quiz: {round(100*len(session_state.Answers)/len(session_state.flashcards_df),2)}%"),
-                Page(viewer_page, title=f"📓 All cards: {session_state.language_code}"),
-                Page(conjugation_page, title=f"📔 Conjugation")
+                Page(viewer_page, title=f"📓 All cards: {session_state.language_code}")
             ])
             pg.run()
         if not session_state.Show_all_anwsers and not session_state.show_wrongs:    
@@ -158,7 +152,8 @@ def main():
             if col2.button("🔻all ") and len([r for r in session_state.Answers if r[3] == False]) > 0: col1.data_editor([{f"👍🏼 {((wval := sum(r[3] == True for r in session_state.Answers)) / (l := len(session_state.flashcards_df) or 1) * 100):.1f}% - {wval}       ||       👎🏼 {((wval := sum(r[3] == False for r in session_state.Answers)) / l * 100):.1f}% - {wval}       ||       ✍🏼 {round(100 - 100*len(session_state.Answers) / len(session_state.flashcards_df), 2)}% - {len(session_state.flashcards_df) - len(session_state.Answers)}" : f"{r[0]} - {r[1]} : {r[2]}"} for r in session_state.Answers if r[3] == False][::-1], hide_index=True, width='stretch')
             else: col1.data_editor([{f"👍🏼 {((wval := sum(r[3] == True for r in session_state.Answers)) / (l := len(session_state.flashcards_df) or 1) * 100):.1f}% - {wval}       ||       👎🏼 {((wval := sum(r[3] == False for r in session_state.Answers)) / l * 100):.1f}% - {wval}       ||       ✍🏼 {round(100 - 100*len(session_state.Answers) / len(session_state.flashcards_df), 2)}% - {len(session_state.flashcards_df) - len(session_state.Answers)}" : f"{r[0]} - {r[1]} : {r[2]}"} for r in reversed(session_state.Answers)][:3], hide_index=True, width='stretch')
     else:
-        pass
+        from conjugation.conjugation import conjugation_view
+        conjugation_view()
     # Keyboard mapping
     markdown("""
         <style>
@@ -179,5 +174,6 @@ def main():
         </div>
         """, unsafe_allow_html=True)
 if __name__ == "__main__":
+    keyboard_handler()
     main()
     
