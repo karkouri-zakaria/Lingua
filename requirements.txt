@@ -3,3 +3,4 @@ gtts
 openpyxl
 xlsxwriter
 mutagen
+reportlab

@@ -61,52 +61,42 @@ def colorize_noun(flashcard, colors={("der", "(der)"): "DeepSkyBlue", ("die", "(
 
     return " ".join(words)
 
-def colorize_conjugation(verb, conjugation):
-    # 1. Handle cases where both have slashes (1-to-1 mapping)
-    if "/" in verb and "/" in conjugation:
-        v_parts = [v.strip() for v in verb.split("/")]
-        c_parts = [c.strip() for c in conjugation.split("/")]
-        if len(v_parts) == len(c_parts):
-            return "/".join([colorize_conjugation(v, c) for v, c in zip(v_parts, c_parts)])
+def _common_prefix(values):
+    values = [value.strip() for value in values if value and value.strip()]
+    if not values:
+        return ""
 
-    # 2. Handle cases where ONLY the conjugation has a slash (e.g., Verb="Haber", Conj="Ha/Hay")
-    if "/" in conjugation:
-        c_parts = [c.strip() for c in conjugation.split("/")]
-        return "/".join([colorize_conjugation(verb, c) for c in c_parts])
+    prefix = values[0]
+    for value in values[1:]:
+        length = 0
+        for left, right in zip(prefix.casefold(), value.casefold()):
+            if left != right:
+                break
+            length += 1
+        prefix = prefix[:length]
+        if not prefix:
+            break
+    return prefix
 
-    # 3. Handle cases where ONLY the verb has a slash
-    if "/" in verb:
-        v_parts = [v.strip() for v in verb.split("/")]
-        return "/".join([colorize_conjugation(v, conjugation) for v in v_parts])
 
-    # 4. Standard Processing
-    # Note: Added 'ay' to ensure "Hay" catches the suffix correctly!
-    suffixes = [
-        "amos", "emos", "imos", "ámos", "émos", "ímos",
-        "ais", "eis", "is", "áis", "éis", "ís",
-        "an", "en", "on", "as", "es", "oy", "ay", "ey", "o", "a", "e", 
-        "án", "én", "ás", "és", "á", "é", "í", "ó"
-    ]
-    
-    verb_lower = verb.lower()
-    root = verb_lower[:-2] if verb_lower.endswith(("ar", "er", "ir")) else verb_lower
-    
-    # Sort suffixes by length descending
-    sorted_sfx = sorted(list(set(suffixes)), key=len, reverse=True)
-    suffix_match = next((s for s in sorted_sfx if conjugation.lower().endswith(s)), "")
-    
-    if suffix_match:
-        stem_part = conjugation[:-len(suffix_match)]
-        suffix_part = conjugation[-len(suffix_match):]
-    else:
-        stem_part, suffix_part = conjugation, ""
+def colorize_conjugation(verb, conjugation, subject_conjugations=None):
+    """Highlight only the part shared by all subject conjugations."""
+    if not subject_conjugations:
+        return conjugation
 
-    colored_stem = ""
-    for i, char in enumerate(stem_part):
-        if i < len(root) and char.lower() == root[i].lower():
-            colored_stem += char
-        else:
-            colored_stem += f'<span style="color: LawnGreen;">{char}</span>'
-            
-    colored_suffix = f'<span style="color: DeepPink;">{suffix_part}</span>' if suffix_part else ""
-    return f"{colored_stem}{colored_suffix}"
+    all_forms = []
+    for form in subject_conjugations:
+        all_forms.extend(part.strip() for part in form.split("/") if part.strip())
+
+    common_part = _common_prefix(all_forms)
+    if not common_part:
+        return conjugation
+
+    colored_common = f'<span style="color: LawnGreen;">{common_part}</span>'
+    parts = [part.strip() for part in conjugation.split("/")]
+    return "/".join(
+        colored_common + part[len(common_part):]
+        if part.casefold().startswith(common_part.casefold())
+        else part
+        for part in parts
+    )
