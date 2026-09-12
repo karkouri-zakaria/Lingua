@@ -21,6 +21,26 @@ STANDARD_TENSE_ORDER = [
     "past", "imperfecto", "perfecto", "present", "presente progresivo", "future"
 ]
 DEFAULT_TENSES = STANDARD_TENSE_ORDER.copy()
+COMPOSITE_TENSES = {"perfecto", "presente progresivo"}
+COMPOSITE_AUXILIARIES = {
+    "perfecto": ["he", "has", "ha", "hemos", "habéis", "han"],
+    "presente progresivo": ["estoy", "estás", "está", "estamos", "estáis", "están"]
+}
+
+
+def format_tense_value(tense, value, pronoun_index):
+    """Add the auxiliary when composite tense data stores only its main form."""
+    if tense.lower() not in COMPOSITE_TENSES or " " in value:
+        return value
+    auxiliary = COMPOSITE_AUXILIARIES[tense.lower()][pronoun_index]
+    return f"{auxiliary} {value}"
+
+
+def get_tense_values(tense, values):
+    """Expand one shared composite form for the six pronoun positions."""
+    if tense.lower() in COMPOSITE_TENSES and len(values) == 1:
+        return values * len(PRONOUNS)
+    return values
 
 def normalize(text):
     return ''.join(c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn')
@@ -429,7 +449,11 @@ def _quiz_screen():
     # Keep the review table at six pronouns, but quiz them in two groups of three.
     total_pronouns = 6
     if is_new_format(conjugations_dict):
-        lens = [len(conjugations_dict[t]) for t in active_tenses if isinstance(conjugations_dict.get(t), list)]
+        lens = [
+            len(conjugations_dict[t])
+            for t in active_tenses
+            if isinstance(conjugations_dict.get(t), list) and t not in COMPOSITE_TENSES
+        ]
         if lens:
             total_pronouns = min(lens)
     elif isinstance(conjugations_dict, list):
@@ -467,8 +491,13 @@ def _quiz_screen():
             row = {"Pronoun": p_name}
             for t in active_tenses:
                 conj_list = conjugations_dict.get(t, []) if is_new_format(conjugations_dict) else conjugations_dict
-                if p_i < len(conj_list):
-                    row[t.capitalize()] = colorize_conjugation(verb, conj_list[p_i], conj_list)
+                display_values = get_tense_values(t, conj_list)
+                if p_i < len(display_values):
+                    display_list = [
+                        format_tense_value(t, value, value_index)
+                        for value_index, value in enumerate(display_values)
+                    ]
+                    row[t.capitalize()] = colorize_conjugation(verb, display_list[p_i], display_list)
                 else:
                     row[t.capitalize()] = "-"
             table_rows.append(row)
@@ -522,11 +551,15 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
     target_lists = {}
     for t in active_tenses:
         conj_list = conjugations_dict.get(t, []) if is_new_format(conjugations_dict) else conjugations_dict
-        target_lists[t] = conj_list
+        tense_values = get_tense_values(t, conj_list)
+        target_lists[t] = [
+            format_tense_value(t, value, value_index)
+            for value_index, value in enumerate(tense_values)
+        ]
         for group_offset in range(len(current_group)):
             pronoun_position = group_start + group_offset
             targets[(group_offset, t)] = (
-                conj_list[pronoun_position] if pronoun_position < len(conj_list) else ""
+                tense_values[pronoun_position] if pronoun_position < len(tense_values) else ""
             )
 
     # Header and Progress
@@ -569,22 +602,39 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
             with column:
                 header_title = tense_title_map.get(t.lower(), t.capitalize())
                 markdown(f"**{header_title}**")
-                for group_offset, pronoun in enumerate(current_group):
-                    field_key = (group_offset, t)
-                    field_label = conjugation_input_label(t, pronoun)
+                if t in COMPOSITE_TENSES:
+                    field_key = t
+                    field_label = f"{t.capitalize()} main form input"
                     if session_state.get("conj_tense_status", {}).get(field_key) == "correct":
-                        markdown(f"✅ **{pronoun}**")
+                        markdown("✅ **Main form**")
                     else:
-                        markdown(f"**{pronoun}**")
+                        markdown("**Main form**")
                     err_msg = session_state.get("conj_tense_errors", {}).get(field_key, "")
                     if err_msg:
                         markdown(f"<span style='color: #ff5555; font-size: 13px;'>{err_msg}</span>", unsafe_allow_html=True)
                     user_inputs[field_key] = text_input(
                         label=field_label,
                         label_visibility="collapsed",
-                        placeholder=f"{pronoun} in {t.capitalize()}...",
-                        key=f"form_input_{verb_idx}_{pronoun_idx}_{group_offset}_{t}"
+                        placeholder="Participle only..." if t == "perfecto" else "Gerund only...",
+                        key=f"form_input_{verb_idx}_{pronoun_idx}_shared_{t}"
                     )
+                else:
+                    for group_offset, pronoun in enumerate(current_group):
+                        field_key = (group_offset, t)
+                        field_label = conjugation_input_label(t, pronoun)
+                        if session_state.get("conj_tense_status", {}).get(field_key) == "correct":
+                            markdown(f"✅ **{pronoun}**")
+                        else:
+                            markdown(f"**{pronoun}**")
+                        err_msg = session_state.get("conj_tense_errors", {}).get(field_key, "")
+                        if err_msg:
+                            markdown(f"<span style='color: #ff5555; font-size: 13px;'>{err_msg}</span>", unsafe_allow_html=True)
+                        user_inputs[field_key] = text_input(
+                            label=field_label,
+                            label_visibility="collapsed",
+                            placeholder=f"{pronoun} in {t.capitalize()}...",
+                            key=f"form_input_{verb_idx}_{pronoun_idx}_{group_offset}_{t}"
+                        )
 
         # Form Submit Row
         btn_c1, btn_c2 = columns([3, 1])
@@ -606,29 +656,34 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
         for t in active_tenses:
             for group_offset, _pronoun in enumerate(current_group):
                 field_key = (group_offset, t)
-                u_val = user_inputs[field_key].strip()
+                input_key = t if t in COMPOSITE_TENSES else field_key
+                u_val = user_inputs[input_key].strip()
                 target = targets[field_key]
                 is_match, matched_opt = check_conjugation_match(u_val, target)
                 if is_match:
                     matched_opts[field_key] = matched_opt if matched_opt else target
-                    tense_status[field_key] = "correct"
+                    tense_status[input_key] = "correct"
                 else:
                     all_correct = False
-                    tense_errors[field_key] = "Try again"
-                    tense_status[field_key] = "incorrect"
+                    tense_errors[input_key] = "Try again"
+                    tense_status[input_key] = "incorrect"
         
         if all_correct:
             feedback_parts = []
             for group_offset, pronoun in enumerate(current_group):
                 conjugations = [
-                    colorize_conjugation(verb, matched_opts[(group_offset, t)], target_lists[t])
+                    colorize_conjugation(
+                        verb,
+                        format_tense_value(t, matched_opts[(group_offset, t)], group_start + group_offset),
+                        target_lists[t]
+                    )
                     for t in active_tenses
                 ]
                 feedback_parts.append(f"<b>{pronoun}:</b> " + " &ensp;·&ensp; ".join(conjugations))
             session_state.conj_feedback_html = "<br>".join(feedback_parts)
             announced = session_state.get("conj_audio_announced", set())
             new_correct_audio = [
-                matched_opts[(group_offset, t)]
+                format_tense_value(t, matched_opts[(group_offset, t)], group_start + group_offset)
                 for t in active_tenses
                 for group_offset in range(len(current_group))
                 if (group_offset, t) not in announced
@@ -642,7 +697,9 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
                 completed_entry = {"Pronoun": pronoun}
                 for t in active_tenses:
                     completed_entry[t.capitalize()] = colorize_conjugation(
-                        verb, matched_opts[(group_offset, t)], target_lists[t]
+                        verb,
+                        format_tense_value(t, matched_opts[(group_offset, t)], group_start + group_offset),
+                        target_lists[t]
                     )
                 session_state.conj_completed_pronouns.append(completed_entry)
             
@@ -674,7 +731,7 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
             session_state.conj_tense_status = tense_status
             announced = session_state.get("conj_audio_announced", set())
             new_correct_audio = [
-                matched_opts[(group_offset, t)]
+                format_tense_value(t, matched_opts[(group_offset, t)], group_start + group_offset)
                 for t in active_tenses
                 for group_offset in range(len(current_group))
                 if (group_offset, t) in matched_opts and (group_offset, t) not in announced
@@ -683,10 +740,12 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
                 session_state.conj_audio = ", ".join(new_correct_audio)
                 session_state.conj_audio_announced = announced | set(matched_opts)
             session_state.conj_focus_tense = next(
+                f"{t.capitalize()} main form input"
+                if t in COMPOSITE_TENSES else
                 conjugation_input_label(t, current_group[group_offset])
                 for t in active_tenses
                 for group_offset, _pronoun in enumerate(current_group)
-                if tense_status[(group_offset, t)] == "incorrect"
+                if tense_status.get(t if t in COMPOSITE_TENSES else (group_offset, t)) == "incorrect"
             )
             session_state.conj_last_markdown = (
                 f"❌ Review needed for <b>{'/'.join(current_group)}</b>. "
@@ -719,11 +778,18 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
             audio_parts = []
             for group_offset, pronoun in enumerate(current_group):
                 colorized_parts = [
-                    colorize_conjugation(verb, targets[(group_offset, t)], target_lists[t])
+                    colorize_conjugation(
+                        verb,
+                        format_tense_value(t, targets[(group_offset, t)], group_start + group_offset),
+                        target_lists[t]
+                    )
                     for t in active_tenses
                 ]
                 feedback_parts.append(f"<b>Skipped ({pronoun}):</b> " + " &ensp;·&ensp; ".join(colorized_parts))
-                audio_parts.extend(targets[(group_offset, t)] for t in active_tenses)
+                audio_parts.extend(
+                    format_tense_value(t, targets[(group_offset, t)], group_start + group_offset)
+                    for t in active_tenses
+                )
                 completed_entry = {"Pronoun": pronoun}
                 for t in active_tenses:
                     completed_entry[t.capitalize()] = colorized_parts[active_tenses.index(t)]
@@ -764,11 +830,14 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
             audio_parts = []
             for group_offset, pronoun in enumerate(current_group):
                 answers_str = " &ensp;·&ensp; ".join([
-                    f"<b>{t.capitalize()}</b>: {colorize_conjugation(verb, targets[(group_offset, t)], target_lists[t])}"
+                    f"<b>{t.capitalize()}</b>: {colorize_conjugation(verb, format_tense_value(t, targets[(group_offset, t)], group_start + group_offset), target_lists[t])}"
                     for t in active_tenses
                 ])
                 answer_lines.append(f"<b>{pronoun}</b>: {answers_str}")
-                audio_parts.extend(targets[(group_offset, t)] for t in active_tenses)
+                audio_parts.extend(
+                    format_tense_value(t, targets[(group_offset, t)], group_start + group_offset)
+                    for t in active_tenses
+                )
             session_state.conj_last_markdown = "💡 Expected:<br>" + "<br>".join(answer_lines)
             session_state.conj_audio = ", ".join(audio_parts)
             rerun()
@@ -868,9 +937,14 @@ def _list_screen():
                 else:
                     continue
 
-                if isinstance(conj_list, list) and p_idx < len(conj_list):
+                display_values = get_tense_values(t, conj_list)
+                if isinstance(display_values, list) and p_idx < len(display_values):
                     tag = tense_tag_map.get(t.lower(), f"<span style='color: #888; font-size: 11px;'>[{t[:3]}]</span> ") if show_tense_tags else ""
-                    colored_conj = colorize_conjugation(verb, conj_list[p_idx], conj_list)
+                    formatted_values = [
+                        format_tense_value(t, value, value_index)
+                        for value_index, value in enumerate(display_values)
+                    ]
+                    colored_conj = colorize_conjugation(verb, formatted_values[p_idx], formatted_values)
                     cell_lines.append(f"{tag}{colored_conj}")
             
             row[PRONOUNS[p_idx]] = "<br>".join(cell_lines) if cell_lines else "-"
@@ -927,13 +1001,20 @@ table.dataframe tr:nth-child(even) {
                     else:
                         continue
 
-                    if not isinstance(conj_list, list) or len(conj_list) < 6:
+                    display_values = get_tense_values(tense, conj_list)
+                    if not isinstance(display_values, list) or len(display_values) < 6:
                         continue
                     
                     try:
                         row = {"Verb": full_verb_text}
+                        formatted_values = [
+                            format_tense_value(tense, value, value_index)
+                            for value_index, value in enumerate(display_values)
+                        ]
                         for p_idx in range(6):
-                            row[PRONOUNS[p_idx]] = colorize_conjugation(verb, conj_list[p_idx], conj_list)
+                            row[PRONOUNS[p_idx]] = colorize_conjugation(
+                                verb, formatted_values[p_idx], formatted_values
+                            )
                         data.append(row)
                     except Exception:
                         continue
