@@ -44,10 +44,15 @@ def check_answer(flashcard, current_index, total_flashcards):
     # Language-aware input hint
     lang = session_state.get("language_code", "de")
     prompt = "Type your answer here :"
+    input_key = f"answer_input_{current_index}"
+    answer_filled_key = f"answer_filled_{current_index}"
+    answer_fill_pending_key = f"answer_fill_pending_{current_index}"
+    if session_state.pop(answer_fill_pending_key, False):
+        session_state[input_key] = flashcard["Target"]
     right, mid, left = columns([2, 1, 40], gap="small", vertical_alignment="center")
     hint_clicked = right.button("Hint", key=f"hint_button_{current_index}", width="stretch", type="primary")
     mid.markdown(f"<span>[{len(flashcard['Target'].split('/'))}]</span>", unsafe_allow_html=True)
-    answer = left.text_input(label=prompt, label_visibility="collapsed", placeholder=prompt, key=f"answer_input_{current_index}")
+    answer = left.text_input(label=prompt, label_visibility="collapsed", placeholder=prompt, key=input_key)
     if lang == "de":
         correct_answer = normalize_german(flashcard['Target'])
         user_answer = normalize_german(answer.lower())
@@ -60,6 +65,12 @@ def check_answer(flashcard, current_index, total_flashcards):
     for sep in ["·", "\u00B7"]:
         correct_answer = correct_answer.replace(sep, "")
         user_answer = user_answer.replace(sep, "")
+    if session_state.get(answer_filled_key):
+        if user_answer.lower() == correct_answer.lower():
+            markdown(f"##### ⇒ {colorize_noun(flashcard)}", unsafe_allow_html=True)
+            right.success("✅ That's 100% correct:")
+            return
+        session_state.pop(answer_filled_key)
     if answer:
         if len(user_answer) > len(correct_answer):
             warning("Answer is longer than needed.")
@@ -121,6 +132,8 @@ def check_answer(flashcard, current_index, total_flashcards):
             markdown(f"##### ⇒ {colorize_noun(flashcard)}", unsafe_allow_html=True)
             right, left = columns(2, gap="small")
             right.success("✅ That's 100% correct:")
+            session_state[answer_fill_pending_key] = True
+            session_state[answer_filled_key] = True
             try:
                 audio_path = Path(f"Audios/{flashcard['Target']}.mp3")
                 if not audio_path.exists():
@@ -138,6 +151,7 @@ def check_answer(flashcard, current_index, total_flashcards):
             except Exception as e:
                 write(f"Error generating audio: {str(e)}")
             save_answers()
+            rerun()
         elif mistakes_found:
             articles = {"das", "der", "die", "(das)", "(der)", "(die)","el", "(el)", "los", "(los)", "la", "(la)", "las", "(las)"}
             leftover_counts = []

@@ -16,6 +16,15 @@ from conjugation.conjugation import (
     is_new_format
 )
 
+DESIRED_TENSE_ORDER = [
+    "past",
+    "imperfecto",
+    "perfecto",
+    "Progresivo",
+    "future",
+    "present",
+]
+
 class NumberedCanvas(canvas.Canvas):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -67,7 +76,7 @@ def generate_verbs_pdf(output_path="Spanish_Verbs_Conjugations.pdf", tenses=None
 
     if tenses is None:
         available_tenses = get_tenses(combined_verbs)
-        tenses = [tense for tense in STANDARD_TENSE_ORDER if tense in available_tenses]
+        tenses = [tense for tense in DESIRED_TENSE_ORDER if tense in available_tenses]
 
     doc = SimpleDocTemplate(
         output_path,
@@ -136,7 +145,7 @@ def generate_verbs_pdf(output_path="Spanish_Verbs_Conjugations.pdf", tenses=None
         "imperfecto": "Imperfecto",
         "perfecto": "Perfecto",
         "present": "Presente",
-        "presente progresivo": "Presente Progresivo",
+        "Progresivo": "Progresivo",
         "future": "Futuro"
     }
     tense_colors = {
@@ -144,7 +153,7 @@ def generate_verbs_pdf(output_path="Spanish_Verbs_Conjugations.pdf", tenses=None
         "imperfecto": "#7C3AED",
         "perfecto": "#DB2777",
         "present": "#16A34A",
-        "presente progresivo": "#0891B2",
+        "Progresivo": "#0891B2",
         "future": "#EA580C"
     }
     tense_prefixes = {
@@ -152,7 +161,7 @@ def generate_verbs_pdf(output_path="Spanish_Verbs_Conjugations.pdf", tenses=None
         "imperfecto": "Imp: ",
         "perfecto": "Perf: ",
         "present": "Pres: ",
-        "presente progresivo": "Prog: ",
+        "Progresivo": "Prog: ",
         "future": "Fut: "
     }
     tense_summary = " &ensp;•&ensp; ".join(
@@ -165,66 +174,78 @@ def generate_verbs_pdf(output_path="Spanish_Verbs_Conjugations.pdf", tenses=None
         subtitle_style
     ))
 
-    # Table Headers
-    headers = [
-        Paragraph("<b>Verb</b>", header_cell_style),
-        Paragraph("<b>Yo</b>", header_cell_style),
-        Paragraph("<b>Tú</b>", header_cell_style),
-        Paragraph("<b>Él / Ella / Utd</b>", header_cell_style),
-        Paragraph("<b>Nosotros/as</b>", header_cell_style),
-        Paragraph("<b>Vosotros/as</b>", header_cell_style),
-        Paragraph("<b>Ellos/as/Utds</b>", header_cell_style),
-    ]
-
-    table_data = [headers]
+    card_style = ParagraphStyle(
+        'VerbCard',
+        parent=cell_style,
+        fontSize=8.2,
+        leading=10,
+        spaceAfter=0,
+    )
+    short_pronouns = ["Yo", "Tú", "Él", "Nos", "Vos", "Ellos"]
+    cards = []
 
     for full_verb_text, conjugations in combined_verbs.items():
-        # Verb column
-        verb_p = Paragraph(f"<b>{full_verb_text}</b>", verb_col_style)
-        row = [verb_p]
+        present_lines = []
+        other_tense_lines = []
+        for t in tenses:
+            if is_new_format(conjugations) and t in conjugations:
+                conj_list = conjugations[t]
+            elif not is_new_format(conjugations) and t == "present":
+                conj_list = conjugations
+            else:
+                continue
 
-        for p_idx in range(6):
-            cell_lines = []
-            for t in tenses:
-                if is_new_format(conjugations) and t in conjugations:
-                    conj_list = conjugations[t]
-                elif not is_new_format(conjugations) and t == "present":
-                    conj_list = conjugations
-                else:
-                    continue
+            display_values = get_tense_values(t, conj_list)
+            if not isinstance(display_values, list):
+                continue
 
-                display_values = get_tense_values(t, conj_list)
-                if isinstance(display_values, list) and p_idx < len(display_values):
-                    formatted_values = [
-                        format_tense_value(t, value, value_index)
-                        for value_index, value in enumerate(display_values)
-                    ]
-                    c_word = formatted_values[p_idx]
-                    t_col = tense_colors.get(t.lower(), "#333333")
-                    prefix = f"<font color='{t_col}'><b>{tense_prefixes.get(t.lower(), '')}</b></font>"
-                    cell_lines.append(f"{prefix}{c_word}")
+            formatted_values = [
+                format_tense_value(t, value, value_index)
+                for value_index, value in enumerate(display_values)
+            ]
+            t_col = tense_colors.get(t.lower(), "#333333")
+            prefix = f"<font color='{t_col}'><b>{tense_prefixes.get(t.lower(), '')}</b></font>"
+            if t.lower() == "present":
+                present_lines.append(
+                    " &ensp;|&ensp; ".join(
+                        f"<b>{short_pronouns[index]}:</b> {value}"
+                        for index, value in enumerate(formatted_values)
+                    )
+                )
+            elif formatted_values:
+                other_tense_lines.append(f"{prefix}{formatted_values[0]}")
 
-            cell_content = "<br/>".join(cell_lines) if cell_lines else "-"
-            row.append(Paragraph(cell_content, cell_style))
+        card_parts = [f"<b>{full_verb_text}</b>"]
+        tense_lines = []
+        if present_lines:
+            tense_lines.append(
+                f"<font color='{tense_colors['present']}'><b>Pres:</b></font> "
+                f"{present_lines[0]}"
+            )
+        if other_tense_lines:
+            tense_lines.extend(other_tense_lines)
+        for index in range(0, len(tense_lines), 3):
+            card_parts.append(" &ensp;|&ensp; ".join(tense_lines[index:index + 3]))
+        cards.append(Paragraph("<br/>".join(card_parts), card_style))
 
-        table_data.append(row)
+    table_data = [
+        cards[index:index + 2]
+        for index in range(0, len(cards), 2)
+    ]
+    if table_data and len(table_data[-1]) == 1:
+        table_data[-1].append("")
 
-    # Column widths: Total printable width = 842 - 72 = 770 pt
-    # Verb col: 140 pt, 6 Pronoun cols: (770 - 140) / 6 = 105 pt each
-    col_widths = [140, 105, 105, 105, 105, 105, 105]
-
-    t = Table(table_data, colWidths=col_widths, repeatRows=1)
+    t = Table(table_data, colWidths=[377, 377])
     t.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#1E293B')),
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
         ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
-        ('TOPPADDING', (0, 0), (-1, -1), 4),
-        ('LEFTPADDING', (0, 0), (-1, -1), 5),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 5),
-        ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#CBD5E1')),
-        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#F8FAFC')]),
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#F8FAFC')),
+        ('BOX', (0, 0), (-1, -1), 0.5, colors.HexColor('#CBD5E1')),
+        ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#CBD5E1')),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('LEFTPADDING', (0, 0), (-1, -1), 7),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 7),
     ]))
 
     story.append(t)

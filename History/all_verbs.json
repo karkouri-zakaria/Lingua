@@ -1,0 +1,4082 @@
+{
+    "Ser (To be - permanent/identity)": {
+        "present": [
+            "Soy",
+            "Eres",
+            "Es",
+            "Somos",
+            "Sois",
+            "Son"
+        ],
+        "past": [
+            "Fui",
+            "Fuiste",
+            "Fue",
+            "Fuimos",
+            "Fuisteis",
+            "Fueron"
+        ],
+        "future": [
+            "Seré",
+            "Serás",
+            "Será",
+            "Seremos",
+            "Seréis",
+            "Serán"
+        ],
+        "imperfecto": [
+            "era",
+            "eras",
+            "era",
+            "éramos",
+            "erais",
+            "eran"
+        ],
+        "perfecto": [
+            "sido"
+        ],
+        "presente progresivo": [
+            "siendo"
+        ]
+    },
+    "Estar (To be - temporary/location)": {
+        "present": [
+            "Estoy",
+            "Estás",
+            "Está",
+            "Estamos",
+            "Estáis",
+            "Están"
+        ],
+        "past": [
+            "Estuve",
+            "Estuviste",
+            "Estuvo",
+            "Estuvimos",
+            "Estuvisteis",
+            "Estuvieron"
+        ],
+        "future": [
+            "Estaré",
+            "Estarás",
+            "Estará",
+            "Estaremos",
+            "Estaréis",
+            "Estarán"
+        ],
+        "imperfecto": [
+            "estaba",
+            "estabas",
+            "estaba",
+            "estábamos",
+            "estabais",
+            "estaban"
+        ],
+        "perfecto": [
+            "estado"
+        ],
+        "presente progresivo": [
+            "estando"
+        ]
+    },
+    "Tener (To have)": {
+        "present": [
+            "Tengo",
+            "Tienes",
+            "Tiene",
+            "Tenemos",
+            "Tenéis",
+            "Tienen"
+        ],
+        "past": [
+            "Tuve",
+            "Tuviste",
+            "Tuvo",
+            "Tuvimos",
+            "Tuvisteis",
+            "Tuvieron"
+        ],
+        "future": [
+            "Tendré",
+            "Tendrás",
+            "Tendrá",
+            "Tendremos",
+            "Tendréis",
+            "Tendrán"
+        ],
+        "imperfecto": [
+            "tenía",
+            "tenías",
+            "tenía",
+            "teníamos",
+            "teníais",
+            "tenían"
+        ],
+        "perfecto": [
+            "tenido"
+        ],
+        "presente progresivo": [
+            "teniendo"
+        ]
+    },
+    "Haber (To have - auxiliary / There is)": {
+        "present": [
+            "He",
+            "Has",
+            "Ha / Hay",
+            "Hemos",
+            "Habéis",
+            "Han"
+        ],
+        "past": [
+            "Hube",
+            "Hubiste",
+            "Hubo",
+            "Hubimos",
+            "Hubisteis",
+            "Hubieron"
+        ],
+        "future": [
+            "Habré",
+            "Habrás",
+            "Habrá",
+            "Habremos",
+            "Habréis",
+            "Habrán"
+        ],
+        "imperfecto": [
+            "había",
+            "habías",
+            "había",
+            "habíamos",
+            "habíais",
+            "habían"
+        ],
+        "perfecto": [
+            "habido"
+        ],
+        "presente progresivo": [
+            "habiendo"
+        ]
+    },
+    "Hacer (To do / To make)": {
+        "present": [
+            "Hago",
+            "Haces",
+            "Hace",
+            "Hacemos",
+            "Hacéis",
+            "Hacen"
+        ],
+        "past": [
+            "Hice",
+            "Hiciste",
+            "Hizo",
+            "Hicimos",
+            "Hicisteis",
+            "Hicieron"
+        ],
+        "future": [
+            "Haré",
+            "Harás",
+            "Hará",
+            "Haremos",
+            "Haréis",
+            "Harán"
+        ],
+        "imperfecto": [
+            "hacía",
+            "hacías",
+            "hacía",
+            "hacíamos",
+            "hacíais",
+            "hacían"
+        ],
+        "perfecto": [
+            "hecho"
+        ],
+        "presente progresivo": [
+            "haciendo"
+        ]
+    },
+    "Ir (To go)": {
+        "present": [
+            "Voy",
+            "Vas",
+            "Va",
+            "Vamos",
+            "Vais",
+            "Van"
+        ],
+        "past": [
+            "Fui",
+            "Fuiste",
+            "Fue",
+            "Fuimos",
+            "Fuisteis",
+            "Fueron"
+        ],
+        "future": [
+            "Iré",
+            "Irás",
+            "Irá",
+            "Iremos",
+            "Iréis",
+            "Irán"
+        ],
+        "imperfecto": [
+            "iba",
+            "ibas",
+            "iba",
+            "íbamos",
+            "ibais",
+            "iban"
+        ],
+        "perfecto": [
+            "ido"
+        ],
+        "presente progresivo": [
+            "yendo"
+        ]
+    },
+    "Decir (To say / To tell)": {
+        "present": [
+            "Digo",
+            "Dices",
+            "Dice",
+            "Decimos",
+            "Decís",
+            "Dicen"
+        ],
+        "past": [
+            "Dije",
+            "Dijiste",
+            "Dijo",
+            "Dijimos",
+            "Dijisteis",
+            "Dijeron"
+        ],
+        "future": [
+            "Diré",
+            "Dirás",
+            "Dirá",
+            "Diremos",
+            "Diréis",
+            "Dirán"
+        ],
+        "imperfecto": [
+            "decía",
+            "decías",
+            "decía",
+            "decíamos",
+            "decíais",
+            "decían"
+        ],
+        "perfecto": [
+            "dicho"
+        ],
+        "presente progresivo": [
+            "diciendo"
+        ]
+    },
+    "Poder (To be able to / Can)": {
+        "present": [
+            "Puedo",
+            "Puedes",
+            "Puede",
+            "Podemos",
+            "Podéis",
+            "Pueden"
+        ],
+        "past": [
+            "Pude",
+            "Pudiste",
+            "Pudo",
+            "Pudimos",
+            "Pudisteis",
+            "Pudieron"
+        ],
+        "future": [
+            "Podré",
+            "Podrás",
+            "Podrá",
+            "Podremos",
+            "Podréis",
+            "Podrán"
+        ],
+        "imperfecto": [
+            "podía",
+            "podías",
+            "podía",
+            "podíamos",
+            "podíais",
+            "podían"
+        ],
+        "perfecto": [
+            "podido"
+        ],
+        "presente progresivo": [
+            "pudiendo"
+        ]
+    },
+    "Querer (To want / To love)": {
+        "present": [
+            "Quiero",
+            "Quieres",
+            "Quiere",
+            "Queremos",
+            "Queréis",
+            "Quieren"
+        ],
+        "past": [
+            "Quise",
+            "Quisiste",
+            "Quiso",
+            "Quisimos",
+            "Quisisteis",
+            "Quisieron"
+        ],
+        "future": [
+            "Querré",
+            "Querrás",
+            "Querrá",
+            "Querremos",
+            "Querréis",
+            "Querrán"
+        ],
+        "imperfecto": [
+            "quería",
+            "querías",
+            "quería",
+            "queríamos",
+            "queríais",
+            "querían"
+        ],
+        "perfecto": [
+            "querido"
+        ],
+        "presente progresivo": [
+            "queriendo"
+        ]
+    },
+    "Dar (To give)": {
+        "present": [
+            "Doy",
+            "Das",
+            "Da",
+            "Damos",
+            "Dais",
+            "Dan"
+        ],
+        "past": [
+            "Di",
+            "Diste",
+            "Dio",
+            "Dimos",
+            "Disteis",
+            "Dieron"
+        ],
+        "future": [
+            "Daré",
+            "Darás",
+            "Dará",
+            "Daremos",
+            "Daréis",
+            "Darán"
+        ],
+        "imperfecto": [
+            "daba",
+            "dabas",
+            "daba",
+            "dábamos",
+            "dabais",
+            "daban"
+        ],
+        "perfecto": [
+            "dado"
+        ],
+        "presente progresivo": [
+            "dando"
+        ]
+    },
+    "Saber (To know - facts/how to)": {
+        "present": [
+            "Sé",
+            "Sabes",
+            "Sabe",
+            "Sabemos",
+            "Sabéis",
+            "Saben"
+        ],
+        "past": [
+            "Supe",
+            "Supiste",
+            "Supo",
+            "Supimos",
+            "Supisteis",
+            "Supieron"
+        ],
+        "future": [
+            "Sabré",
+            "Sabrás",
+            "Sabrá",
+            "Sabremos",
+            "Sabréis",
+            "Sabrán"
+        ],
+        "imperfecto": [
+            "sabía",
+            "sabías",
+            "sabía",
+            "sabíamos",
+            "sabíais",
+            "sabían"
+        ],
+        "perfecto": [
+            "sabido"
+        ],
+        "presente progresivo": [
+            "sabiendo"
+        ]
+    },
+    "Llegar (To arrive)": {
+        "present": [
+            "Llego",
+            "Llegas",
+            "Llega",
+            "Llegamos",
+            "Llegáis",
+            "Llegan"
+        ],
+        "past": [
+            "Llegué",
+            "Llegaste",
+            "Llegó",
+            "Llegamos",
+            "Llegasteis",
+            "Llegaron"
+        ],
+        "future": [
+            "Llegaré",
+            "Llegarás",
+            "Llegará",
+            "Llegaremos",
+            "Llegaréis",
+            "Llegarán"
+        ],
+        "imperfecto": [
+            "llegaba",
+            "llegabas",
+            "llegaba",
+            "llegábamos",
+            "llegabais",
+            "llegaban"
+        ],
+        "perfecto": [
+            "llegado"
+        ],
+        "presente progresivo": [
+            "llegando"
+        ]
+    },
+    "Deber (To owe / Must / Should)": {
+        "present": [
+            "Debo",
+            "Debes",
+            "Debe",
+            "Debemos",
+            "Debéis",
+            "Deben"
+        ],
+        "past": [
+            "Debí",
+            "Debiste",
+            "Debió",
+            "Debimos",
+            "Debisteis",
+            "Debieron"
+        ],
+        "future": [
+            "Deberé",
+            "Deberás",
+            "Deberá",
+            "Deberemos",
+            "Deberéis",
+            "Deberán"
+        ],
+        "imperfecto": [
+            "debía",
+            "debías",
+            "debía",
+            "debíamos",
+            "debíais",
+            "debían"
+        ],
+        "perfecto": [
+            "debido"
+        ],
+        "presente progresivo": [
+            "debiendo"
+        ]
+    },
+    "Ver (To see)": {
+        "present": [
+            "Veo",
+            "Ves",
+            "Ve",
+            "Vemos",
+            "Veis",
+            "Ven"
+        ],
+        "past": [
+            "Vi",
+            "Viste",
+            "Vio",
+            "Vimos",
+            "Visteis",
+            "Vieron"
+        ],
+        "future": [
+            "Veré",
+            "Verás",
+            "Verá",
+            "Veremos",
+            "Veréis",
+            "Verán"
+        ],
+        "imperfecto": [
+            "veía",
+            "veías",
+            "veía",
+            "veíamos",
+            "veíais",
+            "veían"
+        ],
+        "perfecto": [
+            "visto"
+        ],
+        "presente progresivo": [
+            "viendo"
+        ]
+    },
+    "Necesitar (To need)": {
+        "present": [
+            "Necesito",
+            "Necesitas",
+            "Necesita",
+            "Necesitamos",
+            "Necesitáis",
+            "Necesitan"
+        ],
+        "past": [
+            "Necesité",
+            "Necesitaste",
+            "Necesitó",
+            "Necesitamos",
+            "Necesitasteis",
+            "Necesitaron"
+        ],
+        "future": [
+            "Necesitaré",
+            "Necesitarás",
+            "Necesitará",
+            "Necesitaremos",
+            "Necesitaréis",
+            "Necesitarán"
+        ],
+        "imperfecto": [
+            "necesitaba",
+            "necesitabas",
+            "necesitaba",
+            "necesitábamos",
+            "necesitabais",
+            "necesitaban"
+        ],
+        "perfecto": [
+            "necesitado"
+        ],
+        "presente progresivo": [
+            "necesitando"
+        ]
+    },
+    "Pensar (To think)": {
+        "present": [
+            "Pienso",
+            "Piensas",
+            "Piensa",
+            "Pensamos",
+            "Pensáis",
+            "Piensan"
+        ],
+        "past": [
+            "Pensé",
+            "Pensaste",
+            "Pensó",
+            "Pensamos",
+            "Pensasteis",
+            "Pensaron"
+        ],
+        "future": [
+            "Pensaré",
+            "Pensarás",
+            "Pensará",
+            "Pensaremos",
+            "Pensaréis",
+            "Pensarán"
+        ],
+        "imperfecto": [
+            "pensaba",
+            "pensabas",
+            "pensaba",
+            "pensábamos",
+            "pensabais",
+            "pensaban"
+        ],
+        "perfecto": [
+            "pensado"
+        ],
+        "presente progresivo": [
+            "pensando"
+        ]
+    },
+    "Poner (To put / To place)": {
+        "present": [
+            "Pongo",
+            "Pones",
+            "Pone",
+            "Ponemos",
+            "Ponéis",
+            "Ponen"
+        ],
+        "past": [
+            "Puse",
+            "Pusiste",
+            "Puso",
+            "Pusimos",
+            "Pusisteis",
+            "Pusieron"
+        ],
+        "future": [
+            "Pondré",
+            "Pondrás",
+            "Pondrá",
+            "Pondremos",
+            "Pondréis",
+            "Pondrán"
+        ],
+        "imperfecto": [
+            "ponía",
+            "ponías",
+            "ponía",
+            "poníamos",
+            "poníais",
+            "ponían"
+        ],
+        "perfecto": [
+            "puesto"
+        ],
+        "presente progresivo": [
+            "poniendo"
+        ]
+    },
+    "Venir (To come)": {
+        "present": [
+            "Vengo",
+            "Vienes",
+            "Viene",
+            "Venimos",
+            "Venís",
+            "Vienen"
+        ],
+        "past": [
+            "Vine",
+            "Viniste",
+            "Vino",
+            "Vinimos",
+            "Vinisteis",
+            "Vinieron"
+        ],
+        "future": [
+            "Vendré",
+            "Vendrás",
+            "Vendrá",
+            "Vendremos",
+            "Vendréis",
+            "Vendrán"
+        ],
+        "imperfecto": [
+            "venía",
+            "venías",
+            "venía",
+            "veníamos",
+            "veníais",
+            "venían"
+        ],
+        "perfecto": [
+            "venido"
+        ],
+        "presente progresivo": [
+            "viniendo"
+        ]
+    },
+    "Soler (To usually do)": {
+        "present": [
+            "Suelo",
+            "Sueles",
+            "Suele",
+            "Solemos",
+            "Soléis",
+            "Suelen"
+        ],
+        "past": [
+            "Solí",
+            "Soliste",
+            "Solió",
+            "Solimos",
+            "Solisteis",
+            "Solieron"
+        ],
+        "future": [
+            "Soleré",
+            "Solerás",
+            "Solerá",
+            "Solaremos",
+            "Soleréis",
+            "Solerán"
+        ],
+        "imperfecto": [
+            "solía",
+            "solías",
+            "solía",
+            "solíamos",
+            "solíais",
+            "solían"
+        ],
+        "perfecto": [
+            "solido"
+        ],
+        "presente progresivo": [
+            "soliendo"
+        ]
+    },
+    "Conocer (To know - people/places)": {
+        "present": [
+            "Conozco",
+            "Conoces",
+            "Conoce",
+            "Conocemos",
+            "Conocéis",
+            "Conocen"
+        ],
+        "past": [
+            "Conocí",
+            "Conociste",
+            "Conoció",
+            "Conocimos",
+            "Conocisteis",
+            "Conocieron"
+        ],
+        "future": [
+            "Conoceré",
+            "Conocerás",
+            "Conocerá",
+            "Conoceremos",
+            "Conoceréis",
+            "Conocerán"
+        ],
+        "imperfecto": [
+            "conocía",
+            "conocías",
+            "conocía",
+            "conocíamos",
+            "conocíais",
+            "conocían"
+        ],
+        "perfecto": [
+            "conocido"
+        ],
+        "presente progresivo": [
+            "conociendo"
+        ]
+    },
+    "Hablar (To speak / To talk)": {
+        "present": [
+            "Hablo",
+            "Hablas",
+            "Habla",
+            "Hablamos",
+            "Habláis",
+            "Hablan"
+        ],
+        "past": [
+            "Hablé",
+            "Hablaste",
+            "Habló",
+            "Hablamos",
+            "Hablasteis",
+            "Hablaron"
+        ],
+        "future": [
+            "Hablaré",
+            "Hablarás",
+            "Hablará",
+            "Hablaremos",
+            "Hablaréis",
+            "Hablarán"
+        ],
+        "imperfecto": [
+            "hablaba",
+            "hablabas",
+            "hablaba",
+            "hablábamos",
+            "hablabais",
+            "hablaban"
+        ],
+        "perfecto": [
+            "hablado"
+        ],
+        "presente progresivo": [
+            "hablando"
+        ]
+    },
+    "Pasar (To pass / To happen)": {
+        "present": [
+            "Paso",
+            "Pasas",
+            "Pasa",
+            "Pasamos",
+            "Pasáis",
+            "Pasan"
+        ],
+        "past": [
+            "Pasé",
+            "Pasaste",
+            "Pasó",
+            "Pasamos",
+            "Pasasteis",
+            "Pasaron"
+        ],
+        "future": [
+            "Pasaré",
+            "Pasarás",
+            "Pasará",
+            "Pasaremos",
+            "Pasaréis",
+            "Pasarán"
+        ],
+        "imperfecto": [
+            "pasaba",
+            "pasabas",
+            "pasaba",
+            "pasábamos",
+            "pasabais",
+            "pasaban"
+        ],
+        "perfecto": [
+            "pasado"
+        ],
+        "presente progresivo": [
+            "pasando"
+        ]
+    },
+    "Creer (To believe)": {
+        "present": [
+            "Creo",
+            "Crees",
+            "Cree",
+            "Creemos",
+            "Creéis",
+            "Creen"
+        ],
+        "past": [
+            "Creí",
+            "Creíste",
+            "Creyó",
+            "Creímos",
+            "Creísteis",
+            "Creyeron"
+        ],
+        "future": [
+            "Creeré",
+            "Creerás",
+            "Creerá",
+            "Creeremos",
+            "Creeréis",
+            "Creerán"
+        ],
+        "imperfecto": [
+            "creía",
+            "creías",
+            "creía",
+            "creíamos",
+            "creíais",
+            "creían"
+        ],
+        "perfecto": [
+            "creído"
+        ],
+        "presente progresivo": [
+            "creyendo"
+        ]
+    },
+    "Parecer (To seem)": {
+        "present": [
+            "Parezco",
+            "Pareces",
+            "Parece",
+            "Parecemos",
+            "Parecéis",
+            "Parecen"
+        ],
+        "past": [
+            "Parecí",
+            "Pareciste",
+            "Pareció",
+            "Parecimos",
+            "Parecisteis",
+            "Parecieron"
+        ],
+        "future": [
+            "Pareceré",
+            "Parecerás",
+            "Parecerá",
+            "Pareceremos",
+            "Pareceréis",
+            "Parecerán"
+        ],
+        "imperfecto": [
+            "parecía",
+            "parecías",
+            "parecía",
+            "parecíamos",
+            "parecíais",
+            "parecían"
+        ],
+        "perfecto": [
+            "parecido"
+        ],
+        "presente progresivo": [
+            "pareciendo"
+        ]
+    },
+    "Quedar (To stay / To remain)": {
+        "present": [
+            "Quedo",
+            "Quedas",
+            "Queda",
+            "Quedamos",
+            "Quedáis",
+            "Quedan"
+        ],
+        "past": [
+            "Quedé",
+            "Quedaste",
+            "Quedó",
+            "Quedamos",
+            "Quedasteis",
+            "Quedaron"
+        ],
+        "future": [
+            "Quedaré",
+            "Quedarás",
+            "Quedará",
+            "Quedaremos",
+            "Quedaréis",
+            "Quedarán"
+        ],
+        "imperfecto": [
+            "quedaba",
+            "quedabas",
+            "quedaba",
+            "quedábamos",
+            "quedabais",
+            "quedaban"
+        ],
+        "perfecto": [
+            "quedado"
+        ],
+        "presente progresivo": [
+            "quedando"
+        ]
+    },
+    "Dejar (To leave behind / To let)": {
+        "present": [
+            "Dejo",
+            "Dejas",
+            "Deja",
+            "Dejamos",
+            "Dejáis",
+            "Dejan"
+        ],
+        "past": [
+            "Dejé",
+            "Dejaste",
+            "Dejó",
+            "Dejamos",
+            "Dejasteis",
+            "Dejaron"
+        ],
+        "future": [
+            "Dejaré",
+            "Dejarás",
+            "Dejará",
+            "Dejaremos",
+            "Dejaréis",
+            "Dejarán"
+        ],
+        "imperfecto": [
+            "dejaba",
+            "dejabas",
+            "dejaba",
+            "dejábamos",
+            "dejabais",
+            "dejaban"
+        ],
+        "perfecto": [
+            "dejado"
+        ],
+        "presente progresivo": [
+            "dejando"
+        ]
+    },
+    "Llevar (To carry / To wear)": {
+        "present": [
+            "Llevo",
+            "Llevas",
+            "Lleva",
+            "Llevamos",
+            "Lleváis",
+            "Llevan"
+        ],
+        "past": [
+            "Llevé",
+            "Llevaste",
+            "Llevó",
+            "Llevamos",
+            "Llevasteis",
+            "Llevaron"
+        ],
+        "future": [
+            "Llevaré",
+            "Llevarás",
+            "Llevará",
+            "Llevaremos",
+            "Llevaréis",
+            "Llevarán"
+        ],
+        "imperfecto": [
+            "llevaba",
+            "llevabas",
+            "llevaba",
+            "llevábamos",
+            "llevabais",
+            "llevaban"
+        ],
+        "perfecto": [
+            "llevado"
+        ],
+        "presente progresivo": [
+            "llevando"
+        ]
+    },
+    "Llamar (To call)": {
+        "present": [
+            "Llamo",
+            "Llamas",
+            "Llama",
+            "Llamamos",
+            "Llamáis",
+            "Llaman"
+        ],
+        "past": [
+            "Llamé",
+            "Llamaste",
+            "Llamó",
+            "Llamamos",
+            "Llamasteis",
+            "Llamaron"
+        ],
+        "future": [
+            "Llamaré",
+            "Llamarás",
+            "Llamará",
+            "Llamaremos",
+            "Llamaréis",
+            "Llamarán"
+        ],
+        "imperfecto": [
+            "llamaba",
+            "llamabas",
+            "llamaba",
+            "llamábamos",
+            "llamabais",
+            "llamaban"
+        ],
+        "perfecto": [
+            "llamado"
+        ],
+        "presente progresivo": [
+            "llamando"
+        ]
+    },
+    "Seguir (To follow / To continue)": {
+        "present": [
+            "Sigo",
+            "Sigues",
+            "Sigue",
+            "Seguimos",
+            "Seguís",
+            "Siguen"
+        ],
+        "past": [
+            "Seguí",
+            "Seguiste",
+            "Siguió",
+            "Seguimos",
+            "Seguisteis",
+            "Siguieron"
+        ],
+        "future": [
+            "Seguiré",
+            "Seguirás",
+            "Seguirá",
+            "Seguiremos",
+            "Seguiréis",
+            "Seguirán"
+        ],
+        "imperfecto": [
+            "seguía",
+            "seguías",
+            "seguía",
+            "seguíamos",
+            "seguíais",
+            "seguían"
+        ],
+        "perfecto": [
+            "seguido"
+        ],
+        "presente progresivo": [
+            "siguiendo"
+        ]
+    },
+    "Encontrar (To find)": {
+        "present": [
+            "Encuentro",
+            "Encuentras",
+            "Encuentra",
+            "Encontramos",
+            "Encontráis",
+            "Encuentran"
+        ],
+        "past": [
+            "Encontré",
+            "Encontraste",
+            "Encontró",
+            "Encontramos",
+            "Encontrasteis",
+            "Encontraron"
+        ],
+        "future": [
+            "Encontraré",
+            "Encontrarás",
+            "Encontrará",
+            "Encontraremos",
+            "Encontraréis",
+            "Encontrarán"
+        ],
+        "imperfecto": [
+            "encontraba",
+            "encontrabas",
+            "encontraba",
+            "encontrábamos",
+            "encontrabais",
+            "encontraban"
+        ],
+        "perfecto": [
+            "encontrado"
+        ],
+        "presente progresivo": [
+            "encontrando"
+        ]
+    },
+    "Volver (To return)": {
+        "present": [
+            "Vuelvo",
+            "Vuelves",
+            "Vuelve",
+            "Volvemos",
+            "Volvéis",
+            "Vuelven"
+        ],
+        "past": [
+            "Volví",
+            "Volviste",
+            "Volvió",
+            "Volvimos",
+            "Volvisteis",
+            "Volvieron"
+        ],
+        "future": [
+            "Volveré",
+            "Volverás",
+            "Volverá",
+            "Volveremos",
+            "Volveréis",
+            "Volverán"
+        ],
+        "imperfecto": [
+            "volvía",
+            "volvías",
+            "volvía",
+            "volvíamos",
+            "volvíais",
+            "volvían"
+        ],
+        "perfecto": [
+            "vuelto"
+        ],
+        "presente progresivo": [
+            "volviendo"
+        ]
+    },
+    "Salir (To leave / To go out)": {
+        "present": [
+            "Salgo",
+            "Sales",
+            "Sale",
+            "Salimos",
+            "Salís",
+            "Salen"
+        ],
+        "past": [
+            "Salí",
+            "Saliste",
+            "Salió",
+            "Salimos",
+            "Salisteís",
+            "Salieron"
+        ],
+        "future": [
+            "Saldré",
+            "Saldrás",
+            "Saldrá",
+            "Saldremos",
+            "Saldréis",
+            "Saldrán"
+        ],
+        "imperfecto": [
+            "salía",
+            "salías",
+            "salía",
+            "salíamos",
+            "salíais",
+            "salían"
+        ],
+        "perfecto": [
+            "salido"
+        ],
+        "presente progresivo": [
+            "saliendo"
+        ]
+    },
+    "Tomar (To take / To drink)": {
+        "present": [
+            "Tomo",
+            "Tomas",
+            "Toma",
+            "Tomamos",
+            "Tomáis",
+            "Toman"
+        ],
+        "past": [
+            "Tomé",
+            "Tomaste",
+            "Tomó",
+            "Tomamos",
+            "Tomasteis",
+            "Tomaron"
+        ],
+        "future": [
+            "Tomaré",
+            "Tomarás",
+            "Tomará",
+            "Tomaremos",
+            "Tomaréis",
+            "Tomarán"
+        ],
+        "imperfecto": [
+            "tomaba",
+            "tomabas",
+            "tomaba",
+            "tomábamos",
+            "tomabais",
+            "tomaban"
+        ],
+        "perfecto": [
+            "tomado"
+        ],
+        "presente progresivo": [
+            "tomando"
+        ]
+    },
+    "Vivir (To live)": {
+        "present": [
+            "Vivo",
+            "Vives",
+            "Vive",
+            "Vivimos",
+            "Vivís",
+            "Viven"
+        ],
+        "past": [
+            "Viví",
+            "Viviste",
+            "Vivió",
+            "Vivimos",
+            "Vivisteis",
+            "Vivieron"
+        ],
+        "future": [
+            "Viviré",
+            "Vivirás",
+            "Vivirá",
+            "Viviremos",
+            "Viviréis",
+            "Vivirán"
+        ],
+        "imperfecto": [
+            "vivía",
+            "vivías",
+            "vivía",
+            "vivíamos",
+            "vivíais",
+            "vivían"
+        ],
+        "perfecto": [
+            "vivido"
+        ],
+        "presente progresivo": [
+            "viviendo"
+        ]
+    },
+    "Tratar (To treat / To try)": {
+        "present": [
+            "Trato",
+            "Tratas",
+            "Trata",
+            "Tratamos",
+            "Tratáis",
+            "Tratan"
+        ],
+        "past": [
+            "Traté",
+            "Trataste",
+            "Trató",
+            "Tratamos",
+            "Tratasteis",
+            "Trataron"
+        ],
+        "future": [
+            "Trataré",
+            "Tratarás",
+            "Tratará",
+            "Trataremos",
+            "Trataréis",
+            "Tratarán"
+        ],
+        "imperfecto": [
+            "trataba",
+            "tratabas",
+            "trataba",
+            "tratábamos",
+            "tratabais",
+            "trataban"
+        ],
+        "perfecto": [
+            "tratado"
+        ],
+        "presente progresivo": [
+            "tratando"
+        ]
+    },
+    "Mirar (To look / To watch)": {
+        "present": [
+            "Miro",
+            "Miras",
+            "Mira",
+            "Miramos",
+            "Miráis",
+            "Miran"
+        ],
+        "past": [
+            "Miré",
+            "Miraste",
+            "Miró",
+            "Miramos",
+            "Mirasteis",
+            "Miraron"
+        ],
+        "future": [
+            "Miraré",
+            "Mirarás",
+            "Mirará",
+            "Miraremos",
+            "Miraréis",
+            "Mirarán"
+        ],
+        "imperfecto": [
+            "miraba",
+            "mirabas",
+            "miraba",
+            "mirábamos",
+            "mirabais",
+            "miraban"
+        ],
+        "perfecto": [
+            "mirado"
+        ],
+        "presente progresivo": [
+            "mirando"
+        ]
+    },
+    "Contar (To count / To tell)": {
+        "present": [
+            "Cuento",
+            "Cuentas",
+            "Cuenta",
+            "Contamos",
+            "Contáis",
+            "Cuentan"
+        ],
+        "past": [
+            "Conté",
+            "Contaste",
+            "Contó",
+            "Contamos",
+            "Contasteis",
+            "Contaron"
+        ],
+        "future": [
+            "Contaré",
+            "Contarás",
+            "Contará",
+            "Contaremos",
+            "Contaréis",
+            "Contarán"
+        ],
+        "imperfecto": [
+            "contaba",
+            "contabas",
+            "contaba",
+            "contábamos",
+            "contabais",
+            "contaban"
+        ],
+        "perfecto": [
+            "contado"
+        ],
+        "presente progresivo": [
+            "contando"
+        ]
+    },
+    "Empezar (To begin / To start)": {
+        "present": [
+            "Empiezo",
+            "Empiezas",
+            "Empieza",
+            "Empezamos",
+            "Empezáis",
+            "Empiezan"
+        ],
+        "past": [
+            "Empecé",
+            "Empezaste",
+            "Empezó",
+            "Empezamos",
+            "Empezasteis",
+            "Empezaron"
+        ],
+        "future": [
+            "Empezaré",
+            "Empezarás",
+            "Empezará",
+            "Empezaremos",
+            "Empezaréis",
+            "Empezarán"
+        ],
+        "imperfecto": [
+            "empezaba",
+            "empezabas",
+            "empezaba",
+            "empezábamos",
+            "empezabais",
+            "empezaban"
+        ],
+        "perfecto": [
+            "empezado"
+        ],
+        "presente progresivo": [
+            "empezando"
+        ]
+    },
+    "Esperar (To wait / To hope)": {
+        "present": [
+            "Espero",
+            "Esperas",
+            "Espera",
+            "Esperamos",
+            "Esperáis",
+            "Esperan"
+        ],
+        "past": [
+            "Esperé",
+            "Esperaste",
+            "Esperó",
+            "Esperamos",
+            "Esperasteis",
+            "Esperaron"
+        ],
+        "future": [
+            "Esperaré",
+            "Esperarás",
+            "Esperará",
+            "Esperaremos",
+            "Esperaréis",
+            "Esperarán"
+        ],
+        "imperfecto": [
+            "esperaba",
+            "esperabas",
+            "esperaba",
+            "esperábamos",
+            "esperabais",
+            "esperaban"
+        ],
+        "perfecto": [
+            "esperado"
+        ],
+        "presente progresivo": [
+            "esperando"
+        ]
+    },
+    "Buscar (To look for / To search)": {
+        "present": [
+            "Busco",
+            "Buscas",
+            "Busca",
+            "Buscamos",
+            "Buscáis",
+            "Buscan"
+        ],
+        "past": [
+            "Busqué",
+            "Buscaste",
+            "Buscó",
+            "Buscamos",
+            "Buscasteis",
+            "Buscaron"
+        ],
+        "future": [
+            "Buscaré",
+            "Buscarás",
+            "Buscará",
+            "Buscaremos",
+            "Buscaréis",
+            "Buscarán"
+        ],
+        "imperfecto": [
+            "buscaba",
+            "buscabas",
+            "buscaba",
+            "buscábamos",
+            "buscabais",
+            "buscaban"
+        ],
+        "perfecto": [
+            "buscado"
+        ],
+        "presente progresivo": [
+            "buscando"
+        ]
+    },
+    "Entrar (To enter)": {
+        "present": [
+            "Entro",
+            "Entras",
+            "Entra",
+            "Entramos",
+            "Entráis",
+            "Entran"
+        ],
+        "past": [
+            "Entré",
+            "Entraste",
+            "Entró",
+            "Entramos",
+            "Entrasteis",
+            "Entraron"
+        ],
+        "future": [
+            "Entraré",
+            "Entrarás",
+            "Entrará",
+            "Entraremos",
+            "Entraréis",
+            "Entrarán"
+        ],
+        "imperfecto": [
+            "entraba",
+            "entrabas",
+            "entraba",
+            "entrábamos",
+            "entrabais",
+            "entraban"
+        ],
+        "perfecto": [
+            "entrado"
+        ],
+        "presente progresivo": [
+            "entrando"
+        ]
+    },
+    "Trabajar (To work)": {
+        "present": [
+            "Trabajo",
+            "Trabajas",
+            "Trabaja",
+            "Trabajamos",
+            "Trabajáis",
+            "Trabajan"
+        ],
+        "past": [
+            "Trabajé",
+            "Trabajaste",
+            "Trabajó",
+            "Trabajamos",
+            "Trabajasteis",
+            "Trabajaron"
+        ],
+        "future": [
+            "Trabajaré",
+            "Trabajarás",
+            "Trabajará",
+            "Trabajaremos",
+            "Trabajaréis",
+            "Trabajarán"
+        ],
+        "imperfecto": [
+            "trabajaba",
+            "trabajabas",
+            "trabajaba",
+            "trabajábamos",
+            "trabajabais",
+            "trabajaban"
+        ],
+        "perfecto": [
+            "trabajado"
+        ],
+        "presente progresivo": [
+            "trabajando"
+        ]
+    },
+    "Pedir (To ask for / To request)": {
+        "present": [
+            "Pido",
+            "Pides",
+            "Pide",
+            "Pedimos",
+            "Pedís",
+            "Piden"
+        ],
+        "past": [
+            "Pedí",
+            "Pediste",
+            "Pidió",
+            "Pedimos",
+            "Pedisteis",
+            "Pidieron"
+        ],
+        "future": [
+            "Pediré",
+            "Pedirás",
+            "Pedirá",
+            "Pediremos",
+            "Pediréis",
+            "Pedirán"
+        ],
+        "imperfecto": [
+            "pedía",
+            "pedías",
+            "pedía",
+            "pedíamos",
+            "pedíais",
+            "pedían"
+        ],
+        "perfecto": [
+            "pedido"
+        ],
+        "presente progresivo": [
+            "pidiendo"
+        ]
+    },
+    "Entender (To understand)": {
+        "present": [
+            "Entiendo",
+            "Entiendes",
+            "Entiende",
+            "Entendemos",
+            "Entendéis",
+            "Entienden"
+        ],
+        "past": [
+            "Entendí",
+            "Entendiste",
+            "Entendió",
+            "Entendimos",
+            "Entendisteis",
+            "Entendieron"
+        ],
+        "future": [
+            "Entenderé",
+            "Entenderás",
+            "Entenderá",
+            "Entenderemos",
+            "Entenderéis",
+            "Entenderán"
+        ],
+        "imperfecto": [
+            "entendía",
+            "entendías",
+            "entendía",
+            "entendíamos",
+            "entendíais",
+            "entendían"
+        ],
+        "perfecto": [
+            "entendido"
+        ],
+        "presente progresivo": [
+            "entendiendo"
+        ]
+    },
+    "Escribir (To write)": {
+        "present": [
+            "Escribo",
+            "Escribes",
+            "Escribe",
+            "Escribimos",
+            "Escribís",
+            "Escriben"
+        ],
+        "past": [
+            "Escribí",
+            "Escribiste",
+            "Escribió",
+            "Escribimos",
+            "Escribisteis",
+            "Escribieron"
+        ],
+        "future": [
+            "Escribiré",
+            "Escribirás",
+            "Escribirá",
+            "Escribiremos",
+            "Escribiréis",
+            "Escribirán"
+        ],
+        "imperfecto": [
+            "escribía",
+            "escribías",
+            "escribía",
+            "escribíamos",
+            "escribíais",
+            "escribían"
+        ],
+        "perfecto": [
+            "escrito"
+        ],
+        "presente progresivo": [
+            "escribiendo"
+        ]
+    },
+    "Perder (To lose / To miss)": {
+        "present": [
+            "Pierdo",
+            "Pierdes",
+            "Pierde",
+            "Perdemos",
+            "Perdéis",
+            "Pierden"
+        ],
+        "past": [
+            "Perdí",
+            "Perdiste",
+            "Perdió",
+            "Perdimos",
+            "Perdisteis",
+            "Perdieron"
+        ],
+        "future": [
+            "Perderé",
+            "Perderás",
+            "Perderá",
+            "Perderemos",
+            "Perderéis",
+            "Perderán"
+        ],
+        "imperfecto": [
+            "perdía",
+            "perdías",
+            "perdía",
+            "perdíamos",
+            "perdíais",
+            "perdían"
+        ],
+        "perfecto": [
+            "perdido"
+        ],
+        "presente progresivo": [
+            "perdiendo"
+        ]
+    },
+    "Recibir (To receive)": {
+        "present": [
+            "Recibo",
+            "Recibes",
+            "Recibe",
+            "Recibimos",
+            "Recibís",
+            "Reciben"
+        ],
+        "past": [
+            "Recibí",
+            "Recibiste",
+            "Recibió",
+            "Recibimos",
+            "Recibisteis",
+            "Recibieron"
+        ],
+        "future": [
+            "Recibiré",
+            "Recibirás",
+            "Recibirá",
+            "Recibiremos",
+            "Recibiréis",
+            "Recibirán"
+        ],
+        "imperfecto": [
+            "recibía",
+            "recibías",
+            "recibía",
+            "recibíamos",
+            "recibíais",
+            "recibían"
+        ],
+        "perfecto": [
+            "recibido"
+        ],
+        "presente progresivo": [
+            "recibiendo"
+        ]
+    },
+    "Recordar (To remember)": {
+        "present": [
+            "Recuerdo",
+            "Recuerdas",
+            "Recuerda",
+            "Recordamos",
+            "Recordáis",
+            "Recuerdan"
+        ],
+        "past": [
+            "Recordé",
+            "Recordaste",
+            "Recordó",
+            "Recordamos",
+            "Recordasteis",
+            "Recordaron"
+        ],
+        "future": [
+            "Recordaré",
+            "Recordarás",
+            "Recordará",
+            "Recordaremos",
+            "Recordaréis",
+            "Recordarán"
+        ],
+        "imperfecto": [
+            "recordaba",
+            "recordabas",
+            "recordaba",
+            "recordábamos",
+            "recordabais",
+            "recordaban"
+        ],
+        "perfecto": [
+            "recordado"
+        ],
+        "presente progresivo": [
+            "recordando"
+        ]
+    },
+    "Terminar (To finish / To end)": {
+        "present": [
+            "Termino",
+            "Terminas",
+            "Termina",
+            "Terminamos",
+            "Termináis",
+            "Terminan"
+        ],
+        "past": [
+            "Terminé",
+            "Terminaste",
+            "Terminó",
+            "Terminamos",
+            "Terminasteis",
+            "Terminaron"
+        ],
+        "future": [
+            "Terminaré",
+            "Terminarás",
+            "Terminará",
+            "Terminaremos",
+            "Terminaréis",
+            "Terminarán"
+        ],
+        "imperfecto": [
+            "terminaba",
+            "terminabas",
+            "terminaba",
+            "terminábamos",
+            "terminabais",
+            "terminaban"
+        ],
+        "perfecto": [
+            "terminado"
+        ],
+        "presente progresivo": [
+            "terminando"
+        ]
+    },
+    "Cambiar (To change)": {
+        "present": [
+            "Cambio",
+            "Cambias",
+            "Cambia",
+            "Cambiamos",
+            "Cambiáis",
+            "Cambian"
+        ],
+        "past": [
+            "Cambié",
+            "Cambiaste",
+            "Cambió",
+            "Cambiamos",
+            "Cambiasteis",
+            "Cambiaron"
+        ],
+        "future": [
+            "Cambiaré",
+            "Cambiarás",
+            "Cambiará",
+            "Cambiaremos",
+            "Cambiaréis",
+            "Cambiarán"
+        ],
+        "imperfecto": [
+            "cambiaba",
+            "cambiabas",
+            "cambiaba",
+            "cambiábamos",
+            "cambiabais",
+            "cambiaban"
+        ],
+        "perfecto": [
+            "cambiado"
+        ],
+        "presente progresivo": [
+            "cambiando"
+        ]
+    },
+    "Abrir (To open)": {
+        "present": [
+            "Abro",
+            "Abres",
+            "Abre",
+            "Abrimos",
+            "Abrís",
+            "Abren"
+        ],
+        "past": [
+            "Abrí",
+            "Abriste",
+            "Abrió",
+            "Abrimos",
+            "Abristeis",
+            "Abrieron"
+        ],
+        "future": [
+            "Abriré",
+            "Abrirás",
+            "Abrirá",
+            "Abriremos",
+            "Abriréis",
+            "Abrirán"
+        ],
+        "imperfecto": [
+            "abría",
+            "abrías",
+            "abría",
+            "abríamos",
+            "abríais",
+            "abrían"
+        ],
+        "perfecto": [
+            "abierto"
+        ],
+        "presente progresivo": [
+            "abriendo"
+        ]
+    },
+    "Sacar (To take out / To remove)": {
+        "present": [
+            "Saco",
+            "Sacas",
+            "Saca",
+            "Sacamos",
+            "Sacáis",
+            "Sacan"
+        ],
+        "past": [
+            "Saqué",
+            "Sacaste",
+            "Sacó",
+            "Sacamos",
+            "Sacasteis",
+            "Sacaron"
+        ],
+        "future": [
+            "Sacaré",
+            "Sacarás",
+            "Sacará",
+            "Sacaremos",
+            "Sacaréis",
+            "Sacarán"
+        ],
+        "imperfecto": [
+            "sacaba",
+            "sacabas",
+            "sacaba",
+            "sacábamos",
+            "sacabais",
+            "sacaban"
+        ],
+        "perfecto": [
+            "sacado"
+        ],
+        "presente progresivo": [
+            "sacando"
+        ]
+    },
+    "Leer (To read)": {
+        "present": [
+            "Leo",
+            "Lees",
+            "Lee",
+            "Leemos",
+            "Leéis",
+            "Leen"
+        ],
+        "past": [
+            "Leí",
+            "Leíste",
+            "Leyó",
+            "Leímos",
+            "Leísteis",
+            "Leyeron"
+        ],
+        "future": [
+            "Leeré",
+            "Leerás",
+            "Leerá",
+            "Leeremos",
+            "Leeréis",
+            "Leerán"
+        ],
+        "imperfecto": [
+            "leía",
+            "leías",
+            "leía",
+            "leíamos",
+            "leíais",
+            "leían"
+        ],
+        "perfecto": [
+            "leído"
+        ],
+        "presente progresivo": [
+            "leyendo"
+        ]
+    },
+    "Ganar (To win / To earn)": {
+        "present": [
+            "Gano",
+            "Ganas",
+            "Gana",
+            "Ganamos",
+            "Ganáis",
+            "Ganan"
+        ],
+        "past": [
+            "Gané",
+            "Ganaste",
+            "Ganó",
+            "Ganamos",
+            "Ganasteis",
+            "Ganaron"
+        ],
+        "future": [
+            "Ganaré",
+            "Ganarás",
+            "Ganará",
+            "Ganaremos",
+            "Ganaréis",
+            "Ganarán"
+        ],
+        "imperfecto": [
+            "ganaba",
+            "ganabas",
+            "ganaba",
+            "ganábamos",
+            "ganabais",
+            "ganaban"
+        ],
+        "perfecto": [
+            "ganado"
+        ],
+        "presente progresivo": [
+            "ganando"
+        ]
+    },
+    "Traer (To bring)": {
+        "present": [
+            "Traigo",
+            "Traes",
+            "Trae",
+            "Traemos",
+            "Traéis",
+            "Traen"
+        ],
+        "past": [
+            "Traje",
+            "Trajiste",
+            "Trajo",
+            "Trajimos",
+            "Trajisteis",
+            "Trajeron"
+        ],
+        "future": [
+            "Traeré",
+            "Traerás",
+            "Traerá",
+            "Traeremos",
+            "Traeréis",
+            "Traerán"
+        ],
+        "imperfecto": [
+            "traía",
+            "traías",
+            "traía",
+            "traíamos",
+            "traíais",
+            "traían"
+        ],
+        "perfecto": [
+            "traído"
+        ],
+        "presente progresivo": [
+            "trayendo"
+        ]
+    },
+    "Comprar (To buy)": {
+        "present": [
+            "Compro",
+            "Compras",
+            "Compra",
+            "Compramos",
+            "Compráis",
+            "Compran"
+        ],
+        "past": [
+            "Compré",
+            "Compraste",
+            "Compró",
+            "Compramos",
+            "Comprasteis",
+            "Compraron"
+        ],
+        "future": [
+            "Compraré",
+            "Comprarás",
+            "Comprará",
+            "Compraremos",
+            "Compraréis",
+            "Comprarán"
+        ],
+        "imperfecto": [
+            "compraba",
+            "comprabas",
+            "compraba",
+            "comprábamos",
+            "comprabais",
+            "compraban"
+        ],
+        "perfecto": [
+            "comprado"
+        ],
+        "presente progresivo": [
+            "comprando"
+        ]
+    },
+    "Pagar (To pay)": {
+        "present": [
+            "Pago",
+            "Pagas",
+            "Paga",
+            "Pagamos",
+            "Pagáis",
+            "Pagan"
+        ],
+        "past": [
+            "Pagué",
+            "Pagaste",
+            "Pagó",
+            "Pagamos",
+            "Pagasteis",
+            "Pagaron"
+        ],
+        "future": [
+            "Pagaré",
+            "Pagarás",
+            "Pagará",
+            "Pagaremos",
+            "Pagaréis",
+            "Pagarán"
+        ],
+        "imperfecto": [
+            "pagaba",
+            "pagabas",
+            "pagaba",
+            "pagábamos",
+            "pagabais",
+            "pagaban"
+        ],
+        "perfecto": [
+            "pagado"
+        ],
+        "presente progresivo": [
+            "pagando"
+        ]
+    },
+    "Ayudar (To help)": {
+        "present": [
+            "Ayudo",
+            "Ayudas",
+            "Ayuda",
+            "Ayudamos",
+            "Ayudáis",
+            "Ayudan"
+        ],
+        "past": [
+            "Ayudé",
+            "Ayudaste",
+            "Ayudó",
+            "Ayudamos",
+            "Ayudasteis",
+            "Ayudaron"
+        ],
+        "future": [
+            "Ayudaré",
+            "Ayudarás",
+            "Ayudará",
+            "Ayudaremos",
+            "Ayudaréis",
+            "Ayudarán"
+        ],
+        "imperfecto": [
+            "ayudaba",
+            "ayudabas",
+            "ayudaba",
+            "ayudábamos",
+            "ayudabais",
+            "ayudaban"
+        ],
+        "perfecto": [
+            "ayudado"
+        ],
+        "presente progresivo": [
+            "ayudando"
+        ]
+    },
+    "Gustar (To like / To be pleasing)": {
+        "present": [
+            "Gusto",
+            "Gustas",
+            "Gusta",
+            "Gustamos",
+            "Gustáis",
+            "Gustan"
+        ],
+        "past": [
+            "Gusté",
+            "Gustaste",
+            "Gustó",
+            "Gustamos",
+            "Gustasteis",
+            "Gustaron"
+        ],
+        "future": [
+            "Gustaré",
+            "Gustarás",
+            "Gustará",
+            "Gustaremos",
+            "Gustaréis",
+            "Gustarán"
+        ],
+        "imperfecto": [
+            "gustaba",
+            "gustabas",
+            "gustaba",
+            "gustábamos",
+            "gustabais",
+            "gustaban"
+        ],
+        "perfecto": [
+            "gustado"
+        ],
+        "presente progresivo": [
+            "gustando"
+        ]
+    },
+    "Escuchar (To listen)": {
+        "present": [
+            "Escucho",
+            "Escuchas",
+            "Escucha",
+            "Escuchamos",
+            "Escucháis",
+            "Escuchan"
+        ],
+        "past": [
+            "Escuché",
+            "Escuchaste",
+            "Escuchó",
+            "Escuchamos",
+            "Escuchasteis",
+            "Escucharon"
+        ],
+        "future": [
+            "Escucharé",
+            "Escucharás",
+            "Escuchará",
+            "Escucharemos",
+            "Escucharéis",
+            "Escucharán"
+        ],
+        "imperfecto": [
+            "escuchaba",
+            "escuchabas",
+            "escuchaba",
+            "escuchábamos",
+            "escuchabais",
+            "escuchaban"
+        ],
+        "perfecto": [
+            "escuchado"
+        ],
+        "presente progresivo": [
+            "escuchando"
+        ]
+    },
+    "Jugar (To play a game/sport)": {
+        "present": [
+            "Juego",
+            "Juegas",
+            "Juega",
+            "Jugamos",
+            "Jugáis",
+            "Juegan"
+        ],
+        "past": [
+            "Jugué",
+            "Jugaste",
+            "Jugó",
+            "Jugamos",
+            "Jugasteis",
+            "Jugaron"
+        ],
+        "future": [
+            "Jugaré",
+            "Jugarás",
+            "Jugará",
+            "Jugaremos",
+            "Jugaréis",
+            "Jugarán"
+        ],
+        "imperfecto": [
+            "jugaba",
+            "jugabas",
+            "jugaba",
+            "jugábamos",
+            "jugabais",
+            "jugaban"
+        ],
+        "perfecto": [
+            "jugado"
+        ],
+        "presente progresivo": [
+            "jugando"
+        ]
+    },
+    "Dormir (To sleep)": {
+        "present": [
+            "Duermo",
+            "Duermes",
+            "Duerme",
+            "Dormimos",
+            "Dormís",
+            "Duermen"
+        ],
+        "past": [
+            "Dormí",
+            "Dormiste",
+            "Durmió",
+            "Dormimos",
+            "Dormisteis",
+            "Durmieron"
+        ],
+        "future": [
+            "Dormiré",
+            "Dormirás",
+            "Dormirá",
+            "Dormiremos",
+            "Dormiréis",
+            "Dormirán"
+        ],
+        "imperfecto": [
+            "dormía",
+            "dormías",
+            "dormía",
+            "dormíamos",
+            "dormíais",
+            "dormían"
+        ],
+        "perfecto": [
+            "dormido"
+        ],
+        "presente progresivo": [
+            "durmiendo"
+        ]
+    },
+    "Beber (To drink)": {
+        "present": [
+            "Bebo",
+            "Bebes",
+            "Bebe",
+            "Bebemos",
+            "Bebéis",
+            "Beben"
+        ],
+        "past": [
+            "Bebí",
+            "Bebiste",
+            "Bebió",
+            "Bebimos",
+            "Bebisteis",
+            "Bebieron"
+        ],
+        "future": [
+            "Beberé",
+            "Beberás",
+            "Beberá",
+            "Beberemos",
+            "Beberéis",
+            "Beberán"
+        ],
+        "imperfecto": [
+            "bebía",
+            "bebías",
+            "bebía",
+            "bebíamos",
+            "bebíais",
+            "bebían"
+        ],
+        "perfecto": [
+            "bebido"
+        ],
+        "presente progresivo": [
+            "bebiendo"
+        ]
+    },
+    "Vender (To sell)": {
+        "present": [
+            "Vendo",
+            "Vendes",
+            "Vende",
+            "Vendemos",
+            "Vendéis",
+            "Venden"
+        ],
+        "past": [
+            "Vendí",
+            "Vendiste",
+            "Vendió",
+            "Vendimos",
+            "Vendisteis",
+            "Vendieron"
+        ],
+        "future": [
+            "Venderé",
+            "Venderás",
+            "Venderá",
+            "Venderemos",
+            "Venderéis",
+            "Venderán"
+        ],
+        "imperfecto": [
+            "vendía",
+            "vendías",
+            "vendía",
+            "vendíamos",
+            "vendíais",
+            "vendían"
+        ],
+        "perfecto": [
+            "vendido"
+        ],
+        "presente progresivo": [
+            "vendiendo"
+        ]
+    },
+    "Decidir (To decide)": {
+        "present": [
+            "Decido",
+            "Decides",
+            "Decide",
+            "Decidimos",
+            "Decidís",
+            "Deciden"
+        ],
+        "past": [
+            "Decidí",
+            "Decidiste",
+            "Decidió",
+            "Decidimos",
+            "Decidisteis",
+            "Decidieron"
+        ],
+        "future": [
+            "Decidiré",
+            "Decidirás",
+            "Decidirá",
+            "Decidiremos",
+            "Decidiréis",
+            "Decidirán"
+        ],
+        "imperfecto": [
+            "decidía",
+            "decidías",
+            "decidía",
+            "decidíamos",
+            "decidíais",
+            "decidían"
+        ],
+        "perfecto": [
+            "decidido"
+        ],
+        "presente progresivo": [
+            "decidiendo"
+        ]
+    },
+    "Aprender (To learn)": {
+        "present": [
+            "Aprendo",
+            "Aprendes",
+            "Aprende",
+            "Aprendemos",
+            "Aprendéis",
+            "Aprenden"
+        ],
+        "past": [
+            "Aprendí",
+            "Aprendiste",
+            "Aprendió",
+            "Aprendimos",
+            "Aprendisteis",
+            "Aprendieron"
+        ],
+        "future": [
+            "Aprenderé",
+            "Aprenderás",
+            "Aprenderá",
+            "Aprenderemos",
+            "Aprenderéis",
+            "Aprenderán"
+        ],
+        "imperfecto": [
+            "aprendía",
+            "aprendías",
+            "aprendía",
+            "aprendíamos",
+            "aprendíais",
+            "aprendían"
+        ],
+        "perfecto": [
+            "aprendido"
+        ],
+        "presente progresivo": [
+            "aprendiendo"
+        ]
+    },
+    "Intentar (To try / To attempt)": {
+        "present": [
+            "Intento",
+            "Intentas",
+            "Intenta",
+            "Intentamos",
+            "Intentáis",
+            "Intentan"
+        ],
+        "past": [
+            "Intenté",
+            "Intentaste",
+            "Intentó",
+            "Intentamos",
+            "Intentasteis",
+            "Intentaron"
+        ],
+        "future": [
+            "Intentaré",
+            "Intentarás",
+            "Intentará",
+            "Intentaremos",
+            "Intentaréis",
+            "Intentarán"
+        ],
+        "imperfecto": [
+            "intentaba",
+            "intentabas",
+            "intentaba",
+            "intentábamos",
+            "intentabais",
+            "intentaban"
+        ],
+        "perfecto": [
+            "intentado"
+        ],
+        "presente progresivo": [
+            "intentando"
+        ]
+    },
+    "Usar (To use)": {
+        "present": [
+            "Uso",
+            "Usas",
+            "Usa",
+            "Usamos",
+            "Usáis",
+            "Usan"
+        ],
+        "past": [
+            "Usé",
+            "Usaste",
+            "Usó",
+            "Usamos",
+            "Usasteis",
+            "Usaron"
+        ],
+        "future": [
+            "Usaré",
+            "Usarás",
+            "Usará",
+            "Usaremos",
+            "Usaréis",
+            "Usarán"
+        ],
+        "imperfecto": [
+            "usaba",
+            "usabas",
+            "usaba",
+            "usábamos",
+            "usabais",
+            "usaban"
+        ],
+        "perfecto": [
+            "usado"
+        ],
+        "presente progresivo": [
+            "usando"
+        ]
+    },
+    "Explicar (To explain)": {
+        "present": [
+            "Explico",
+            "Explicas",
+            "Explica",
+            "Explicamos",
+            "Explicáis",
+            "Explican"
+        ],
+        "past": [
+            "Expliqué",
+            "Explicaste",
+            "Explicó",
+            "Explicamos",
+            "Explicasteis",
+            "Explicaron"
+        ],
+        "future": [
+            "Explicaré",
+            "Explicarás",
+            "Explicará",
+            "Explicaremos",
+            "Explicaréis",
+            "Explicarán"
+        ],
+        "imperfecto": [
+            "explicaba",
+            "explicabas",
+            "explicaba",
+            "explicábamos",
+            "explicabais",
+            "explicaban"
+        ],
+        "perfecto": [
+            "explicado"
+        ],
+        "presente progresivo": [
+            "explicando"
+        ]
+    },
+    "Preguntar (To ask a question)": {
+        "present": [
+            "Pregunto",
+            "Preguntas",
+            "Pregunta",
+            "Preguntamos",
+            "Preguntáis",
+            "Preguntan"
+        ],
+        "past": [
+            "Pregunté",
+            "Preguntaste",
+            "Preguntó",
+            "Preguntamos",
+            "Preguntasteis",
+            "Preguntaron"
+        ],
+        "future": [
+            "Preguntaré",
+            "Preguntarás",
+            "Preguntará",
+            "Preguntaremos",
+            "Preguntaréis",
+            "Preguntarán"
+        ],
+        "imperfecto": [
+            "preguntaba",
+            "preguntabas",
+            "preguntaba",
+            "preguntábamos",
+            "preguntabais",
+            "preguntaban"
+        ],
+        "perfecto": [
+            "preguntado"
+        ],
+        "presente progresivo": [
+            "preguntando"
+        ]
+    },
+    "Ofrecer (To offer)": {
+        "present": [
+            "Ofrezco",
+            "Ofreces",
+            "Ofrece",
+            "Ofrecemos",
+            "Ofrecéis",
+            "Ofrecen"
+        ],
+        "past": [
+            "Ofrecí",
+            "Ofreciste",
+            "Ofreció",
+            "Ofrecimos",
+            "Ofrecisteis",
+            "Ofrecieron"
+        ],
+        "future": [
+            "Ofreceré",
+            "Ofrecerás",
+            "Ofrecerá",
+            "Ofreceremos",
+            "Ofreceréis",
+            "Ofrecerán"
+        ],
+        "imperfecto": [
+            "ofrecía",
+            "ofrecías",
+            "ofrecía",
+            "ofrecíamos",
+            "ofrecíais",
+            "ofrecían"
+        ],
+        "perfecto": [
+            "ofrecido"
+        ],
+        "presente progresivo": [
+            "ofreciendo"
+        ]
+    },
+    "Estudiar (To study)": {
+        "present": [
+            "Estudio",
+            "Estudias",
+            "Estudia",
+            "Estudiamos",
+            "Estudiáis",
+            "Estudian"
+        ],
+        "past": [
+            "Estudié",
+            "Estudiaste",
+            "Estudió",
+            "Estudiamos",
+            "Estudiasteis",
+            "Estudiaron"
+        ],
+        "future": [
+            "Estudiaré",
+            "Estudiarás",
+            "Estudiará",
+            "Estudiaremos",
+            "Estudiaréis",
+            "Estudiarán"
+        ],
+        "imperfecto": [
+            "estudiaba",
+            "estudiabas",
+            "estudiaba",
+            "estudiábamos",
+            "estudiabais",
+            "estudiaban"
+        ],
+        "perfecto": [
+            "estudiado"
+        ],
+        "presente progresivo": [
+            "estudiando"
+        ]
+    },
+    "Correr (To run)": {
+        "present": [
+            "Corro",
+            "Corres",
+            "Corre",
+            "Corremos",
+            "Corréis",
+            "Corren"
+        ],
+        "past": [
+            "Corrí",
+            "Corriste",
+            "Corrió",
+            "Corrimos",
+            "Corristeis",
+            "Corrieron"
+        ],
+        "future": [
+            "Correré",
+            "Correrás",
+            "Correrá",
+            "Correremos",
+            "Correréis",
+            "Correrán"
+        ],
+        "imperfecto": [
+            "corría",
+            "corrías",
+            "corría",
+            "corríamos",
+            "corríais",
+            "corrían"
+        ],
+        "perfecto": [
+            "corrido"
+        ],
+        "presente progresivo": [
+            "corriendo"
+        ]
+    },
+    "Tocar (To touch / To play an instrument)": {
+        "present": [
+            "Toco",
+            "Tocas",
+            "Toca",
+            "Tocamos",
+            "Tocáis",
+            "Tocan"
+        ],
+        "past": [
+            "Toqué",
+            "Tocaste",
+            "Tocó",
+            "Tocamos",
+            "Tocasteis",
+            "Tocaron"
+        ],
+        "future": [
+            "Tocaré",
+            "Tocarás",
+            "Tocará",
+            "Tocaremos",
+            "Tocaréis",
+            "Tocarán"
+        ],
+        "imperfecto": [
+            "tocaba",
+            "tocabas",
+            "tocaba",
+            "tocábamos",
+            "tocabais",
+            "tocaban"
+        ],
+        "perfecto": [
+            "tocado"
+        ],
+        "presente progresivo": [
+            "tocando"
+        ]
+    },
+    "Caer (To fall)": {
+        "present": [
+            "Caigo",
+            "Caes",
+            "Cae",
+            "Caemos",
+            "Caéis",
+            "Caen"
+        ],
+        "past": [
+            "Caí",
+            "Caíste",
+            "Cayó",
+            "Caímos",
+            "Caísteis",
+            "Cayeron"
+        ],
+        "future": [
+            "Caeré",
+            "Caerás",
+            "Caerá",
+            "Caeremos",
+            "Caeréis",
+            "Caerán"
+        ],
+        "imperfecto": [
+            "caía",
+            "caías",
+            "caía",
+            "caíamos",
+            "caíais",
+            "caían"
+        ],
+        "perfecto": [
+            "caído"
+        ],
+        "presente progresivo": [
+            "cayendo"
+        ]
+    },
+    "Morir (To die)": {
+        "present": [
+            "Muero",
+            "Mueres",
+            "Muere",
+            "Morimos",
+            "Morís",
+            "Mueren"
+        ],
+        "past": [
+            "Morí",
+            "Moriste",
+            "Murió",
+            "Morimos",
+            "Moristeis",
+            "Murieron"
+        ],
+        "future": [
+            "Moriré",
+            "Morirás",
+            "Morirá",
+            "Moriremos",
+            "Moriréis",
+            "Morirán"
+        ],
+        "imperfecto": [
+            "moría",
+            "morías",
+            "moría",
+            "moríamos",
+            "moríais",
+            "morían"
+        ],
+        "perfecto": [
+            "muerto"
+        ],
+        "presente progresivo": [
+            "muriendo"
+        ]
+    },
+    "Nacer (To be born)": {
+        "present": [
+            "Nazco",
+            "Naces",
+            "Nace",
+            "Nacemos",
+            "Nacéis",
+            "Nacen"
+        ],
+        "past": [
+            "Nací",
+            "Naciste",
+            "Nació",
+            "Nacimos",
+            "Nacisteis",
+            "Nacieron"
+        ],
+        "future": [
+            "Naceré",
+            "Nacerás",
+            "Nacerá",
+            "Naceremos",
+            "Naceréis",
+            "Nacerán"
+        ],
+        "imperfecto": [
+            "nacía",
+            "nacías",
+            "nacía",
+            "nacíamos",
+            "nacíais",
+            "nacían"
+        ],
+        "perfecto": [
+            "nacido"
+        ],
+        "presente progresivo": [
+            "naciendo"
+        ]
+    },
+    "Aceptar (To accept)": {
+        "present": [
+            "Acepto",
+            "Aceptas",
+            "Acepta",
+            "Aceptamos",
+            "Aceptáis",
+            "Aceptan"
+        ],
+        "past": [
+            "Acepté",
+            "Aceptaste",
+            "Aceptó",
+            "Aceptamos",
+            "Aceptasteis",
+            "Aceptaron"
+        ],
+        "future": [
+            "Aceptaré",
+            "Aceptarás",
+            "Aceptará",
+            "Aceptaremos",
+            "Aceptaréis",
+            "Aceptarán"
+        ],
+        "imperfecto": [
+            "aceptaba",
+            "aceptabas",
+            "aceptaba",
+            "aceptábamos",
+            "aceptabais",
+            "aceptaban"
+        ],
+        "perfecto": [
+            "aceptado"
+        ],
+        "presente progresivo": [
+            "aceptando"
+        ]
+    },
+    "Permitir (To allow / To permit)": {
+        "present": [
+            "Permito",
+            "Permites",
+            "Permite",
+            "Permitimos",
+            "Permitís",
+            "Permiten"
+        ],
+        "past": [
+            "Permití",
+            "Permitiste",
+            "Permitió",
+            "Permitimos",
+            "Permitisteis",
+            "Permitieron"
+        ],
+        "future": [
+            "Permitiré",
+            "Permitirás",
+            "Permitirá",
+            "Permitiremos",
+            "Permitiréis",
+            "Permitirán"
+        ],
+        "imperfecto": [
+            "permitía",
+            "permitías",
+            "permitía",
+            "permitíamos",
+            "permitíais",
+            "permitían"
+        ],
+        "perfecto": [
+            "permitido"
+        ],
+        "presente progresivo": [
+            "permitiendo"
+        ]
+    },
+    "Servir (To serve / To be useful)": {
+        "present": [
+            "Sirvo",
+            "Sirves",
+            "Sirve",
+            "Servimos",
+            "Servís",
+            "Sirven"
+        ],
+        "past": [
+            "Serví",
+            "Serviste",
+            "Sirvió",
+            "Servimos",
+            "Servisteis",
+            "Sirvieron"
+        ],
+        "future": [
+            "Serviré",
+            "Servirás",
+            "Servirá",
+            "Serviremos",
+            "Serviréis",
+            "Servirán"
+        ],
+        "imperfecto": [
+            "servía",
+            "servías",
+            "servía",
+            "servíamos",
+            "servíais",
+            "servían"
+        ],
+        "perfecto": [
+            "servido"
+        ],
+        "presente progresivo": [
+            "sirviendo"
+        ]
+    },
+    "Utilizar (To use / To utilize)": {
+        "present": [
+            "Utilizo",
+            "Utilizas",
+            "Utiliza",
+            "Utilizamos",
+            "Utilizáis",
+            "Utilizan"
+        ],
+        "past": [
+            "Utilicé",
+            "Utilizaste",
+            "Utilizó",
+            "Utilizamos",
+            "Utilizasteis",
+            "Utilizaron"
+        ],
+        "future": [
+            "Utilizaré",
+            "Utilizarás",
+            "Utilizará",
+            "Utilizaremos",
+            "Utilizaréis",
+            "Utilizarán"
+        ],
+        "imperfecto": [
+            "utilizaba",
+            "utilizabas",
+            "utilizaba",
+            "utilizábamos",
+            "utilizabais",
+            "utilizaban"
+        ],
+        "perfecto": [
+            "utilizado"
+        ],
+        "presente progresivo": [
+            "utilizando"
+        ]
+    },
+    "Mostrar (To show)": {
+        "present": [
+            "Muestro",
+            "Muestras",
+            "Muestra",
+            "Mostramos",
+            "Mostráis",
+            "Muestran"
+        ],
+        "past": [
+            "Mostré",
+            "Mostraste",
+            "Mostró",
+            "Mostramos",
+            "Mostrasteis",
+            "Mostraron"
+        ],
+        "future": [
+            "Mostraré",
+            "Mostrarás",
+            "Mostrará",
+            "Mostraremos",
+            "Mostraréis",
+            "Mostrarán"
+        ],
+        "imperfecto": [
+            "mostraba",
+            "mostrabas",
+            "mostraba",
+            "mostrábamos",
+            "mostrabais",
+            "mostraban"
+        ],
+        "perfecto": [
+            "mostrado"
+        ],
+        "presente progresivo": [
+            "mostrando"
+        ]
+    },
+    "Presentar (To present / To introduce)": {
+        "present": [
+            "Presento",
+            "Presentas",
+            "Presenta",
+            "Presentamos",
+            "Presentáis",
+            "Presentan"
+        ],
+        "past": [
+            "Presenté",
+            "Presentaste",
+            "Presentó",
+            "Presentamos",
+            "Presentasteis",
+            "Presentaron"
+        ],
+        "future": [
+            "Presentaré",
+            "Presentarás",
+            "Presentará",
+            "Presentaremos",
+            "Presentaréis",
+            "Presentarán"
+        ],
+        "imperfecto": [
+            "presentaba",
+            "presentabas",
+            "presentaba",
+            "presentábamos",
+            "presentabais",
+            "presentaban"
+        ],
+        "perfecto": [
+            "presentado"
+        ],
+        "presente progresivo": [
+            "presentando"
+        ]
+    },
+    "Crear (To create)": {
+        "present": [
+            "Creo",
+            "Creas",
+            "Crea",
+            "Creamos",
+            "Creáis",
+            "Crean"
+        ],
+        "past": [
+            "Creé",
+            "Creaste",
+            "Creó",
+            "Creamos",
+            "Creasteis",
+            "Crearon"
+        ],
+        "future": [
+            "Crearé",
+            "Crearás",
+            "Creará",
+            "Crearemos",
+            "Crearéis",
+            "Crearán"
+        ],
+        "imperfecto": [
+            "creaba",
+            "creabas",
+            "creaba",
+            "creábamos",
+            "creabais",
+            "creaban"
+        ],
+        "perfecto": [
+            "creado"
+        ],
+        "presente progresivo": [
+            "creando"
+        ]
+    },
+    "Realizar (To achieve / To carry out)": {
+        "present": [
+            "Realizo",
+            "Realizas",
+            "Realiza",
+            "Realizamos",
+            "Realizáis",
+            "Realizan"
+        ],
+        "past": [
+            "Realicé",
+            "Realizaste",
+            "Realizó",
+            "Realizamos",
+            "Realizasteis",
+            "Realizaron"
+        ],
+        "future": [
+            "Realizaré",
+            "Realizarás",
+            "Realizará",
+            "Realizaremos",
+            "Realizaréis",
+            "Realizarán"
+        ],
+        "imperfecto": [
+            "realizaba",
+            "realizabas",
+            "realizaba",
+            "realizábamos",
+            "realizabais",
+            "realizaban"
+        ],
+        "perfecto": [
+            "realizado"
+        ],
+        "presente progresivo": [
+            "realizando"
+        ]
+    },
+    "Lograr (To achieve / To manage to)": {
+        "present": [
+            "Logro",
+            "Logras",
+            "Logra",
+            "Logramos",
+            "Lográis",
+            "Logran"
+        ],
+        "past": [
+            "Logré",
+            "Lograste",
+            "Logró",
+            "Logramos",
+            "Lograsteis",
+            "Lograron"
+        ],
+        "future": [
+            "Lograré",
+            "Lograrás",
+            "Logrará",
+            "Lograremos",
+            "Lograréis",
+            "Lograrán"
+        ],
+        "imperfecto": [
+            "lograba",
+            "lograbas",
+            "lograba",
+            "lográbamos",
+            "lograbais",
+            "lograban"
+        ],
+        "perfecto": [
+            "logrado"
+        ],
+        "presente progresivo": [
+            "logrando"
+        ]
+    },
+    "Alcanzar (To reach / To catch up)": {
+        "present": [
+            "Alcanzo",
+            "Alcanzas",
+            "Alcanza",
+            "Alcanzamos",
+            "Alcanzáis",
+            "Alcanzan"
+        ],
+        "past": [
+            "Alcancé",
+            "Alcanzaste",
+            "Alcanzó",
+            "Alcanzamos",
+            "Alcanzasteis",
+            "Alcanzaron"
+        ],
+        "future": [
+            "Alcanzaré",
+            "Alcanzarás",
+            "Alcanzará",
+            "Alcanzaremos",
+            "Alcanzaréis",
+            "Alcanzarán"
+        ],
+        "imperfecto": [
+            "alcanzaba",
+            "alcanzabas",
+            "alcanzaba",
+            "alcanzábamos",
+            "alcanzabais",
+            "alcanzaban"
+        ],
+        "perfecto": [
+            "alcanzado"
+        ],
+        "presente progresivo": [
+            "alcanzando"
+        ]
+    },
+    "Reconocer (To recognize)": {
+        "present": [
+            "Reconozco",
+            "Reconoces",
+            "Reconoce",
+            "Reconocemos",
+            "Reconocéis",
+            "Reconocen"
+        ],
+        "past": [
+            "Reconocí",
+            "Reconociste",
+            "Reconoció",
+            "Reconocimos",
+            "Reconocisteis",
+            "Reconocieron"
+        ],
+        "future": [
+            "Reconoceré",
+            "Reconocerás",
+            "Reconocerá",
+            "Reconoceremos",
+            "Reconoceréis",
+            "Reconocerán"
+        ],
+        "imperfecto": [
+            "reconocía",
+            "reconocías",
+            "reconocía",
+            "reconocíamos",
+            "reconocíais",
+            "reconocían"
+        ],
+        "perfecto": [
+            "reconocido"
+        ],
+        "presente progresivo": [
+            "reconociendo"
+        ]
+    },
+    "Comprender (To understand / To comprehend)": {
+        "present": [
+            "Comprendo",
+            "Comprendes",
+            "Comprende",
+            "Comprendemos",
+            "Comprendéis",
+            "Comprenden"
+        ],
+        "past": [
+            "Comprendí",
+            "Comprendiste",
+            "Comprendió",
+            "Comprendimos",
+            "Comprendisteis",
+            "Comprendieron"
+        ],
+        "future": [
+            "Comprenderé",
+            "Comprenderás",
+            "Comprenderá",
+            "Comprenderemos",
+            "Comprenderéis",
+            "Comprenderán"
+        ],
+        "imperfecto": [
+            "comprendía",
+            "comprendías",
+            "comprendía",
+            "comprendíamos",
+            "comprendíais",
+            "comprendían"
+        ],
+        "perfecto": [
+            "comprendido"
+        ],
+        "presente progresivo": [
+            "comprendiendo"
+        ]
+    },
+    "Resultar (To result / To turn out)": {
+        "present": [
+            "Resulto",
+            "Resultas",
+            "Resulta",
+            "Resultamos",
+            "Resultáis",
+            "Resultan"
+        ],
+        "past": [
+            "Resulté",
+            "Resultaste",
+            "Resultó",
+            "Resultamos",
+            "Resultasteis",
+            "Resultaron"
+        ],
+        "future": [
+            "Resultaré",
+            "Resultarás",
+            "Resultará",
+            "Resultaremos",
+            "Resultaréis",
+            "Resultarán"
+        ],
+        "imperfecto": [
+            "resultaba",
+            "resultabas",
+            "resultaba",
+            "resultábamos",
+            "resultabais",
+            "resultaban"
+        ],
+        "perfecto": [
+            "resultado"
+        ],
+        "presente progresivo": [
+            "resultando"
+        ]
+    },
+    "Convertir (To convert / To change)": {
+        "present": [
+            "Convierto",
+            "Conviertes",
+            "Convierte",
+            "Convertimos",
+            "Convertís",
+            "Convierten"
+        ],
+        "past": [
+            "Convertí",
+            "Convertiste",
+            "Convirtió",
+            "Convertimos",
+            "Convertisteis",
+            "Convirtieron"
+        ],
+        "future": [
+            "Convertiré",
+            "Convertirás",
+            "Convertirá",
+            "Convertiremos",
+            "Convertiréis",
+            "Convertirán"
+        ],
+        "imperfecto": [
+            "convertía",
+            "convertías",
+            "convertía",
+            "convertíamos",
+            "convertíais",
+            "convertían"
+        ],
+        "perfecto": [
+            "convertido"
+        ],
+        "presente progresivo": [
+            "convertiendo"
+        ]
+    },
+    "Cumplir (To fulfill / To achieve / To turn years old)": {
+        "present": [
+            "Cumplo",
+            "Cumples",
+            "Cumple",
+            "Cumplimos",
+            "Cumplís",
+            "Cumplen"
+        ],
+        "past": [
+            "Cumplí",
+            "Cumpliste",
+            "Cumplió",
+            "Cumplimos",
+            "Cumplisteis",
+            "Cumplieron"
+        ],
+        "future": [
+            "Cumpliré",
+            "Cumplirás",
+            "Cumplirá",
+            "Cumpliremos",
+            "Cumpliréis",
+            "Cumplirán"
+        ],
+        "imperfecto": [
+            "cumplía",
+            "cumplías",
+            "cumplía",
+            "cumplíamos",
+            "cumplíais",
+            "cumplían"
+        ],
+        "perfecto": [
+            "cumplido"
+        ],
+        "presente progresivo": [
+            "cumpliendo"
+        ]
+    },
+    "Descubrir (To discover)": {
+        "present": [
+            "Descubro",
+            "Descubres",
+            "Descubre",
+            "Descubrimos",
+            "Descubrís",
+            "Descubren"
+        ],
+        "past": [
+            "Descubrí",
+            "Descubriste",
+            "Descubrió",
+            "Descubrimos",
+            "Descubristeis",
+            "Descubrieron"
+        ],
+        "future": [
+            "Descubriré",
+            "Descubrirás",
+            "Descubrirá",
+            "Descubriremos",
+            "Descubriréis",
+            "Descubrirán"
+        ],
+        "imperfecto": [
+            "descubría",
+            "descubrías",
+            "descubría",
+            "descubríamos",
+            "descubríais",
+            "descubrían"
+        ],
+        "perfecto": [
+            "descubrido"
+        ],
+        "presente progresivo": [
+            "descubriendo"
+        ]
+    },
+    "Levantar (To raise / To lift)": {
+        "present": [
+            "Levanto",
+            "Levantas",
+            "Levanta",
+            "Levantamos",
+            "Levantáis",
+            "Levantan"
+        ],
+        "past": [
+            "Levanté",
+            "Levantaste",
+            "Levantó",
+            "Levantamos",
+            "Levantasteis",
+            "Levantaron"
+        ],
+        "future": [
+            "Levantaré",
+            "Levantarás",
+            "Levantará",
+            "Levantaremos",
+            "Levantaréis",
+            "Levantarán"
+        ],
+        "imperfecto": [
+            "levantaba",
+            "levantabas",
+            "levantaba",
+            "levantábamos",
+            "levantabais",
+            "levantaban"
+        ],
+        "perfecto": [
+            "levantado"
+        ],
+        "presente progresivo": [
+            "levantando"
+        ]
+    },
+    "Producir (To produce)": {
+        "present": [
+            "Produzco",
+            "Produces",
+            "Produce",
+            "Producimos",
+            "Producís",
+            "Producen"
+        ],
+        "past": [
+            "Produje",
+            "Produjiste",
+            "Produjo",
+            "Produjimos",
+            "Produjisteis",
+            "Produjeron"
+        ],
+        "future": [
+            "Produciré",
+            "Producirás",
+            "Producirá",
+            "Produciremos",
+            "Produciréis",
+            "Producirán"
+        ],
+        "imperfecto": [
+            "producía",
+            "producías",
+            "producía",
+            "producíamos",
+            "producíais",
+            "producían"
+        ],
+        "perfecto": [
+            "producido"
+        ],
+        "presente progresivo": [
+            "produciendo"
+        ]
+    },
+    "Suponer (To suppose / To assume)": {
+        "present": [
+            "Supongo",
+            "Supones",
+            "Supone",
+            "Suponemos",
+            "Suponéis",
+            "Suponen"
+        ],
+        "past": [
+            "Supuse",
+            "Supusiste",
+            "Supuso",
+            "Supusimos",
+            "Supusisteis",
+            "Supusieron"
+        ],
+        "future": [
+            "Supondré",
+            "Supondrás",
+            "Supondrá",
+            "Supondremos",
+            "Supondréis",
+            "Supondrán"
+        ],
+        "imperfecto": [
+            "suponía",
+            "suponías",
+            "suponía",
+            "suponíamos",
+            "suponíais",
+            "suponían"
+        ],
+        "perfecto": [
+            "suponido"
+        ],
+        "presente progresivo": [
+            "suponiendo"
+        ]
+    },
+    "Dirigir (To direct / To manage)": {
+        "present": [
+            "Dirijo",
+            "Diriges",
+            "Dirige",
+            "Dirigimos",
+            "Dirigís",
+            "Dirigen"
+        ],
+        "past": [
+            "Dirigí",
+            "Dirigiste",
+            "Dirigió",
+            "Dirigimos",
+            "Dirigisteis",
+            "Dirigieron"
+        ],
+        "future": [
+            "Dirigiré",
+            "Dirigirás",
+            "Dirigirá",
+            "Dirigiremos",
+            "Dirigiréis",
+            "Dirigirán"
+        ],
+        "imperfecto": [
+            "dirigía",
+            "dirigías",
+            "dirigía",
+            "dirigíamos",
+            "dirigíais",
+            "dirigían"
+        ],
+        "perfecto": [
+            "dirigido"
+        ],
+        "presente progresivo": [
+            "dirigiendo"
+        ]
+    },
+    "Existir (To exist)": {
+        "present": [
+            "Existo",
+            "Existes",
+            "Existe",
+            "Existimos",
+            "Existís",
+            "Existen"
+        ],
+        "past": [
+            "Existí",
+            "Exististe",
+            "Existió",
+            "Existimos",
+            "Exististeis",
+            "Existieron"
+        ],
+        "future": [
+            "Existiré",
+            "Existirás",
+            "Existirá",
+            "Existiremos",
+            "Existiréis",
+            "Existirán"
+        ],
+        "imperfecto": [
+            "existía",
+            "existías",
+            "existía",
+            "existíamos",
+            "existíais",
+            "existían"
+        ],
+        "perfecto": [
+            "existido"
+        ],
+        "presente progresivo": [
+            "existiendo"
+        ]
+    },
+    "Ocurrir (To occur / To happen)": {
+        "present": [
+            "Ocurro",
+            "Ocurres",
+            "Ocurre",
+            "Ocurrimos",
+            "Ocurrís",
+            "Ocurren"
+        ],
+        "past": [
+            "Ocurrí",
+            "Ocurriste",
+            "Ocurrió",
+            "Ocurrimos",
+            "Ocurristeis",
+            "Ocurrieron"
+        ],
+        "future": [
+            "Ocurriré",
+            "Ocurrirás",
+            "Ocurrirá",
+            "Ocurriremos",
+            "Ocurriréis",
+            "Ocurrirán"
+        ],
+        "imperfecto": [
+            "ocurría",
+            "ocurrías",
+            "ocurría",
+            "ocurríamos",
+            "ocurríais",
+            "ocurrían"
+        ],
+        "perfecto": [
+            "ocurrido"
+        ],
+        "presente progresivo": [
+            "ocurriendo"
+        ]
+    },
+    "Acabar (To finish / To end)": {
+        "present": [
+            "Acabo",
+            "Acabas",
+            "Acaba",
+            "Acabamos",
+            "Acabáis",
+            "Acaban"
+        ],
+        "past": [
+            "Acabé",
+            "Acabaste",
+            "Acabó",
+            "Acabamos",
+            "Acabasteis",
+            "Acabaron"
+        ],
+        "future": [
+            "Acabaré",
+            "Acabarás",
+            "Acabará",
+            "Acabaremos",
+            "Acabaréis",
+            "Acabarán"
+        ],
+        "imperfecto": [
+            "acababa",
+            "acababas",
+            "acababa",
+            "acabábamos",
+            "acababais",
+            "acababan"
+        ],
+        "perfecto": [
+            "acabado"
+        ],
+        "presente progresivo": [
+            "acabando"
+        ]
+    },
+    "Sentir (To feel / To regret)": {
+        "present": [
+            "Siento",
+            "Sientes",
+            "Siente",
+            "Sentimos",
+            "Sentís",
+            "Sienten"
+        ],
+        "past": [
+            "Sentí",
+            "Sentiste",
+            "Sintió",
+            "Sentimos",
+            "Sentisteis",
+            "Sintieron"
+        ],
+        "future": [
+            "Sentiré",
+            "Sentirás",
+            "Sentirá",
+            "Sentiremos",
+            "Sentiréis",
+            "Sentirán"
+        ],
+        "imperfecto": [
+            "sentía",
+            "sentías",
+            "sentía",
+            "sentíamos",
+            "sentíais",
+            "sentían"
+        ],
+        "perfecto": [
+            "sentido"
+        ],
+        "presente progresivo": [
+            "sintiendo"
+        ]
+    },
+    "Oír (To hear)": {
+        "present": [
+            "Oigo",
+            "Oyes",
+            "Oye",
+            "Oímos",
+            "Oís",
+            "Oyen"
+        ],
+        "past": [
+            "Oí",
+            "Oíste",
+            "Oyó",
+            "Oímos",
+            "Oísteis",
+            "Oyeron"
+        ],
+        "future": [
+            "Oiré",
+            "Oirás",
+            "Oirá",
+            "Oiremos",
+            "Oiréis",
+            "Oirán"
+        ],
+        "imperfecto": [
+            "oía",
+            "oías",
+            "oía",
+            "oíamos",
+            "oíais",
+            "oían"
+        ],
+        "perfecto": [
+            "oído"
+        ],
+        "presente progresivo": [
+            "oyendo"
+        ]
+    }
+}

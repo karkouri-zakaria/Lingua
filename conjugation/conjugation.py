@@ -1,7 +1,7 @@
 from streamlit import (
     session_state, text_area, button, text_input, markdown, warning, success,
     rerun, columns, progress, audio, multiselect, selectbox, expander,
-    balloons, container, form, form_submit_button, toggle, download_button
+    balloons, container, form, form_submit_button, toggle, download_button, sidebar, divider
 )
 from Audio_gen.generate_audio import generate_audio
 from Answers.colorize import colorize_conjugation
@@ -12,20 +12,64 @@ import unicodedata
 import re
 import json
 import os
+from time import sleep
 
 HISTORY_FILE = "History/conjugation_history.json"
 ALL_VERBS_FILE = "History/all_verbs.json"
 PRONOUNS = ["Yo", "Tú", "Él/Ella/Utd", "Nosotros/as", "Vosotros/as", "Ellos/as/Utds"]
 PRONOUN_GROUPS = [PRONOUNS[:3], PRONOUNS[3:]]
 STANDARD_TENSE_ORDER = [
-    "past", "imperfecto", "perfecto", "present", "presente progresivo", "future"
+    "present", "past", "imperfecto", "perfecto", "presente progresivo", "future"
 ]
 DEFAULT_TENSES = STANDARD_TENSE_ORDER.copy()
 COMPOSITE_TENSES = {"perfecto", "presente progresivo"}
 COMPOSITE_AUXILIARIES = {
-    "perfecto": ["he", "has", "ha", "hemos", "habéis", "han"],
-    "presente progresivo": ["estoy", "estás", "está", "estamos", "estáis", "están"]
+    "perfecto": ["He", "Has", "Ha", "Hemos", "Habéis", "Han"],
+    "presente progresivo": ["Estoy", "Estás", "Está", "Estamos", "Estáis", "Están"]
 }
+YO_ONLY_TENSES = {"past", "pretérito", "preterito", "future", "futuro", "imperfecto", "perfecto", "presente progresivo"}
+TENSE_TITLE_MAP = {
+    "past": "Pretérito",
+    "imperfecto": "Imperfecto",
+    "perfecto": "Perfecto",
+    "present": "Presente",
+    "presente progresivo": "Presente Progresivo",
+    "future": "Futuro"
+}
+
+
+def is_yo_only_tense(tense):
+    return tense.lower() in YO_ONLY_TENSES
+
+
+def should_ask_pronoun(tense, pronoun):
+    if session_state.get("conj_yo_only_mode", True) and is_yo_only_tense(tense):
+        return pronoun == "Yo"
+    return True
+
+
+def get_active_pronoun_groups(active_tenses):
+    groups = []
+    for group in PRONOUN_GROUPS:
+        if any(should_ask_pronoun(t, p) for p in group for t in active_tenses):
+            groups.append(group)
+    return groups or [PRONOUN_GROUPS[0]]
+
+
+def get_target_match_string(tense, raw_value, pronoun_index):
+    """Return target string for matching, allowing both full compound form and bare participle/gerund for composite tenses."""
+    formatted = format_tense_value(tense, raw_value, pronoun_index)
+    if tense.lower() in COMPOSITE_TENSES:
+        options = []
+        if formatted:
+            options.append(formatted)
+        if raw_value and raw_value not in options:
+            options.append(raw_value)
+        parts = formatted.split()
+        if len(parts) > 1 and parts[-1] not in options:
+            options.append(parts[-1])
+        return " / ".join(options)
+    return raw_value
 
 
 def format_tense_value(tense, value, pronoun_index):
@@ -41,6 +85,45 @@ def get_tense_values(tense, values):
     if tense.lower() in COMPOSITE_TENSES and len(values) == 1:
         return values * len(PRONOUNS)
     return values
+
+
+def render_clean_feedback_card(title, icon, verb, active_tenses, completed_rows, border_color="#10b981", bg_color="rgba(16, 185, 129, 0.08)"):
+    """Render a structured, beautiful HTML feedback card for quiz answers."""
+    headers = "".join(
+        f"<th style='padding: 8px 12px; border-bottom: 2px solid rgba(255,255,255,0.15); text-align: left; font-size: 13px; color: #94a3b8;'>{TENSE_TITLE_MAP.get(t.lower(), t.capitalize())}</th>"
+        for t in active_tenses
+    )
+
+    rows = []
+    for entry in completed_rows:
+        pronoun = entry.get("Pronoun", "")
+        row_cells = [f"<td style='padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); font-weight: 600; color: #cbd5e1;'>{pronoun}</td>"]
+        for t in active_tenses:
+            tense_col = TENSE_TITLE_MAP.get(t.lower(), t.capitalize())
+            val = entry.get(tense_col, "")
+            row_cells.append(f"<td style='padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px;'>{val}</td>")
+        rows.append(f"<tr>{''.join(row_cells)}</tr>")
+
+    table_body = "".join(rows)
+
+    return f"""<div style="background: {bg_color}; border: 1px solid {border_color}; border-radius: 8px; padding: 14px 18px; margin: 12px 0 16px 0;">
+    <div style="font-size: 16px; font-weight: 600; color: {border_color}; margin-bottom: 12px;">
+        {icon} {title} for <b>{verb}</b>:
+    </div>
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-family: inherit;">
+            <thead>
+                <tr>
+                    <th style="padding: 8px 12px; border-bottom: 2px solid rgba(255,255,255,0.15); text-align: left; font-size: 13px; color: #94a3b8;">Pronoun</th>
+                    {headers}
+                </tr>
+            </thead>
+            <tbody>
+                {table_body}
+            </tbody>
+        </table>
+    </div>
+</div>"""
 
 def normalize(text):
     return ''.join(c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn')
@@ -223,6 +306,8 @@ def conjugation_view():
         session_state.conj_verb_completed = False
     if "conj_completed_pronouns" not in session_state:
         session_state.conj_completed_pronouns = []
+    if "conj_yo_only_mode" not in session_state:
+        session_state.conj_yo_only_mode = True
 
     # Logic Controller
     if session_state.conj_mode == "input":
@@ -266,6 +351,16 @@ def _input_screen():
             session_state.conj_selected_tenses = sorted_tenses
         else:
             session_state.conj_selected_tenses = ["present"]
+
+    # Toggle for Yo-only mode vs All subjects
+    yo_only_val = sidebar.toggle(
+        "⚡Yo Mode",
+        value=session_state.get("conj_yo_only_mode", True),
+        key="conj_yo_only_mode_input_toggle",
+        help="When enabled, only 'Yo' is tested for Pretérito, Futuro, Imperfecto, Perfecto, and Presente Progresivo. Correct answers will display all 6 pronoun conjugations."
+    )
+    if yo_only_val != session_state.get("conj_yo_only_mode", True):
+        session_state.conj_yo_only_mode = yo_only_val
     
     # Verb Selection from database
     if combined_verbs:
@@ -426,7 +521,8 @@ def _quiz_screen():
     current_verb_data = data[verb_idx]
     full_verb_text = current_verb_data["verb"]
     conjugations_dict = current_verb_data["conjugations"]
-    selected_tenses = session_state.conj_selected_tenses
+    selected_tenses = [t for t in STANDARD_TENSE_ORDER if t in session_state.conj_selected_tenses] + [t for t in session_state.conj_selected_tenses if t not in STANDARD_TENSE_ORDER]
+    session_state.conj_selected_tenses = selected_tenses
     if set(selected_tenses) == {"past", "present", "future"} and is_new_format(conjugations_dict):
         selected_tenses = [t for t in DEFAULT_TENSES if t in conjugations_dict]
         session_state.conj_selected_tenses = selected_tenses
@@ -468,11 +564,12 @@ def _quiz_screen():
 
     global_idx = combined_list.index(full_verb_text) if full_verb_text in combined_list else (verb_idx + 1)
     pronoun_idx = session_state.conj_pronoun_idx
-    total_pronoun_groups = len(PRONOUN_GROUPS)
-    first_input_label = conjugation_input_label(active_tenses[0], PRONOUN_GROUPS[0][0])
+    active_pronoun_groups = get_active_pronoun_groups(active_tenses)
+    total_pronoun_groups = len(active_pronoun_groups)
+    first_input_label = conjugation_input_label(active_tenses[0], PRONOUNS[0])
 
     # --- VERB COMPLETED SCREEN ---
-    if session_state.get("conj_verb_completed", False) or pronoun_idx >= total_pronoun_groups:
+    if session_state.get("conj_verb_completed", False):
         session_state.conj_verb_completed = True
         markdown(f"## 🎉 Verb #{global_idx}: **{verb}** {translation} — Completed!", unsafe_allow_html=True)
         
@@ -483,7 +580,7 @@ def _quiz_screen():
                 audio(audio_path, format="audio/mp3", autoplay=True)
             del session_state.conj_audio
 
-        # Full 3-Tense Conjugation Table for this verb
+        # Full Conjugation Table for this verb
         markdown("#### 📖 Conjugation Review (All Tenses)")
         table_rows = []
         for p_i in range(total_pronouns):
@@ -497,9 +594,9 @@ def _quiz_screen():
                         format_tense_value(t, value, value_index)
                         for value_index, value in enumerate(display_values)
                     ]
-                    row[t.capitalize()] = colorize_conjugation(verb, display_list[p_i], display_list)
+                    row[TENSE_TITLE_MAP.get(t.lower(), t.capitalize())] = colorize_conjugation(verb, display_list[p_i], display_list)
                 else:
-                    row[t.capitalize()] = "-"
+                    row[TENSE_TITLE_MAP.get(t.lower(), t.capitalize())] = "-"
             table_rows.append(row)
 
         if table_rows:
@@ -543,8 +640,8 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
         return
 
     # --- ACTIVE PRONOUN GROUP QUESTION ---
-    current_group = PRONOUN_GROUPS[pronoun_idx]
-    group_start = pronoun_idx * 3
+    current_group = active_pronoun_groups[pronoun_idx]
+    group_start = PRONOUNS.index(current_group[0])
 
     # Target values for every pronoun and active tense in this group.
     targets = {}
@@ -562,16 +659,37 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
                 tense_values[pronoun_position] if pronoun_position < len(tense_values) else ""
             )
 
+    # Tenses that have questions in this group
+    group_active_tenses = [
+        t for t in active_tenses
+        if any(should_ask_pronoun(t, p) for p in current_group)
+    ]
+    # Pronouns in this group that have at least one question asked
+    group_asked_pronouns = [
+        p for p in current_group
+        if any(should_ask_pronoun(t, p) for t in active_tenses)
+    ]
+
     # Header and Progress
     markdown(f"### Verb #{global_idx}: {translation}")
     markdown(f"# **{verb}**", unsafe_allow_html=True)
     
-    col_p_badge, col_prog = columns([1, 3], vertical_alignment="center")
+    col_p_badge, col_prog, col_tgl = columns([1, 2, 1], vertical_alignment="center")
     with col_p_badge:
-        markdown(f"## 👥 **{'/'.join(current_group)}**")
+        markdown(f"## 👥 **{'/'.join(group_asked_pronouns)}**")
     with col_prog:
         progress_val = max(0.0, min(float(pronoun_idx)/float(total_pronoun_groups), 1.0))
         progress(progress_val, text=f"Pronoun group {pronoun_idx + 1}/{total_pronoun_groups} (Verb {verb_idx + 1}/{len(data)})")
+    with col_tgl:
+        quiz_yo_only = toggle(
+            "Only 'Yo' mode",
+            value=session_state.get("conj_yo_only_mode", True),
+            key="conj_yo_only_mode_quiz_toggle",
+            help="Toggle between answering only 'Yo' or all 6 subjects for Pretérito, Futuro, Imperfecto, Perfecto, and Presente Progresivo."
+        )
+        if quiz_yo_only != session_state.get("conj_yo_only_mode", True):
+            session_state.conj_yo_only_mode = quiz_yo_only
+            rerun()
 
     # Audio & Previous Pronoun Success
     if "conj_audio" in session_state:
@@ -584,57 +702,61 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
         markdown(session_state.conj_last_markdown, unsafe_allow_html=True)
         del session_state.conj_last_markdown
 
+    # Inform the user when subsequent group skips Yo-only tenses
+    yo_only_active_tenses = [
+        t for t in active_tenses
+        if is_yo_only_tense(t) and session_state.get("conj_yo_only_mode", True)
+    ]
+    if pronoun_idx > 0 and yo_only_active_tenses:
+        yo_titles = [TENSE_TITLE_MAP.get(t.lower(), t.capitalize()) for t in yo_only_active_tenses]
+        markdown(f"<div style='margin-bottom: 8px; font-size: 13px; color: #94a3b8;'>ℹ️ <b>{', '.join(yo_titles)}</b>: answered only for <b>Yo</b> (completed).</div>", unsafe_allow_html=True)
+
     # Multi-Tense Simultaneous Form
     with form(key=f"pronoun_form_{verb_idx}_{pronoun_idx}"):
         user_inputs = {}
-        
-        tense_title_map = {
-            "past": "Pretérito (Past)",
-            "imperfecto": "Imperfecto",
-            "perfecto": "Perfecto",
-            "present": "Presente (Present)",
-            "presente progresivo": "Presente Progresivo",
-            "future": "Futuro (Future)"
-        }
-        
-        tense_columns = columns(len(active_tenses))
-        for column, t in zip(tense_columns, active_tenses):
+        tense_columns = columns(len(group_active_tenses))
+        for column, t in zip(tense_columns, group_active_tenses):
             with column:
-                header_title = tense_title_map.get(t.lower(), t.capitalize())
+                header_title = TENSE_TITLE_MAP.get(t.lower(), t.capitalize())
                 markdown(f"**{header_title}**")
-                if t in COMPOSITE_TENSES:
-                    field_key = t
-                    field_label = f"{t.capitalize()} main form input"
+                for group_offset, pronoun in enumerate(current_group):
+                    if not should_ask_pronoun(t, pronoun):
+                        continue
+                    field_key = (group_offset, t)
+                    field_label = conjugation_input_label(t, pronoun)
                     if session_state.get("conj_tense_status", {}).get(field_key) == "correct":
-                        markdown("✅ **Main form**")
-                    else:
-                        markdown("**Main form**")
-                    err_msg = session_state.get("conj_tense_errors", {}).get(field_key, "")
-                    if err_msg:
-                        markdown(f"<span style='color: #ff5555; font-size: 13px;'>{err_msg}</span>", unsafe_allow_html=True)
-                    user_inputs[field_key] = text_input(
-                        label=field_label,
-                        label_visibility="collapsed",
-                        placeholder="Participle only..." if t == "perfecto" else "Gerund only...",
-                        key=f"form_input_{verb_idx}_{pronoun_idx}_shared_{t}"
-                    )
-                else:
-                    for group_offset, pronoun in enumerate(current_group):
-                        field_key = (group_offset, t)
-                        field_label = conjugation_input_label(t, pronoun)
-                        if session_state.get("conj_tense_status", {}).get(field_key) == "correct":
-                            markdown(f"✅ **{pronoun}**")
-                        else:
-                            markdown(f"**{pronoun}**")
-                        err_msg = session_state.get("conj_tense_errors", {}).get(field_key, "")
-                        if err_msg:
-                            markdown(f"<span style='color: #ff5555; font-size: 13px;'>{err_msg}</span>", unsafe_allow_html=True)
+                        input_key = f"form_input_{verb_idx}_{pronoun_idx}_{group_offset}_{t}"
+                        session_state[input_key] = format_tense_value(
+                            t,
+                            targets[field_key],
+                            group_start + group_offset
+                        )
+                        markdown(f"✅ **{pronoun}**")
                         user_inputs[field_key] = text_input(
                             label=field_label,
                             label_visibility="collapsed",
-                            placeholder=f"{pronoun} in {t.capitalize()}...",
+                            key=input_key,
+                            disabled=True
+                        )
+                    else:
+                        markdown(f"**{pronoun}**")
+                        err_msg = session_state.get("conj_tense_errors", {}).get(field_key, "")
+                        if err_msg:
+                            markdown(f"<span style='color: #ff5555; font-size: 13px;'>{err_msg}</span>", unsafe_allow_html=True)
+                        if t.lower() == "perfecto":
+                            placeholder = "He ... or participle..."
+                        elif t.lower() == "presente progresivo":
+                            placeholder = "Estoy ... or gerund..."
+                        else:
+                            placeholder = f"{pronoun} in {header_title}..."
+                        user_inputs[field_key] = text_input(
+                            label=field_label,
+                            label_visibility="collapsed",
+                            placeholder=placeholder,
                             key=f"form_input_{verb_idx}_{pronoun_idx}_{group_offset}_{t}"
                         )
+                    if is_yo_only_tense(t) and session_state.get("conj_yo_only_mode", True):
+                        markdown("<span style='color: #64748b; font-size: 11px;'>*Yo only*</span>", unsafe_allow_html=True)
 
         # Form Submit Row
         btn_c1, btn_c2 = columns([3, 1])
@@ -653,55 +775,74 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
         tense_errors = {}
         tense_status = {}
         
-        for t in active_tenses:
-            for group_offset, _pronoun in enumerate(current_group):
+        for group_offset, pronoun in enumerate(current_group):
+            for t in group_active_tenses:
+                if not should_ask_pronoun(t, pronoun):
+                    continue
                 field_key = (group_offset, t)
-                input_key = t if t in COMPOSITE_TENSES else field_key
-                u_val = user_inputs[input_key].strip()
-                target = targets[field_key]
-                is_match, matched_opt = check_conjugation_match(u_val, target)
+                u_val = user_inputs.get(field_key, "").strip()
+                raw_target = targets[field_key]
+                target_str = get_target_match_string(t, raw_target, group_start + group_offset)
+                is_match, matched_opt = check_conjugation_match(u_val, target_str)
                 if is_match:
-                    matched_opts[field_key] = matched_opt if matched_opt else target
-                    tense_status[input_key] = "correct"
+                    if t.lower() in COMPOSITE_TENSES:
+                        canonical = format_tense_value(t, raw_target, group_start + group_offset)
+                        matched_opts[field_key] = canonical
+                    else:
+                        matched_opts[field_key] = matched_opt if matched_opt else raw_target
+                    tense_status[field_key] = "correct"
                 else:
                     all_correct = False
-                    tense_errors[input_key] = "Try again"
-                    tense_status[input_key] = "incorrect"
+                    tense_errors[field_key] = "Try again"
+                    tense_status[field_key] = "incorrect"
         
         if all_correct:
-            feedback_parts = []
-            for group_offset, pronoun in enumerate(current_group):
-                conjugations = [
-                    colorize_conjugation(
-                        verb,
-                        format_tense_value(t, matched_opts[(group_offset, t)], group_start + group_offset),
-                        target_lists[t]
-                    )
-                    for t in active_tenses
-                ]
-                feedback_parts.append(f"<b>{pronoun}:</b> " + " &ensp;·&ensp; ".join(conjugations))
-            session_state.conj_feedback_html = "<br>".join(feedback_parts)
+            passing_to_next_verb = (
+                session_state.conj_pronoun_idx + 1 >= total_pronoun_groups
+                and session_state.conj_verb_idx + 1 < len(data)
+            )
             announced = session_state.get("conj_audio_announced", set())
             new_correct_audio = [
                 format_tense_value(t, matched_opts[(group_offset, t)], group_start + group_offset)
-                for t in active_tenses
-                for group_offset in range(len(current_group))
-                if (group_offset, t) not in announced
+                for t in group_active_tenses
+                for group_offset, pronoun in enumerate(current_group)
+                if should_ask_pronoun(t, pronoun) and (group_offset, t) not in announced
             ]
             if new_correct_audio:
                 session_state.conj_audio = ", ".join(new_correct_audio)
             session_state.conj_audio_announced = announced | set(matched_opts)
             
-            # Record completed pronoun row for the live table
-            for group_offset, pronoun in enumerate(current_group):
+            # Record completed pronoun rows for the live table
+            pronouns_to_record = PRONOUNS if len(active_pronoun_groups) == 1 else current_group
+            base_offset = 0 if len(active_pronoun_groups) == 1 else group_start
+            
+            for p_i, pronoun in enumerate(pronouns_to_record):
                 completed_entry = {"Pronoun": pronoun}
+                p_pos = base_offset + p_i
                 for t in active_tenses:
-                    completed_entry[t.capitalize()] = colorize_conjugation(
+                    offset_in_group = p_pos - group_start
+                    if 0 <= offset_in_group < len(current_group) and (offset_in_group, t) in matched_opts:
+                        c_val = format_tense_value(t, matched_opts[(offset_in_group, t)], p_pos)
+                    elif p_pos < len(target_lists[t]):
+                        c_val = target_lists[t][p_pos]
+                    else:
+                        c_val = ""
+                    completed_entry[TENSE_TITLE_MAP.get(t.lower(), t.capitalize())] = colorize_conjugation(
                         verb,
-                        format_tense_value(t, matched_opts[(group_offset, t)], group_start + group_offset),
+                        c_val,
                         target_lists[t]
                     )
                 session_state.conj_completed_pronouns.append(completed_entry)
+
+            session_state.conj_feedback_html = render_clean_feedback_card(
+                title="Correct Conjugations",
+                icon="✅",
+                verb=verb,
+                active_tenses=active_tenses,
+                completed_rows=session_state.conj_completed_pronouns.copy(),
+                border_color="#10b981",
+                bg_color="rgba(16, 185, 129, 0.08)"
+            )
             
             session_state.conj_pronoun_idx += 1
             for key in ["conj_tense_errors", "conj_tense_status"]:
@@ -710,21 +851,32 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
             if "conj_last_markdown" in session_state:
                 del session_state.conj_last_markdown
             if session_state.conj_pronoun_idx >= total_pronoun_groups:
+                session_state.conj_last_completed_table = (verb, session_state.conj_completed_pronouns.copy())
                 session_state.conj_verb_idx += 1
                 session_state.conj_pronoun_idx = 0
                 session_state.conj_verb_completed = False
                 session_state.conj_completed_pronouns = []
                 session_state.conj_audio_announced = set()
                 if session_state.conj_verb_idx < len(data):
-                    session_state.conj_focus_tense = first_input_label
-            else:
-                session_state.conj_audio_announced = set()
-                session_state.conj_focus_tense = (
-                    conjugation_input_label(
-                        active_tenses[0],
-                        PRONOUN_GROUPS[session_state.conj_pronoun_idx][0]
+                    next_verb_data = data[session_state.conj_verb_idx]
+                    next_conjs = next_verb_data["conjugations"]
+                    next_active = [t for t in selected_tenses if is_new_format(next_conjs) and t in next_conjs] or ["present"]
+                    session_state.conj_focus_tense = conjugation_input_label(
+                        next_active[0],
+                        PRONOUNS[0]
                     )
-                )
+            else:
+                next_group = active_pronoun_groups[session_state.conj_pronoun_idx]
+                next_group_tenses = [
+                    t for t in active_tenses
+                    if any(should_ask_pronoun(t, p) for p in next_group)
+                ]
+                session_state.conj_audio_announced = set()
+                if next_group_tenses:
+                    session_state.conj_focus_tense = conjugation_input_label(
+                        next_group_tenses[0],
+                        next_group[0]
+                    )
             rerun()
         else:
             session_state.conj_tense_errors = tense_errors
@@ -732,23 +884,22 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
             announced = session_state.get("conj_audio_announced", set())
             new_correct_audio = [
                 format_tense_value(t, matched_opts[(group_offset, t)], group_start + group_offset)
-                for t in active_tenses
-                for group_offset in range(len(current_group))
-                if (group_offset, t) in matched_opts and (group_offset, t) not in announced
+                for t in group_active_tenses
+                for group_offset, pronoun in enumerate(current_group)
+                if should_ask_pronoun(t, pronoun) and (group_offset, t) in matched_opts and (group_offset, t) not in announced
             ]
             if new_correct_audio:
                 session_state.conj_audio = ", ".join(new_correct_audio)
                 session_state.conj_audio_announced = announced | set(matched_opts)
-            session_state.conj_focus_tense = next(
-                f"{t.capitalize()} main form input"
-                if t in COMPOSITE_TENSES else
-                conjugation_input_label(t, current_group[group_offset])
-                for t in active_tenses
-                for group_offset, _pronoun in enumerate(current_group)
-                if tense_status.get(t if t in COMPOSITE_TENSES else (group_offset, t)) == "incorrect"
+            first_err = next(
+                (group_offset, t)
+                for group_offset, pronoun in enumerate(current_group)
+                for t in group_active_tenses
+                if should_ask_pronoun(t, pronoun) and tense_status.get((group_offset, t)) == "incorrect"
             )
+            session_state.conj_focus_tense = conjugation_input_label(first_err[1], current_group[first_err[0]])
             session_state.conj_last_markdown = (
-                f"❌ Review needed for <b>{'/'.join(current_group)}</b>. "
+                f"❌ Review needed for <b>{'/'.join(group_asked_pronouns)}</b>. "
                 "Try the marked fields again."
             )
             rerun()
@@ -765,7 +916,11 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
                         session_state.conj_completed_pronouns.pop()
             elif session_state.conj_verb_idx > 0:
                 session_state.conj_verb_idx -= 1
-                session_state.conj_pronoun_idx = 0
+                prev_verb_data = data[session_state.conj_verb_idx]
+                prev_conjs = prev_verb_data["conjugations"]
+                prev_active = [t for t in selected_tenses if is_new_format(prev_conjs) and t in prev_conjs] or ["present"]
+                prev_groups = get_active_pronoun_groups(prev_active)
+                session_state.conj_pronoun_idx = max(0, len(prev_groups) - 1)
                 session_state.conj_completed_pronouns = []
             for k in ["conj_last_markdown", "conj_feedback_html", "conj_audio", "conj_audio_announced", "conj_tense_errors", "conj_tense_status"]:
                 if k in session_state:
@@ -774,42 +929,67 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
 
     with btn_skip:
         def skip_pronoun():
-            feedback_parts = []
-            audio_parts = []
-            for group_offset, pronoun in enumerate(current_group):
-                colorized_parts = [
-                    colorize_conjugation(
+            audio_parts = [
+                format_tense_value(t, targets[(group_offset, t)], group_start + group_offset)
+                for group_offset, pronoun in enumerate(current_group)
+                for t in group_active_tenses
+                if should_ask_pronoun(t, pronoun)
+            ]
+
+            skip_pronouns_to_record = PRONOUNS if len(active_pronoun_groups) == 1 else current_group
+            skip_base_offset = 0 if len(active_pronoun_groups) == 1 else group_start
+            for p_i, pronoun in enumerate(skip_pronouns_to_record):
+                completed_entry = {"Pronoun": pronoun}
+                p_pos = skip_base_offset + p_i
+                for t in active_tenses:
+                    c_val = target_lists[t][p_pos] if p_pos < len(target_lists[t]) else ""
+                    completed_entry[TENSE_TITLE_MAP.get(t.lower(), t.capitalize())] = colorize_conjugation(
                         verb,
-                        format_tense_value(t, targets[(group_offset, t)], group_start + group_offset),
+                        c_val,
                         target_lists[t]
                     )
-                    for t in active_tenses
-                ]
-                feedback_parts.append(f"<b>Skipped ({pronoun}):</b> " + " &ensp;·&ensp; ".join(colorized_parts))
-                audio_parts.extend(
-                    format_tense_value(t, targets[(group_offset, t)], group_start + group_offset)
-                    for t in active_tenses
-                )
-                completed_entry = {"Pronoun": pronoun}
-                for t in active_tenses:
-                    completed_entry[t.capitalize()] = colorized_parts[active_tenses.index(t)]
                 session_state.conj_completed_pronouns.append(completed_entry)
-            session_state.conj_feedback_html = "<br>".join(feedback_parts)
+            session_state.conj_feedback_html = render_clean_feedback_card(
+                title="Skipped Conjugations",
+                icon="⚠️",
+                verb=verb,
+                active_tenses=active_tenses,
+                completed_rows=session_state.conj_completed_pronouns.copy(),
+                border_color="#f59e0b",
+                bg_color="rgba(245, 158, 11, 0.08)"
+            )
             session_state.conj_audio = ", ".join(audio_parts)
             session_state.conj_pronoun_idx += 1
             for k in ["conj_last_markdown", "conj_tense_errors", "conj_tense_status"]:
                 if k in session_state:
                     del session_state[k]
             if session_state.conj_pronoun_idx >= total_pronoun_groups:
-                session_state.conj_verb_completed = True
-            else:
+                session_state.conj_last_completed_table = (verb, session_state.conj_completed_pronouns.copy())
+                session_state.conj_verb_idx += 1
+                session_state.conj_pronoun_idx = 0
+                session_state.conj_verb_completed = False
+                session_state.conj_completed_pronouns = []
                 session_state.conj_audio_announced = set()
-                session_state.conj_focus_tense = (
-                    conjugation_input_label(
-                        active_tenses[0],
-                        PRONOUN_GROUPS[session_state.conj_pronoun_idx][0]
+                if session_state.conj_verb_idx < len(data):
+                    next_verb_data = data[session_state.conj_verb_idx]
+                    next_conjs = next_verb_data["conjugations"]
+                    next_active = [t for t in selected_tenses if is_new_format(next_conjs) and t in next_conjs] or ["present"]
+                    session_state.conj_focus_tense = conjugation_input_label(
+                        next_active[0],
+                        PRONOUNS[0]
                     )
-                )
+            else:
+                next_group = active_pronoun_groups[session_state.conj_pronoun_idx]
+                next_group_tenses = [
+                    t for t in active_tenses
+                    if any(should_ask_pronoun(t, p) for p in next_group)
+                ]
+                session_state.conj_audio_announced = set()
+                if next_group_tenses:
+                    session_state.conj_focus_tense = conjugation_input_label(
+                        next_group_tenses[0],
+                        next_group[0]
+                    )
         button("⏭️ Skip", width="stretch", on_click=skip_pronoun)
 
     with btn_skip_verb:
@@ -826,19 +1006,33 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
 
     with btn_show:
         if button("📖 Show", width="stretch"):
-            answer_lines = []
-            audio_parts = []
+            show_rows = []
             for group_offset, pronoun in enumerate(current_group):
-                answers_str = " &ensp;·&ensp; ".join([
-                    f"<b>{t.capitalize()}</b>: {colorize_conjugation(verb, format_tense_value(t, targets[(group_offset, t)], group_start + group_offset), target_lists[t])}"
-                    for t in active_tenses
-                ])
-                answer_lines.append(f"<b>{pronoun}</b>: {answers_str}")
-                audio_parts.extend(
-                    format_tense_value(t, targets[(group_offset, t)], group_start + group_offset)
-                    for t in active_tenses
-                )
-            session_state.conj_last_markdown = "💡 Expected:<br>" + "<br>".join(answer_lines)
+                entry = {"Pronoun": pronoun}
+                p_pos = group_start + group_offset
+                for t in active_tenses:
+                    c_val = target_lists[t][p_pos] if p_pos < len(target_lists[t]) else ""
+                    entry[TENSE_TITLE_MAP.get(t.lower(), t.capitalize())] = colorize_conjugation(
+                        verb,
+                        c_val,
+                        target_lists[t]
+                    )
+                show_rows.append(entry)
+            session_state.conj_last_markdown = render_clean_feedback_card(
+                title="Expected Conjugations",
+                icon="💡",
+                verb=verb,
+                active_tenses=active_tenses,
+                completed_rows=show_rows,
+                border_color="#3b82f6",
+                bg_color="rgba(59, 130, 246, 0.08)"
+            )
+            audio_parts = [
+                format_tense_value(t, targets[(group_offset, t)], group_start + group_offset)
+                for group_offset, pronoun in enumerate(current_group)
+                for t in group_active_tenses
+                if should_ask_pronoun(t, pronoun)
+            ]
             session_state.conj_audio = ", ".join(audio_parts)
             rerun()
 
@@ -848,26 +1042,36 @@ table.dataframe th { background-color: #2b2b2b !important; font-weight: bold !im
             rerun()
 
     if "conj_feedback_html" in session_state:
-        markdown(
-            f"<div style='text-align: center; font-size: 24px; padding: 8px; border-radius: 6px; background-color: rgba(0,255,100,0.08); margin-bottom: 12px;'>"
-            f"✅ {session_state.conj_feedback_html}</div>",
-            unsafe_allow_html=True
-        )
+        markdown(session_state.conj_feedback_html, unsafe_allow_html=True)
         del session_state.conj_feedback_html
 
-    # Live Evolving Pronouns Table for this Verb
-    if session_state.conj_completed_pronouns:
-        with expander("📋 Completed Pronouns so far", expanded=True):
-            df_comp = DataFrame(session_state.conj_completed_pronouns)
-            custom_css = """<style>
-table.dataframe { width: 100% !important; font-size: 16px !important; }
-table.dataframe th, table.dataframe td { padding: 6px 12px !important; text-align: left !important; border: 1px solid #444 !important; }
-table.dataframe th { background-color: #2b2b2b !important; }
-</style>"""
-            markdown(custom_css + df_comp.to_html(escape=False, index=False), unsafe_allow_html=True)
 
-    markdown("#### 📚 Regular Verb Terminations (All Tenses)")
-    render_termination_table(markdown, PRONOUNS)
+
+    with sidebar:
+        divider()
+        markdown("📚 Terminations")
+        render_termination_table(markdown, PRONOUNS)
+    markdown("""
+            ### 🇪🇸 Spanish Tenses
+
+            - **Pretérito** — *(a completed event in the past; what happened)*  
+            _Ayer comí pizza._ → Yesterday I ate pizza.
+
+            - **Imperfecto** — *(a habitual action, ongoing situation, or background in the past; what was happening / used to happen)*  
+            _Cuando era niño, comía pizza los viernes._ → When I was a child, I used to eat pizza on Fridays.
+
+            - **Perfecto** — *(a past action with a connection to the present)*  
+            _Hoy he comido pizza._ → Today I have eaten pizza.
+
+            - **Presente** — *(a current or habitual action)*  
+            _Como pizza._ → I eat pizza / I am eating pizza.
+
+            - **Presente Progresivo** — *(an action happening right now)*  
+            _Estoy comiendo pizza._ → I am eating pizza.
+
+            - **Futuro** — *(a future action or event)*  
+            _Mañana comeré pizza._ → Tomorrow I will eat pizza.
+        """)
 
 def _list_screen():
     markdown("## 📋 Conjugation Database (Show All)")

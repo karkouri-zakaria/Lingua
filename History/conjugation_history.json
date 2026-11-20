@@ -1,0 +1,1094 @@
+{
+    "Ser (To be - permanent/identity)": {
+        "present": [
+            "Soy",
+            "Eres",
+            "Es",
+            "Somos",
+            "Sois",
+            "Son"
+        ],
+        "past": [
+            "Fui",
+            "Fuiste",
+            "Fue",
+            "Fuimos",
+            "Fuisteis",
+            "Fueron"
+        ],
+        "future": [
+            "Seré",
+            "Serás",
+            "Será",
+            "Seremos",
+            "Seréis",
+            "Serán"
+        ]
+    },
+    "Estar (To be - temporary/location)": {
+        "present": [
+            "Estoy",
+            "Estás",
+            "Está",
+            "Estamos",
+            "Estáis",
+            "Están"
+        ],
+        "past": [
+            "Estuve",
+            "Estuviste",
+            "Estuvo",
+            "Estuvimos",
+            "Estuvisteis",
+            "Estuvieron"
+        ],
+        "future": [
+            "Estaré",
+            "Estarás",
+            "Estará",
+            "Estaremos",
+            "Estaréis",
+            "Estarán"
+        ]
+    },
+    "Tener (To have)": {
+        "present": [
+            "Tengo",
+            "Tienes",
+            "Tiene",
+            "Tenemos",
+            "Tenéis",
+            "Tienen"
+        ],
+        "past": [
+            "Tuve",
+            "Tuviste",
+            "Tuvo",
+            "Tuvimos",
+            "Tuvisteis",
+            "Tuvieron"
+        ],
+        "future": [
+            "Tendré",
+            "Tendrás",
+            "Tendrá",
+            "Tendremos",
+            "Tendréis",
+            "Tendrán"
+        ]
+    },
+    "Haber (To have - auxiliary / There is)": {
+        "present": [
+            "He",
+            "Has",
+            "Ha / Hay",
+            "Hemos",
+            "Habéis",
+            "Han"
+        ],
+        "past": [
+            "Hube",
+            "Hubiste",
+            "Hubo",
+            "Hubimos",
+            "Hubisteis",
+            "Hubieron"
+        ],
+        "future": [
+            "Habré",
+            "Habrás",
+            "Habrá",
+            "Habremos",
+            "Habréis",
+            "Habrán"
+        ]
+    },
+    "Hacer (To do / To make)": {
+        "present": [
+            "Hago",
+            "Haces",
+            "Hace",
+            "Hacemos",
+            "Hacéis",
+            "Hacen"
+        ],
+        "past": [
+            "Hice",
+            "Hiciste",
+            "Hizo",
+            "Hicimos",
+            "Hicisteis",
+            "Hicieron"
+        ],
+        "future": [
+            "Haré",
+            "Harás",
+            "Hará",
+            "Haremos",
+            "Haréis",
+            "Harán"
+        ]
+    },
+    "Ir (To go)": {
+        "present": [
+            "Voy",
+            "Vas",
+            "Va",
+            "Vamos",
+            "Vais",
+            "Van"
+        ],
+        "past": [
+            "Fui",
+            "Fuiste",
+            "Fue",
+            "Fuimos",
+            "Fuisteis",
+            "Fueron"
+        ],
+        "future": [
+            "Iré",
+            "Irás",
+            "Irá",
+            "Iremos",
+            "Iréis",
+            "Irán"
+        ]
+    },
+    "Decir (To say / To tell)": {
+        "present": [
+            "Digo",
+            "Dices",
+            "Dice",
+            "Decimos",
+            "Decís",
+            "Dicen"
+        ],
+        "past": [
+            "Dije",
+            "Dijiste",
+            "Dijo",
+            "Dijimos",
+            "Dijisteis",
+            "Dijeron"
+        ],
+        "future": [
+            "Diré",
+            "Dirás",
+            "Dirá",
+            "Diremos",
+            "Diréis",
+            "Dirán"
+        ]
+    },
+    "Poder (To be able to / Can)": {
+        "present": [
+            "Puedo",
+            "Puedes",
+            "Puede",
+            "Podemos",
+            "Podéis",
+            "Pueden"
+        ],
+        "past": [
+            "Pude",
+            "Pudiste",
+            "Pudo",
+            "Pudimos",
+            "Pudisteis",
+            "Pudieron"
+        ],
+        "future": [
+            "Podré",
+            "Podrás",
+            "Podrá",
+            "Podremos",
+            "Podréis",
+            "Podrán"
+        ]
+    },
+    "Querer (To want / To love)": {
+        "present": [
+            "Quiero",
+            "Quieres",
+            "Quiere",
+            "Queremos",
+            "Queréis",
+            "Quieren"
+        ],
+        "past": [
+            "Quise",
+            "Quisiste",
+            "Quiso",
+            "Quisimos",
+            "Quisisteis",
+            "Quisieron"
+        ],
+        "future": [
+            "Querré",
+            "Querrás",
+            "Querrá",
+            "Querremos",
+            "Querréis",
+            "Querrán"
+        ]
+    },
+    "Dar (To give)": {
+        "present": [
+            "Doy",
+            "Das",
+            "Da",
+            "Damos",
+            "Dais",
+            "Dan"
+        ],
+        "past": [
+            "Di",
+            "Diste",
+            "Dio",
+            "Dimos",
+            "Disteis",
+            "Dieron"
+        ],
+        "future": [
+            "Daré",
+            "Darás",
+            "Dará",
+            "Daremos",
+            "Daréis",
+            "Darán"
+        ]
+    },
+    "Saber (To know - facts/how to)": {
+        "present": [
+            "Sé",
+            "Sabes",
+            "Sabe",
+            "Sabemos",
+            "Sabéis",
+            "Saben"
+        ],
+        "past": [
+            "Supe",
+            "Supiste",
+            "Supo",
+            "Supimos",
+            "Supisteis",
+            "Supieron"
+        ],
+        "future": [
+            "Sabré",
+            "Sabrás",
+            "Sabrá",
+            "Sabremos",
+            "Sabréis",
+            "Sabrán"
+        ]
+    },
+    "Conocer (To know - people/places)": {
+        "present": [
+            "Conozco",
+            "Conoces",
+            "Conoce",
+            "Conocemos",
+            "Conocéis",
+            "Conocen"
+        ],
+        "past": [
+            "Conocí",
+            "Conociste",
+            "Conoció",
+            "Conocimos",
+            "Conocisteis",
+            "Conocieron"
+        ],
+        "future": [
+            "Conoceré",
+            "Conocerás",
+            "Conocerá",
+            "Conoceremos",
+            "Conoceréis",
+            "Conocerán"
+        ]
+    },
+    "Pensar (To think)": {
+        "present": [
+            "Pienso",
+            "Piensas",
+            "Piensa",
+            "Pensamos",
+            "Pensáis",
+            "Piensan"
+        ],
+        "past": [
+            "Pensé",
+            "Pensaste",
+            "Pensó",
+            "Pensamos",
+            "Pensasteis",
+            "Pensaron"
+        ],
+        "future": [
+            "Pensaré",
+            "Pensarás",
+            "Pensará",
+            "Pensaremos",
+            "Pensaréis",
+            "Pensarán"
+        ]
+    },
+    "Poner (To put / To place)": {
+        "present": [
+            "Pongo",
+            "Pones",
+            "Pone",
+            "Ponemos",
+            "Ponéis",
+            "Ponen"
+        ],
+        "past": [
+            "Puse",
+            "Pusiste",
+            "Puso",
+            "Pusimos",
+            "Pusisteis",
+            "Pusieron"
+        ],
+        "future": [
+            "Pondré",
+            "Pondrás",
+            "Pondrá",
+            "Pondremos",
+            "Pondréis",
+            "Pondrán"
+        ]
+    },
+    "Parecer (To seem)": {
+        "present": [
+            "Parezco",
+            "Pareces",
+            "Parece",
+            "Parecemos",
+            "Parecéis",
+            "Parecen"
+        ],
+        "past": [
+            "Parecí",
+            "Pareciste",
+            "Pareció",
+            "Parecimos",
+            "Parecisteis",
+            "Parecieron"
+        ],
+        "future": [
+            "Pareceré",
+            "Parecerás",
+            "Parecerá",
+            "Pareceremos",
+            "Pareceréis",
+            "Parecerán"
+        ]
+    },
+    "Seguir (To follow / To continue)": {
+        "present": [
+            "Sigo",
+            "Sigues",
+            "Sigue",
+            "Seguimos",
+            "Seguís",
+            "Siguen"
+        ],
+        "past": [
+            "Seguí",
+            "Seguiste",
+            "Siguió",
+            "Seguimos",
+            "Seguisteis",
+            "Siguieron"
+        ],
+        "future": [
+            "Seguiré",
+            "Seguirás",
+            "Seguirá",
+            "Seguiremos",
+            "Seguiréis",
+            "Seguirán"
+        ]
+    },
+    "Encontrar (To find)": {
+        "present": [
+            "Encuentro",
+            "Encuentras",
+            "Encuentra",
+            "Encontramos",
+            "Encontráis",
+            "Encuentran"
+        ],
+        "past": [
+            "Encontré",
+            "Encontraste",
+            "Encontró",
+            "Encontramos",
+            "Encontrasteis",
+            "Encontraron"
+        ],
+        "future": [
+            "Encontraré",
+            "Encontrarás",
+            "Encontrará",
+            "Encontraremos",
+            "Encontraréis",
+            "Encontrarán"
+        ]
+    },
+    "Venir (To come)": {
+        "present": [
+            "Vengo",
+            "Vienes",
+            "Viene",
+            "Venimos",
+            "Venís",
+            "Vienen"
+        ],
+        "past": [
+            "Vine",
+            "Viniste",
+            "Vino",
+            "Vinimos",
+            "Vinisteis",
+            "Vinieron"
+        ],
+        "future": [
+            "Vendré",
+            "Vendrás",
+            "Vendrá",
+            "Vendremos",
+            "Vendréis",
+            "Vendrán"
+        ]
+    },
+    "Salir (To leave / To go out)": {
+        "present": [
+            "Salgo",
+            "Sales",
+            "Sale",
+            "Salimos",
+            "Salís",
+            "Salen"
+        ],
+        "past": [
+            "Salí",
+            "Saliste",
+            "Salió",
+            "Salimos",
+            "Salisteís",
+            "Salieron"
+        ],
+        "future": [
+            "Saldré",
+            "Saldrás",
+            "Saldrá",
+            "Saldremos",
+            "Saldréis",
+            "Saldrán"
+        ]
+    },
+    "Volver (To return)": {
+        "present": [
+            "Vuelvo",
+            "Vuelves",
+            "Vuelve",
+            "Volvemos",
+            "Volvéis",
+            "Vuelven"
+        ],
+        "past": [
+            "Volví",
+            "Volviste",
+            "Volvió",
+            "Volvimos",
+            "Volvisteis",
+            "Volvieron"
+        ],
+        "future": [
+            "Volveré",
+            "Volverás",
+            "Volverá",
+            "Volveremos",
+            "Volveréis",
+            "Volverán"
+        ]
+    },
+    "Sentir (To feel / To regret)": {
+        "present": [
+            "Siento",
+            "Sientes",
+            "Siente",
+            "Sentimos",
+            "Sentís",
+            "Sienten"
+        ],
+        "past": [
+            "Sentí",
+            "Sentiste",
+            "Sintió",
+            "Sentimos",
+            "Sentisteis",
+            "Sintieron"
+        ],
+        "future": [
+            "Sentiré",
+            "Sentirás",
+            "Sentirá",
+            "Sentiremos",
+            "Sentiréis",
+            "Sentirán"
+        ]
+    },
+    "Contar (To count / To tell)": {
+        "present": [
+            "Cuento",
+            "Cuentas",
+            "Cuenta",
+            "Contamos",
+            "Contáis",
+            "Cuentan"
+        ],
+        "past": [
+            "Conté",
+            "Contaste",
+            "Contó",
+            "Contamos",
+            "Contasteis",
+            "Contaron"
+        ],
+        "future": [
+            "Contaré",
+            "Contarás",
+            "Contará",
+            "Contaremos",
+            "Contaréis",
+            "Contarán"
+        ]
+    },
+    "Empezar (To begin / To start)": {
+        "present": [
+            "Empiezo",
+            "Empiezas",
+            "Empieza",
+            "Empezamos",
+            "Empezáis",
+            "Empiezan"
+        ],
+        "past": [
+            "Empecé",
+            "Empezaste",
+            "Empezó",
+            "Empezamos",
+            "Empezasteis",
+            "Empezaron"
+        ],
+        "future": [
+            "Empezaré",
+            "Empezarás",
+            "Empezará",
+            "Empezaremos",
+            "Empezaréis",
+            "Empezarán"
+        ]
+    },
+    "Perder (To lose / To miss)": {
+        "present": [
+            "Pierdo",
+            "Pierdes",
+            "Pierde",
+            "Perdemos",
+            "Perdéis",
+            "Pierden"
+        ],
+        "past": [
+            "Perdí",
+            "Perdiste",
+            "Perdió",
+            "Perdimos",
+            "Perdisteis",
+            "Perdieron"
+        ],
+        "future": [
+            "Perderé",
+            "Perderás",
+            "Perderá",
+            "Perderemos",
+            "Perderéis",
+            "Perderán"
+        ]
+    },
+    "Entender (To understand)": {
+        "present": [
+            "Entiendo",
+            "Entiendes",
+            "Entiende",
+            "Entendemos",
+            "Entendéis",
+            "Entienden"
+        ],
+        "past": [
+            "Entendí",
+            "Entendiste",
+            "Entendió",
+            "Entendimos",
+            "Entendisteis",
+            "Entendieron"
+        ],
+        "future": [
+            "Entenderé",
+            "Entenderás",
+            "Entenderá",
+            "Entenderemos",
+            "Entenderéis",
+            "Entenderán"
+        ]
+    },
+    "Pedir (To ask for / To request)": {
+        "present": [
+            "Pido",
+            "Pides",
+            "Pide",
+            "Pedimos",
+            "Pedís",
+            "Piden"
+        ],
+        "past": [
+            "Pedí",
+            "Pediste",
+            "Pidió",
+            "Pedimos",
+            "Pedisteis",
+            "Pidieron"
+        ],
+        "future": [
+            "Pediré",
+            "Pedirás",
+            "Pedirá",
+            "Pediremos",
+            "Pediréis",
+            "Pedirán"
+        ]
+    },
+    "Recordar (To remember)": {
+        "present": [
+            "Recuerdo",
+            "Recuerdas",
+            "Recuerda",
+            "Recordamos",
+            "Recordáis",
+            "Recuerdan"
+        ],
+        "past": [
+            "Recordé",
+            "Recordaste",
+            "Recordó",
+            "Recordamos",
+            "Recordasteis",
+            "Recordaron"
+        ],
+        "future": [
+            "Recordaré",
+            "Recordarás",
+            "Recordará",
+            "Recordaremos",
+            "Recordaréis",
+            "Recordarán"
+        ]
+    },
+    "Servir (To serve / To be useful)": {
+        "present": [
+            "Sirvo",
+            "Sirves",
+            "Sirve",
+            "Servimos",
+            "Servís",
+            "Sirven"
+        ],
+        "past": [
+            "Serví",
+            "Serviste",
+            "Sirvió",
+            "Servimos",
+            "Servisteis",
+            "Sirvieron"
+        ],
+        "future": [
+            "Serviré",
+            "Servirás",
+            "Servirá",
+            "Serviremos",
+            "Serviréis",
+            "Servirán"
+        ]
+    },
+    "Oír (To hear)": {
+        "present": [
+            "Oigo",
+            "Oyes",
+            "Oye",
+            "Oímos",
+            "Oís",
+            "Oyen"
+        ],
+        "past": [
+            "Oí",
+            "Oíste",
+            "Oyó",
+            "Oímos",
+            "Oísteis",
+            "Oyeron"
+        ],
+        "future": [
+            "Oiré",
+            "Oirás",
+            "Oirá",
+            "Oiremos",
+            "Oiréis",
+            "Oirán"
+        ]
+    },
+    "Convertir (To convert / To change)": {
+        "present": [
+            "Convierto",
+            "Conviertes",
+            "Convierte",
+            "Convertimos",
+            "Convertís",
+            "Convierten"
+        ],
+        "past": [
+            "Convertí",
+            "Convertiste",
+            "Convirtió",
+            "Convertimos",
+            "Convertisteis",
+            "Convirtieron"
+        ],
+        "future": [
+            "Convertiré",
+            "Convertirás",
+            "Convertirá",
+            "Convertiremos",
+            "Convertiréis",
+            "Convertirán"
+        ]
+    },
+    "Traer (To bring)": {
+        "present": [
+            "Traigo",
+            "Traes",
+            "Trae",
+            "Traemos",
+            "Traéis",
+            "Traen"
+        ],
+        "past": [
+            "Traje",
+            "Trajiste",
+            "Trajo",
+            "Trajimos",
+            "Trajisteis",
+            "Trajeron"
+        ],
+        "future": [
+            "Traeré",
+            "Traerás",
+            "Traerá",
+            "Traeremos",
+            "Traeréis",
+            "Traerán"
+        ]
+    },
+    "Morir (To die)": {
+        "present": [
+            "Muero",
+            "Mueres",
+            "Muere",
+            "Morimos",
+            "Morís",
+            "Mueren"
+        ],
+        "past": [
+            "Morí",
+            "Moriste",
+            "Murió",
+            "Morimos",
+            "Moristeis",
+            "Murieron"
+        ],
+        "future": [
+            "Moriré",
+            "Morirás",
+            "Morirá",
+            "Moriremos",
+            "Moriréis",
+            "Morirán"
+        ]
+    },
+    "Suponer (To suppose / To assume)": {
+        "present": [
+            "Supongo",
+            "Supones",
+            "Supone",
+            "Suponemos",
+            "Suponéis",
+            "Suponen"
+        ],
+        "past": [
+            "Supuse",
+            "Supusiste",
+            "Supuso",
+            "Supusimos",
+            "Supusisteis",
+            "Supusieron"
+        ],
+        "future": [
+            "Supondré",
+            "Supondrás",
+            "Supondrá",
+            "Supondremos",
+            "Supondréis",
+            "Supondrán"
+        ]
+    },
+    "Reconocer (To recognize)": {
+        "present": [
+            "Reconozco",
+            "Reconoces",
+            "Reconoce",
+            "Reconocemos",
+            "Reconocéis",
+            "Reconocen"
+        ],
+        "past": [
+            "Reconocí",
+            "Reconociste",
+            "Reconoció",
+            "Reconocimos",
+            "Reconocisteis",
+            "Reconocieron"
+        ],
+        "future": [
+            "Reconoceré",
+            "Reconocerás",
+            "Reconocerá",
+            "Reconoceremos",
+            "Reconoceréis",
+            "Reconocerán"
+        ]
+    },
+    "Nacer (To be born)": {
+        "present": [
+            "Nazco",
+            "Naces",
+            "Nace",
+            "Nacemos",
+            "Nacéis",
+            "Nacen"
+        ],
+        "past": [
+            "Nací",
+            "Naciste",
+            "Nació",
+            "Nacimos",
+            "Nacisteis",
+            "Nacieron"
+        ],
+        "future": [
+            "Naceré",
+            "Nacerás",
+            "Nacerá",
+            "Naceremos",
+            "Naceréis",
+            "Nacerán"
+        ]
+    },
+    "Dirigir (To direct / To manage)": {
+        "present": [
+            "Dirijo",
+            "Diriges",
+            "Dirige",
+            "Dirigimos",
+            "Dirigís",
+            "Dirigen"
+        ],
+        "past": [
+            "Dirigí",
+            "Dirigiste",
+            "Dirigió",
+            "Dirigimos",
+            "Dirigisteis",
+            "Dirigieron"
+        ],
+        "future": [
+            "Dirigiré",
+            "Dirigirás",
+            "Dirigirá",
+            "Dirigiremos",
+            "Dirigiréis",
+            "Dirigirán"
+        ]
+    },
+    "Jugar (To play a game/sport)": {
+        "present": [
+            "Juego",
+            "Juegas",
+            "Juega",
+            "Jugamos",
+            "Jugáis",
+            "Juegan"
+        ],
+        "past": [
+            "Jugué",
+            "Jugaste",
+            "Jugó",
+            "Jugamos",
+            "Jugasteis",
+            "Jugaron"
+        ],
+        "future": [
+            "Jugaré",
+            "Jugarás",
+            "Jugará",
+            "Jugaremos",
+            "Jugaréis",
+            "Jugarán"
+        ]
+    },
+    "Ofrecer (To offer)": {
+        "present": [
+            "Ofrezco",
+            "Ofreces",
+            "Ofrece",
+            "Ofrecemos",
+            "Ofrecéis",
+            "Ofrecen"
+        ],
+        "past": [
+            "Ofrecí",
+            "Ofreciste",
+            "Ofreció",
+            "Ofrecimos",
+            "Ofrecisteis",
+            "Ofrecieron"
+        ],
+        "future": [
+            "Ofreceré",
+            "Ofrecerás",
+            "Ofrecerá",
+            "Ofreceremos",
+            "Ofreceréis",
+            "Ofrecerán"
+        ]
+    },
+    "Caer (To fall)": {
+        "present": [
+            "Caigo",
+            "Caes",
+            "Cae",
+            "Caemos",
+            "Caéis",
+            "Caen"
+        ],
+        "past": [
+            "Caí",
+            "Caíste",
+            "Cayó",
+            "Caímos",
+            "Caísteis",
+            "Cayeron"
+        ],
+        "future": [
+            "Caeré",
+            "Caerás",
+            "Caerá",
+            "Caeremos",
+            "Caeréis",
+            "Caerán"
+        ]
+    },
+    "Dormir (To sleep)": {
+        "present": [
+            "Duermo",
+            "Duermes",
+            "Duerme",
+            "Dormimos",
+            "Dormís",
+            "Duermen"
+        ],
+        "past": [
+            "Dormí",
+            "Dormiste",
+            "Durmió",
+            "Dormimos",
+            "Dormisteis",
+            "Durmieron"
+        ],
+        "future": [
+            "Dormiré",
+            "Dormirás",
+            "Dormirá",
+            "Dormiremos",
+            "Dormiréis",
+            "Dormirán"
+        ]
+    },
+    "Producir (To produce)": {
+        "present": [
+            "Produzco",
+            "Produces",
+            "Produce",
+            "Producimos",
+            "Producís",
+            "Producen"
+        ],
+        "past": [
+            "Produje",
+            "Produjiste",
+            "Produjo",
+            "Produjimos",
+            "Produjisteis",
+            "Produjeron"
+        ],
+        "future": [
+            "Produciré",
+            "Producirás",
+            "Producirá",
+            "Produciremos",
+            "Produciréis",
+            "Producirán"
+        ]
+    },
+    "Mostrar (To show)": {
+        "present": [
+            "Muestro",
+            "Muestras",
+            "Muestra",
+            "Mostramos",
+            "Mostráis",
+            "Muestran"
+        ],
+        "past": [
+            "Mostré",
+            "Mostraste",
+            "Mostró",
+            "Mostramos",
+            "Mostrasteis",
+            "Mostraron"
+        ],
+        "future": [
+            "Mostraré",
+            "Mostrarás",
+            "Mostrará",
+            "Mostraremos",
+            "Mostraréis",
+            "Mostrarán"
+        ]
+    }
+}
